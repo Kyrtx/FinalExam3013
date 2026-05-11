@@ -1,1620 +1,1169 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>
-            CMPS 3013 – Advanced Structures & Algorithms – Final Study Guide
-        </title>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Serif+4:wght@400;600;700&display=swap");
-
-            :root {
-                --bg: #0f0f0f;
-                --surface: #1a1a1a;
-                --surface2: #232323;
-                --border: #333;
-                --text: #e0e0e0;
-                --text-dim: #999;
-                --accent: #e8a55a;
-                --accent2: #5ab8e8;
-                --accent3: #7ce85a;
-                --red: #e85a5a;
-                --code-bg: #141414;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                background: var(--bg);
-                color: var(--text);
-                font-family: "Source Serif 4", Georgia, serif;
-                font-size: 16px;
-                line-height: 1.7;
-                padding: 40px 20px;
-                max-width: 900px;
-                margin: 0 auto;
-            }
-
-            h1 {
-                font-size: 2em;
-                color: var(--accent);
-                border-bottom: 3px solid var(--accent);
-                padding-bottom: 12px;
-                margin: 50px 0 20px 0;
-                letter-spacing: -0.5px;
-            }
-
-            h1:first-of-type {
-                margin-top: 0;
-            }
-
-            h2 {
-                font-size: 1.5em;
-                color: var(--accent2);
-                margin: 40px 0 15px 0;
-                border-left: 4px solid var(--accent2);
-                padding-left: 15px;
-            }
-
-            h3 {
-                font-size: 1.15em;
-                color: var(--accent3);
-                margin: 25px 0 10px 0;
-            }
-
-            p {
-                margin: 10px 0;
-            }
-
-            .box {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 20px;
-                margin: 15px 0;
-            }
-
-            .box-warn {
-                background: #2a2010;
-                border: 1px solid var(--accent);
-                border-radius: 8px;
-                padding: 15px 20px;
-                margin: 15px 0;
-            }
-
-            .box-warn::before {
-                content: "⚠ PROFESSOR'S KEY POINT";
-                display: block;
-                color: var(--accent);
-                font-weight: 700;
-                font-size: 0.85em;
-                margin-bottom: 8px;
-                letter-spacing: 1px;
-            }
-
-            .box-formula {
-                background: #101a10;
-                border: 1px solid var(--accent3);
-                border-radius: 8px;
-                padding: 15px 20px;
-                margin: 15px 0;
-                text-align: center;
-                font-size: 1.1em;
-            }
-
-            pre,
-            code {
-                font-family: "JetBrains Mono", "Courier New", monospace;
-                font-size: 0.88em;
-            }
-
-            pre {
-                background: var(--code-bg);
-                border: 1px solid var(--border);
-                border-radius: 6px;
-                padding: 15px;
-                margin: 12px 0;
-                overflow-x: auto;
-                line-height: 1.5;
-            }
-
-            code {
-                background: var(--surface2);
-                padding: 2px 6px;
-                border-radius: 3px;
-            }
-
-            pre code {
-                background: none;
-                padding: 0;
-            }
-
-            .step {
-                background: var(--surface);
-                border-left: 3px solid var(--accent2);
-                padding: 12px 18px;
-                margin: 10px 0;
-                border-radius: 0 6px 6px 0;
-            }
-
-            .step-num {
-                color: var(--accent2);
-                font-weight: 700;
-                font-size: 0.9em;
-                letter-spacing: 0.5px;
-            }
-
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 15px 0;
-                font-size: 0.95em;
-            }
-
-            th,
-            td {
-                border: 1px solid var(--border);
-                padding: 10px 14px;
-                text-align: left;
-            }
-
-            th {
-                background: var(--surface2);
-                color: var(--accent);
-                font-weight: 700;
-            }
-
-            td {
-                background: var(--surface);
-            }
-
-            .toc {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 25px 30px;
-                margin: 20px 0 40px 0;
-            }
-
-            .toc a {
-                color: var(--accent2);
-                text-decoration: none;
-                display: block;
-                padding: 4px 0;
-            }
-
-            .toc a:hover {
-                color: var(--accent);
-            }
-
-            .example-label {
-                color: var(--accent);
-                font-weight: 700;
-                font-size: 0.85em;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                margin-bottom: 5px;
-            }
-
-            .divider {
-                border: none;
-                border-top: 1px solid var(--border);
-                margin: 40px 0;
-            }
-
-            strong {
-                color: #fff;
-            }
-            em {
-                color: var(--accent);
-                font-style: normal;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>CMPS 3013 — Final Exam Study Guide</h1>
-        <p style="color: var(--text-dim)">
-            Advanced Structures & Algorithms · Dr. Colmenares · Spring 2026 ·
-            MSU
-        </p>
-        <p style="color: var(--text-dim); font-size: 0.9em">
-            All methods shown exactly as taught in class. Step-by-step, showing
-            all conditions, cases, and simplified final expressions.
-        </p>
-
-        <div class="toc">
-            <strong style="font-size: 1.1em">Table of Contents</strong
-            ><br /><br />
-            <a href="#pointers">1. Pointers</a>
-            <a href="#binary-trees">2. Binary Trees & Traversals</a>
-            <a href="#recursion">3. Recursion (Factorial)</a>
-            <a href="#loop-analysis">4. Complexity Analysis — Loop Analysis</a>
-            <a href="#binary-search">5. Binary Search Big-O Derivation</a>
-            <a href="#insertion-sort">6. Insertion Sort (Trace by Hand)</a>
-            <a href="#master-theorem">7. Master Theorem (Professor's Method)</a>
-            <a href="#iterative-method"
-                >8. Iterative Method (Repeated Substitution)</a
-            >
-            <a href="#tree-method">9. Recursion Tree Method</a>
-            <a href="#merge-sort">10. Merge Sort (Trace + Complexity)</a>
-            <a href="#radix-sort">11. Radix Sort (Do-It-By-Hand)</a>
-            <a href="#sorting-summary">12. Sorting Complexities Summary</a>
-            <a href="#graphs">13. Graph Algorithms</a>
-            <a href="#bfs">14. BFS (Breadth-First Search)</a>
-            <a href="#dfs">15. DFS (Depth-First Search)</a>
-            <a href="#dijkstra">16. Dijkstra's Shortest Path</a>
-        </div>
-
-        <!-- ============================== POINTERS ============================== -->
-        <h1 id="pointers">1. Pointers</h1>
-
-        <h2>Core Concepts</h2>
-
-        <p>
-            A <strong>pointer</strong> is a variable that stores the
-            <em>address</em> of another variable. Three operators to know:
-        </p>
-
-        <table>
-            <tr>
-                <th>Operator</th>
-                <th>Name</th>
-                <th>What It Does</th>
-            </tr>
-            <tr>
-                <td><code>&amp;</code></td>
-                <td>Address-of</td>
-                <td>Gets the memory address of a variable</td>
-            </tr>
-            <tr>
-                <td><code>*</code> (declaration)</td>
-                <td>Pointer declaration</td>
-                <td>Declares a pointer variable: <code>int *ptr;</code></td>
-            </tr>
-            <tr>
-                <td><code>*</code> (usage)</td>
-                <td>Dereference / Indirection</td>
-                <td>Accesses the value at the address the pointer holds</td>
-            </tr>
-        </table>
-
-        <h3>Basic Example (pr10-02 style)</h3>
-        <pre><code>int x = 25;
-int *ptr = &amp;x;       // ptr now holds the address of x
-
-cout &lt;&lt; x;           // 25 (the value)
-cout &lt;&lt; &amp;x;          // 0x7fff... (address of x)
-cout &lt;&lt; ptr;          // same address as &amp;x
-cout &lt;&lt; *ptr;         // 25 (dereference — get value at address)
-cout &lt;&lt; &amp;ptr;         // address of the pointer itself (different)</code></pre>
-
-        <div class="box-warn">
-            On the exam (Test 1 Question 1), given an array and a pointer
-            <code>number</code> that points to the very beginning, you must
-            evaluate expressions like <code>*number</code>,
-            <code>*(number+5)</code>, <code>(*number+5)</code>,
-            <code>(*number+2)</code>, etc. The parentheses matter enormously.
-        </div>
-
-        <h2>Pointers and Arrays</h2>
-        <p>
-            An array name is essentially a <strong>constant pointer</strong> to
-            the first element.
-        </p>
-
-        <pre><code>int numbers[] = {10, 20, 30, 40, 50};
-
-*numbers        → 10          // value at index 0
-*(numbers + 1)  → 20          // value at index 1
-(*numbers + 1)  → 11          // value at index 0, THEN add 1
-(numbers + 1)   → address of index 1
-&amp;numbers[1]     → same address as (numbers + 1)</code></pre>
-
-        <div class="box-warn">
-            <code>*(numbers + i)</code> and <code>numbers[i]</code> are
-            interchangeable. A pointer can use subscript notation:
-            <code>ptr[i]</code> works just like <code>*(ptr + i)</code>.
-        </div>
-
-        <h2>Pointer Arithmetic</h2>
-        <p>
-            When you do <code>ptr++</code> or <code>ptr + 1</code>, the pointer
-            moves forward by the size of the data type it points to (e.g., 4
-            bytes for <code>int</code>, 8 bytes for <code>double</code>).
-        </p>
-
-        <pre><code>int set[] = {5, 10, 15, 20, 25, 30, 35, 40};
-int *numPtr = set;
-
-// Forward traversal
-for (int i = 0; i &lt; 8; i++) {
-    cout &lt;&lt; *numPtr &lt;&lt; " ";
-    numPtr++;               // moves to next int
-}
-
-// Backward traversal
-for (int i = 0; i &lt; 8; i++) {
-    numPtr--;
-    cout &lt;&lt; *numPtr &lt;&lt; " ";
-}</code></pre>
-
-        <h2>Pointers as Function Parameters</h2>
-        <pre><code>void getNumber(int *input) {
-    cout &lt;&lt; "Enter an integer: ";
-    cin &gt;&gt; *input;           // stores into the variable pointed to
-}
-
-void doubleValue(int *val) {
-    *val *= 2;               // modifies original variable
-}
-
-int main() {
-    int number;
-    getNumber(&amp;number);      // pass ADDRESS
-    doubleValue(&amp;number);    // pass ADDRESS
-    cout &lt;&lt; number;          // modified!
-}</code></pre>
-
-        <h2>Dynamic Memory Allocation</h2>
-        <pre><code>// Allocate
-double *sales = new double[numDays];
-
-// Use it like a normal array
-sales[0] = 100.50;
-
-// ALWAYS free when done
-delete [] sales;
-sales = 0;           // good practice: set to null</code></pre>
-
-        <h2>Multi-Level Pointers (Triple Pointers)</h2>
-        <pre><code>int x = 25;
-int *ptr1 = &amp;x;         // pointer to int
-int **ptr2 = &amp;ptr1;      // pointer to pointer to int
-int ***ptr3 = &amp;ptr2;     // pointer to pointer to pointer to int
-
-***ptr3 → 25            // dereference three times to get x</code></pre>
-
-        <hr class="divider" />
-
-        <!-- ============================== BINARY TREES ============================== -->
-        <h1 id="binary-trees">2. Binary Trees & Traversals</h1>
-
-        <h2>Terminology (Test 1 Q3 — Fill in the Blank)</h2>
-        <table>
-            <tr>
-                <th>Term</th>
-                <th>Answer</th>
-            </tr>
-            <tr>
-                <td>A node with no children is called a...</td>
-                <td><em>leaf node</em></td>
-            </tr>
-            <tr>
-                <td>
-                    A nonempty binary tree has a root, rest of nodes form...
-                </td>
-                <td><em>subtree</em> (one word, NOT "sub nodes")</td>
-            </tr>
-            <tr>
-                <td>A node in a Binary tree can have up to ___ successor(s)</td>
-                <td><em>two</em></td>
-            </tr>
-            <tr>
-                <td>The unique node with no parent is the...</td>
-                <td><em>root</em> of the tree</td>
-            </tr>
-            <tr>
-                <td>The ___ points to the first node in the tree</td>
-                <td><em>pointer</em> (NOT "head")</td>
-            </tr>
-        </table>
-
-        <div class="box-warn">
-            "root is not visible here" — on Test 1 Q4, the parameter is
-            <code>tree</code> (a TreeNode pointer), NOT <code>root</code>. The
-            variable name in the function is whatever the parameter is called.
-            Don't write <code>root</code> when the code says <code>tree</code>.
-        </div>
-
-        <h2>Three Traversals — Code Pattern</h2>
-        <p>
-            The traversal functions are recursive. The
-            <strong>only</strong> difference is where the
-            <code>cout</code> goes:
-        </p>
-
-        <h3>InOrder (Left, Root, Right)</h3>
-        <pre><code>void IntBinaryTree::displayInOrder(TreeNode *tree) const
-{
-    if (tree)
-    {
-        displayInOrder(tree-&gt;left);
-        cout &lt;&lt; tree-&gt;data &lt;&lt; " ";
-        displayInOrder(tree-&gt;right);
-    }
-}</code></pre>
-
-        <h3>PreOrder (Root, Left, Right)</h3>
-        <pre><code>void IntBinaryTree::displayPreOrder(TreeNode *tree) const
-{
-    if (tree)
-    {
-        cout &lt;&lt; tree-&gt;data &lt;&lt; " ";
-        displayPreOrder(tree-&gt;left);
-        displayPreOrder(tree-&gt;right);
-    }
-}</code></pre>
-
-        <h3>PostOrder (Left, Right, Root)</h3>
-        <pre><code>void IntBinaryTree::displayPostOrder(TreeNode *tree) const
-{
-    if (tree)
-    {
-        displayPostOrder(tree-&gt;left);
-        displayPostOrder(tree-&gt;right);
-        cout &lt;&lt; tree-&gt;data &lt;&lt; " ";
-    }
-}</code></pre>
-
-        <h2>Traversal Example (Test 1 Q5)</h2>
-        <p>Given this BST:</p>
-        <pre><code>          50
-         /  \
-       30    70
-      / \   / \
-    20  40 60  80
-   /       \
-  10       65</code></pre>
-
-        <table>
-            <tr>
-                <th>Traversal</th>
-                <th>Mnemonic</th>
-                <th>Output</th>
-            </tr>
-            <tr>
-                <td>InOrder</td>
-                <td>L, Root, R</td>
-                <td>10 20 30 40 50 60 65 70 80</td>
-            </tr>
-            <tr>
-                <td>PreOrder</td>
-                <td>Root, L, R</td>
-                <td>50 30 20 10 40 70 60 65 80</td>
-            </tr>
-            <tr>
-                <td>PostOrder</td>
-                <td>L, R, Root</td>
-                <td>10 20 40 30 65 60 80 70 50</td>
-            </tr>
-        </table>
-
-        <hr class="divider" />
-
-        <!-- ============================== RECURSION ============================== -->
-        <h1 id="recursion">3. Recursion (Factorial)</h1>
-
-        <p>Factorial: n! = n × (n-1)!</p>
-
-        <pre><code>int factorial(int n)
-{
-    if (n == 0)
-        return 1;          // base case
-    return n * factorial(n - 1);  // recursive case
-}</code></pre>
-
-        <p>
-            This earned full marks + 3 bonus on Test 1 Q2. The key is: base case
-            returns 1 when n == 0, recursive case multiplies n by
-            factorial(n-1).
-        </p>
-
-        <hr class="divider" />
-
-        <!-- ============================== LOOP ANALYSIS ============================== -->
-        <h1 id="loop-analysis">4. Complexity Analysis — Loop Analysis</h1>
-
-        <div class="box-warn">
-            The professor requires a <strong>3-part structure</strong>: (1) Step
-            by Step Analysis for Inner Loop, (2) Step by Step Analysis for Outer
-            Loop, (3) Step by Step Analysis for Entire Code — Combine.
-            <strong>Box final and partial answers.</strong>
-        </div>
-
-        <h2>Example 1 (HM5 Q1): i doubles, j increments</h2>
-        <pre><code>for (int i = 1; i &lt; n; i *= 2) {
-    for (int j = 0; j &lt; n; j++) {
-        counter = counter + 1;
-    }
-}</code></pre>
-
-        <div class="step">
-            <span class="step-num">STEP 1: Inner Loop Analysis</span><br />
-            j starts at 0, adds 1 each time, stops at n.<br />
-            So inner loop runs exactly <strong>n</strong> times.<br />
-            Operation inside: <code>counter = counter + 1</code> → one
-            operation, so one constant.<br />
-            Work done: c · n<br />
-            <strong>f_inner = c · n</strong> ← box this
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 2: Outer Loop Analysis</span><br />
-            i starts at 1 and <strong>doubles</strong> each step. Stops when i ≥
-            n.<br />
-            Sequence: i = 1, 2, 4, 8, ... → i = 2<sup>k</sup><br />
-            Stops when 2<sup>k</sup> = n → <strong>k = log₂(n)</strong><br />
-            <strong>f_outer = log₂(n)</strong> ← box this
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 3: Combine (Total Work)</span><br />
-            Total Work = (outer loop) · (inner loop)<br />
-            = log₂(n) · (c · n)<br />
-            = log₂(n) · c · n<br />
-            Drop constant (insignificant):<br />
-            <strong>O(n · log₂(n))</strong> ← box this
-        </div>
-
-        <div class="box-warn">
-            The professor deducted -5 points on this problem for "Missing Steps
-            / Memory Based answer." You MUST show the derivation of how k =
-            log₂(n), not just state it from memory. Write: "2<sup>k</sup> = n →
-            log₂(2<sup>k</sup>) = log₂(n) → k · log₂(2) = log₂(n) → k =
-            log₂(n)."
-        </div>
-
-        <h2>Example 2 (HM5 Q2): Both loops multiply</h2>
-        <pre><code>for (int i = 1; i &lt; n; i = 4*i) {
-    for (int j = 1; j &lt; n; j = j*3) {
-        counter = counter + 1;
-    }
-}</code></pre>
-
-        <div class="step">
-            <span class="step-num">Outer Loop:</span> i = 1, 4, 16, 64... → i =
-            4<sup>k</sup>. Stops at 4<sup>k</sup> = n.<br />
-            log₄(4<sup>k</sup>) = log₄(n) → k = log₄(n)<br />
-            Convert to log₂ using change of base: log₄(n) = log₂(n) / log₂(4) =
-            log₂(n) / 2<br />
-            Take out n from constant: (1/2) · log₂(n)<br />
-            <strong>f_outer = (1/2) · log₂(n)</strong>
-        </div>
-
-        <div class="step">
-            <span class="step-num">Inner Loop:</span> j = 1, 3, 9, 27... → j =
-            3<sup>k</sup>. Stops at 3<sup>k</sup> = n.<br />
-            log₃(3<sup>k</sup>) = log₃(n) → k = log₃(n)<br />
-            Convert: log₃(n) = log₂(n) / log₂(3) ≈ log₂(n) / 1.585<br />
-            Take out n from constant: (1/log₂(3)) · log₂(n) = c · log₂(n)<br />
-            <strong>f_inner = c · log₂(n)</strong>
-        </div>
-
-        <div class="step">
-            <span class="step-num">Combine:</span><br />
-            Total Work = f_outer · f_inner = (1/2) · log₂(n) · c · log₂(n)<br />
-            = (1/(2·log₂(3))) · [log₂(n)]²<br />
-            Drop constant:<br />
-            <strong>O([log₂(n)]²)</strong> ← box this
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== BINARY SEARCH BIG O ============================== -->
-        <h1 id="binary-search">5. Binary Search — Big O Derivation</h1>
-
-        <div class="box-warn">
-            Show this step by step. The professor says "I mention this multiple
-            times" and deducted -15 for "Missing Steps / Memory Based answer."
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 1:</span> Every time the while loop runs
-            once, it cuts the remaining search space in half.
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 2:</span> Track how many elements
-            remain:<br />
-            Start: n elements<br />
-            After comp 1: n/2 elements<br />
-            After comp 2: n/4 elements<br />
-            After comp k: n/2<sup>k</sup> elements
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 3:</span> Loop stops when 1 element
-            remains:<br />
-            n / 2<sup>k</sup> = 1<br />
-            n = 2<sup>k</sup><br />
-            log₂(n) = log₂(2<sup>k</sup>)<br />
-            log₂(n) = k · log₂(2)<br />
-            log₂(n) = k
-        </div>
-
-        <div class="box-formula">
-            <strong>T(n) = O(log₂(n))</strong>
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== INSERTION SORT ============================== -->
-        <h1 id="insertion-sort">6. Insertion Sort — Trace by Hand</h1>
-
-        <div class="box-warn">
-            Use the professor's exact notation: A(1), A(2), etc. Show the
-            <code>W(condition)</code> checks with T &amp; T or F results, and
-            show the array state after each j iteration.
-        </div>
-
-        <p>Given: A = {7, 2, 4, 1}</p>
-
-        <div class="step">
-            <span class="step-num">j = 2 [key = 2, i = 1]</span><br />
-            W(1&gt;0) &amp; (7&gt;2) → T &amp; T → go inside<br />
-            &nbsp;&nbsp;A(2) = A(1) = 7 → array: [□ 7 4 1]<br />
-            &nbsp;&nbsp;i = 0<br />
-            W(0&gt;0) &amp; (7&gt;2) → F &amp; T → fails<br />
-            A(1) = 2 → <strong>[2 7 4 1]</strong>
-        </div>
-
-        <div class="step">
-            <span class="step-num">j = 3 [key = 4, i = 2]</span><br />
-            W(2&gt;0) &amp; (7&gt;4) → T &amp; T → go inside<br />
-            &nbsp;&nbsp;A(3) = A(2) = 7 → [2 □ 7 1] → <strong>[2 7 7 1]</strong
-            ><br />
-            &nbsp;&nbsp;i = 1<br />
-            W(1&gt;0) &amp; (2&gt;4) → T &amp; F → fails<br />
-            A(2) = 4 → <strong>[2 4 7 1]</strong>
-        </div>
-
-        <div class="step">
-            <span class="step-num">j = 4 [key = 1, i = 3]</span><br />
-            W(3&gt;0) &amp; (7&gt;1) → T &amp; T → go inside<br />
-            &nbsp;&nbsp;A(4) = A(3) = 7 → [2 4 □ 7] → <strong>[2 4 7 7]</strong
-            ><br />
-            &nbsp;&nbsp;i = 2<br />
-            W(2&gt;0) &amp; (4&gt;1) → T &amp; T → go inside<br />
-            &nbsp;&nbsp;A(3) = A(2) = 4 → <strong>[2 4 4 7]</strong><br />
-            &nbsp;&nbsp;i = 1<br />
-            W(1&gt;0) &amp; (2&gt;1) → T &amp; T → go inside<br />
-            &nbsp;&nbsp;A(2) = A(1) = 2 → <strong>[2 2 4 7]</strong><br />
-            &nbsp;&nbsp;i = 0<br />
-            W(0&gt;0) &amp; (2&gt;1) → F &amp; T → fails<br />
-            A(1) = 1 → <strong>[1 2 4 7]</strong> ← sorted
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== MASTER THEOREM ============================== -->
-        <h1 id="master-theorem">7. Master Theorem — Professor's Method</h1>
-
-        <div class="box-warn">
-            This is the professor's #1 tested method. Quiz 9 (100/100), Test 2
-            Q1 (30.33), Test 2 Q2 (33.33). Must follow exactly: extract a, b, K,
-            p → Condition 1 (compare a vs b<sup>K</sup>) → identify case →
-            Condition 2 (check p) → apply formula → simplify.
-        </div>
-
-        <h2>Setup: The General Form</h2>
-        <div class="box-formula">
-            T(n) = a · T(n/b) + n<sup>K</sup> · log<sup>p</sup>(n)
-        </div>
-
-        <p>
-            Extract four values: <strong>a</strong> (number of recursive calls),
-            <strong>b</strong> (division factor), <strong>K</strong> (exponent
-            on n), <strong>p</strong> (exponent on log, default 0 if no log
-            term).
-        </p>
-
-        <h2>Condition 1: Compare a vs b<sup>K</sup></h2>
-        <table>
-            <tr>
-                <th>Comparison</th>
-                <th>Case</th>
-            </tr>
-            <tr>
-                <td>a &lt; b<sup>K</sup></td>
-                <td>Case 1</td>
-            </tr>
-            <tr>
-                <td>a = b<sup>K</sup></td>
-                <td>Case 2</td>
-            </tr>
-            <tr>
-                <td>a &gt; b<sup>K</sup></td>
-                <td>Case 3</td>
-            </tr>
-        </table>
-
-        <h2>Condition 2: Check p for Case 2</h2>
-        <p>Once you know it's Case 2, check the value of p:</p>
-        <table>
-            <tr>
-                <th>p value</th>
-                <th>Condition Met?</th>
-            </tr>
-            <tr>
-                <td>p &gt; -1</td>
-                <td>Yes → use Case 2 formula</td>
-            </tr>
-            <tr>
-                <td>p = -1</td>
-                <td>Special subcase</td>
-            </tr>
-            <tr>
-                <td>p &lt; -1</td>
-                <td>Different subcase</td>
-            </tr>
-        </table>
-
-        <h2>The Formulas</h2>
-        <div class="box-formula">
-            <strong>Case 1</strong> (a &lt; b<sup>K</sup>): T(n) = Θ(n<sup
-                >K</sup
-            >
-            · log<sup>p</sup>(n))<br /><br />
-            <strong>Case 2</strong> (a = b<sup>K</sup>), p &gt; -1: T(n) =
-            Θ(n<sup>log_b(a)</sup> · log<sup>(p+1)</sup>(n))<br /><br />
-            <strong>Case 3</strong> (a &gt; b<sup>K</sup>): T(n) =
-            Θ(n<sup>log_b(a)</sup>)
-        </div>
-
-        <h2>Worked Example 1 (Quiz 9 — 100/100)</h2>
-        <p>
-            <strong>T(n) = 2T(n/4) + n<sup>0.51</sup></strong>
-        </p>
-
-        <div class="step">
-            <span class="step-num">Extract values:</span> a = 2, b = 4, K =
-            0.51, p = 0
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 1:</span> Compare a vs b<sup>K</sup
-            ><br />
-            b<sup>K</sup> = 4<sup>0.51</sup> = 2.027918...<br />
-            a = 2, b<sup>K</sup> = 2.027918<br />
-            2 &lt; 2.027918 → <strong>a &lt; b<sup>K</sup> → Case 1</strong>
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 2:</span> p = 0, and p &gt; -1 ✓
-            (but for Case 1 just check p ≥ 0)
-        </div>
-        <div class="step">
-            <span class="step-num">Apply Case 1 formula:</span><br />
-            T(n) = Θ(n<sup>K</sup> · log<sup>p</sup>(n))<br />
-            = Θ(n<sup>0.51</sup> · log<sup>0</sup>(n))<br />
-            = Θ(n<sup>0.51</sup> · 1)<br />
-            <strong>T(n) = Θ(n<sup>0.51</sup>)</strong>
-        </div>
-
-        <h2>Worked Example 2 (Test 2 Q1)</h2>
-        <p><strong>T(n) = 2T(n/2) + n·log₂(n)</strong></p>
-
-        <div class="step">
-            <span class="step-num">Extract:</span> a = 2, b = 2, K = 1, p = 1
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 1:</span> b<sup>K</sup> = 2<sup
-                >1</sup
-            >
-            = 2. a = 2 = b<sup>K</sup> → <strong>Case 2</strong>
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 2:</span> p = 1 → p &gt; -1 ✓
-        </div>
-        <div class="step">
-            <span class="step-num">Apply Case 2:</span><br />
-            T(n) = Θ(n<sup>log_b(a)</sup> · log<sup>(p+1)</sup>(n))<br />
-            = Θ(n<sup>log₂(2)</sup> · log<sup>(1+1)</sup>(n))<br />
-            = Θ(n<sup>1</sup> · log²(n))<br />
-            <strong>T(n) = Θ(n · log²(n))</strong>
-        </div>
-
-        <div class="box-warn">
-            On Test 2 Q1, -3 was deducted because the student wrote "Condition 2
-            = 0" and "Case is not Condition." The professor wants you to
-            correctly identify: Condition 2 is about checking p, and the
-            <em>Case</em> number comes from Condition 1. They are separate
-            things.
-        </div>
-
-        <h2>Worked Example 3 (Test 2 Q2)</h2>
-        <p><strong>T(n) = 3T(n/3) + n/2</strong></p>
-
-        <div class="step">
-            <span class="step-num">Extract:</span> a = 3, b = 3, K = 1, p = 0
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 1:</span> b<sup>K</sup> = 3<sup
-                >1</sup
-            >
-            = 3. a = 3 = b<sup>K</sup> → <strong>Case 2</strong>
-        </div>
-        <div class="step">
-            <span class="step-num">Condition 2:</span> p = 0 → p &gt; -1 ✓
-        </div>
-        <div class="step">
-            <span class="step-num">Apply Case 2:</span><br />
-            T(n) = Θ(n<sup>log₃(3)</sup> · log<sup>(0+1)</sup>(n))<br />
-            = Θ(n<sup>1</sup> · log¹(n))<br />
-            <strong>T(n) = Θ(n · log(n))</strong>
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== ITERATIVE METHOD ============================== -->
-        <h1 id="iterative-method">
-            8. Iterative Method (Repeated Substitution)
-        </h1>
-
-        <div class="box-warn">
-            ITERATIVE METHOD ONLY. Must show: (a) 3 expansions, (b) running
-            time, (c) complexity. This is the method from Quiz 8 (100/100).
-        </div>
-
-        <h2>General Pattern</h2>
-        <p>
-            Given a recurrence like T(n) = { c if n=1; d + T(n-1) if n &gt; 1 }
-        </p>
-
-        <div class="step">
-            <span class="step-num">Step A: Show 3+ Expansions</span><br />
-            T(n) = d + T(n-1)<br />
-            T(n-1) = d + T(n-2) → sub in: T(n) = 2d + T(n-2)<br />
-            T(n-2) = d + T(n-3) → sub in: T(n) = 3d + T(n-3)<br />
-            T(n-3) = d + T(n-4) → sub in: T(n) = 4d + T(n-4)
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step B: Generalize</span><br />
-            T(n) = k·d + T(n-k)
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step C: Find Base Case</span><br />
-            Base case: n = 1, so n - k = 1 → k = n - 1
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step D: Substitute k and Simplify</span
-            ><br />
-            T(n) = (n-1)·d + T(n-(n-1))<br />
-            = (n-1)·d + T(1)<br />
-            = (n-1)·d + c<br />
-            = nd - d + c<br />
-            = nd + (c - d) ← constants
-        </div>
-
-        <div class="box-formula">
-            <strong>Running Time:</strong> nd + (c - d)<br />
-            <strong>Complexity:</strong> Θ(n)
-        </div>
-
-        <h2>
-            Another Form: T(n) = T(n-1) + c + d (Quiz 8 — crossed out attempt)
-        </h2>
-        <p>
-            The approach is the same — just substitute repeatedly, generalize to
-            k, find k from the base case, and simplify. The professor crossed
-            out the attempt that went T(n) = T(n-1) + (c+d), sub T(n-1) = T(n-2)
-            + (c+d), etc. and ended at T(n) = Θ(n). The correct version showed
-            all steps cleanly.
-        </p>
-
-        <hr class="divider" />
-
-        <!-- ============================== TREE METHOD ============================== -->
-        <h1 id="tree-method">9. Recursion Tree Method</h1>
-
-        <div class="box-warn">
-            The professor's tree method uses a specific
-            <strong>table format</strong>: Level | R-call | # Nodes | Tree | Row
-            Sum. You must fill out this table, set up the summation [Eq1], find
-            the upper bound, and solve the summation.
-        </div>
-
-        <h2>The 4-Step Process</h2>
-
-        <div class="step">
-            <span class="step-num"
-                >STEP 1: Build the Tree &amp; Its Components</span
-            ><br />
-            Create the table with columns: Level, R-call, # Nodes, Tree
-            (visual), Row Sum.<br />
-            At each level, identify what the recursive call looks like, how many
-            nodes exist, what work each node does, and what the total (row sum)
-            is.
-        </div>
-
-        <div class="step">
-            <span class="step-num"
-                >STEP 2: Generalize the R-call Expression</span
-            ><br />
-            Find the pattern: T(n) → T(n/2) → T(n/4) → T(n/8) → ... →
-            T(n/2<sup>k</sup>)<br />
-            So T(n/2<sup>k</sup>) is the general expression.
-        </div>
-
-        <div class="step">
-            <span class="step-num">STEP 3: When Do We Stop?</span><br />
-            Stop at the base case: n/2<sup>k</sup> = 1 → n = 2<sup>k</sup> → k =
-            log₂(n)<br />
-            This is the upper bound for the summation.
-        </div>
-
-        <div class="step">
-            <span class="step-num"
-                >STEP 4: Analyze &amp; Solve the Summation [Eq1]</span
-            ><br />
-            Set up: Σ (row sum expression) from i=0 to k.<br />
-            Solve using summation rules or geometric series formula.
-        </div>
-
-        <h2>Example #1 (Balanced): T(n) = 2T(n/2) + 4n</h2>
-
-        <table>
-            <tr>
-                <th>Level</th>
-                <th>R-call</th>
-                <th># Nodes</th>
-                <th>Row Sum</th>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>T(n)</td>
-                <td>1</td>
-                <td>4n</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>T(n/2)</td>
-                <td>2</td>
-                <td>4n</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>T(n/4)</td>
-                <td>4</td>
-                <td>4n</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>T(n/8)</td>
-                <td>8</td>
-                <td>4n</td>
-            </tr>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-        </table>
-
-        <p>Every row sums to 4n → [Eq1]: Σ 4n from i=0 to log₂(n)</p>
-        <p>
-            Since 4n doesn't depend on i, factor it out: 4n · Σ 1 from i=0 to
-            log₂(n)
-        </p>
-        <p>Split: 4n · [1 + Σ 1 from i=1 to log₂(n)] = 4n · [1 + log₂(n)]</p>
-        <p>= 4n + 4n·log₂(n) = Running Time</p>
-
-        <div class="box-formula">
-            <strong>T(n) = Θ(n·log₂(n))</strong>
-        </div>
-
-        <h2>Example #2 (Binary Search): T(n) = T(n/2) + e</h2>
-
-        <table>
-            <tr>
-                <th>Level</th>
-                <th>R-call</th>
-                <th>Tree</th>
-                <th>Row Sum</th>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>T(n)</td>
-                <td>e</td>
-                <td>e</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>T(n/2)</td>
-                <td>e</td>
-                <td>e</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>T(n/4)</td>
-                <td>e</td>
-                <td>e</td>
-            </tr>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>e</td>
-                <td>e</td>
-            </tr>
-        </table>
-
-        <p>
-            Only 1 node per level (no branching). Stop: n/2<sup>i</sup> = 1 → i
-            = log₂(n).
-        </p>
-        <p>Σ e from i=0 to log₂(n) = e · [1 + log₂(n)] = e + e·log₂(n)</p>
-
-        <div class="box-formula">
-            <strong>T(n) = Θ(log₂(n))</strong>
-        </div>
-
-        <h2>Example #3 (Geometric Series): T(n) = 2T(n/2) + n²</h2>
-        <p>
-            Row sums: n²/2⁰, n²/2¹, n²/2², ... → geometric series where ratio r
-            = 1/2.
-        </p>
-        <p>
-            General expression: Σ n²/2<sup>i</sup> from i=0 to log₂(n) = n² · Σ
-            (1/2<sup>i</sup>)
-        </p>
-        <p>
-            This is a <strong>geometric series</strong> with a₀ = 1, r = 1/2, m
-            = log₂(n) terms.
-        </p>
-
-        <div class="box">
-            <strong>Geometric Series Formula:</strong><br />
-            α = a₀ · (1 - r<sup>m</sup>) / (1 - r)<br />
-            where a₀ = first term, r = ratio (computed as a_{i+1}/a_i), m =
-            number of elements
-        </div>
-
-        <p>
-            α = 1 · (1 - (1/2)<sup>log₂(n)</sup>) / (1 - 1/2) = 2 · (1 -
-            (1/2)<sup>log₂(n)</sup>) = 2 - 2·(1/2)<sup>log₂(n)</sup>
-        </p>
-        <p>Running Time = n² · α = 2n² - 2n²·(1/2)<sup>log₂(n)</sup></p>
-        <p>
-            To determine complexity, justify which side dominates. Choose n =
-            2²⁰:
-        </p>
-        <p>A = 2·(2²⁰)² = 2⁴¹, B = 2·(2²⁰)²·(1/2)²⁰ = 2⁴¹·(1/2²⁰) = 2²¹</p>
-        <p>A = 2⁴¹ ≫ B = 2²¹, so A dominates.</p>
-
-        <div class="box-formula">
-            <strong>T(n) = Θ(n²)</strong>
-        </div>
-
-        <h2>Example #4 (Unbalanced): T(n) = T(n/3) + T(2n/3) + n</h2>
-        <p>
-            Tree is NOT balanced (different branch sizes). Row sum at every
-            level is n. The longest branch (right-most, the 2n/3 side)
-            determines the upper bound.
-        </p>
-        <p>
-            Right path: n → 2n/3 → (2/3)²n → (2/3)³n → ... → (2/3)<sup>k</sup>n
-        </p>
-        <p>
-            Stops when (2/3)<sup>k</sup>·n = 1 → n = (3/2)<sup>k</sup> → k =
-            log_{3/2}(n)
-        </p>
-        <p>Sum: Σ n from i=0 to log_{3/2}(n) = n · [1 + log_{3/2}(n)]</p>
-
-        <div class="box-formula">
-            <strong
-                >T(n) has complexity: n·log_{3/2}(n), which is
-                Θ(n·log(n))</strong
-            >
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== MERGE SORT ============================== -->
-        <h1 id="merge-sort">10. Merge Sort</h1>
-
-        <h2>How It Works</h2>
-        <p>
-            Divide and conquer: keep splitting the array in half until you have
-            individual elements, then merge sorted subarrays back together.
-        </p>
-
-        <h3>Key Formula for Split Point</h3>
-        <div class="box-formula">q = ⌊(p + r) / 2⌋</div>
-        <p>Where p = left index, r = right index. Always floor the result.</p>
-
-        <h2>Tracing Merge Sort (Professor's Context Method)</h2>
-        <p>
-            The professor traces merge sort using
-            <strong>contexts</strong> (ctx1, ctx2, ...). Each recursive call
-            creates a new context. When the base case is hit (p ≥ r, i.e., one
-            element), return to the previous context.
-        </p>
-
-        <div class="box">
-            <strong>Given A = {6, 5, 4, 3}:</strong><br /><br />
-
-            <strong>ctx1:</strong> merge-sort(A, 0, 3) → q = ⌊(0+3)/2⌋ = 1<br />
-            &nbsp;&nbsp;calls merge-sort(A, 0, 1) → ctx2<br /><br />
-
-            <strong>ctx2:</strong> merge-sort(A, 0, 1) → q = ⌊(0+1)/2⌋ = 0<br />
-            &nbsp;&nbsp;calls merge-sort(A, 0, 0) → ctx3<br /><br />
-
-            <strong>ctx3:</strong> merge-sort(A, 0, 0) → p=0, r=0 → p ≥ r? NO (0
-            < 0 is false). Actually p < r? (0 < 0) NO → return to ctx2<br /><br />
-
-            <strong>ctx4:</strong> from ctx2: merge-sort(A, 1, 1) → return (base
-            case)<br /><br />
-
-            <strong>ctx5:</strong> from ctx2: MERGE(A, 0, 0, 1) → merge
-            subarrays → A becomes [5, 6, ...]<br /><br />
-
-            <em
-                >...continues similarly for the right half, then final
-                merge...</em
-            >
-        </div>
-
-        <h2>The Merge Process</h2>
-        <p>Given Merge(A, p, q, r):</p>
-        <p>
-            n1 = q - p + 1 (size of left subarray), n2 = r - q (size of right
-            subarray)
-        </p>
-        <p>
-            Copy into temporary arrays L and R. Then compare elements from L and
-            R, placing the smaller one back into A.
-        </p>
-
-        <h2>Comparisons Per Level</h2>
-        <table>
-            <tr>
-                <th>Level</th>
-                <th># of Comparisons</th>
-                <th>For n=8</th>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>n - 2<sup>0</sup> = n - 1</td>
-                <td>7</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>n - 2<sup>1</sup> = n - 2</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>n - 2<sup>2</sup> = n - 4</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>n - 2<sup>3</sup> = n - 8</td>
-                <td>0</td>
-            </tr>
-        </table>
-
-        <h2>Complexity Derivation</h2>
-        <div class="step">
-            <span class="step-num">Number of levels:</span> Array of size n
-            divides by 2 each time → n/2<sup>i</sup> = 1 → i = log₂(n) → levels
-            = log₂(n) + 1
-        </div>
-        <div class="step">
-            <span class="step-num">Work per level during merging:</span> c · n
-            (at most n comparisons per level)
-        </div>
-        <div class="step">
-            <span class="step-num">Complexity:</span> (Number of Levels) × (Work
-            per Level) = (log₂(n) + 1) × cn = cn·log₂(n) + cn
-        </div>
-
-        <div class="box-formula">
-            After removing non-dominant terms:<br />
-            <strong>Merge Sort = O(n · log₂(n))</strong><br /><br />
-            Time: O(n log n) &nbsp;&nbsp;|&nbsp;&nbsp; Space: O(n)
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== RADIX SORT ============================== -->
-        <h1 id="radix-sort">11. Radix Sort — Do It By Hand</h1>
-
-        <div class="box-warn">
-            You MUST follow the order: (a) Padding, (b) Labels and numbers for
-            ones digit, (c) New array, (d) Labels for tens, (e) New array, (f)
-            Labels for hundreds, (g) New array = sorted. Remove from labels:
-            <strong>left to right, bottom up</strong>.
-        </div>
-
-        <h2>Recipe</h2>
-
-        <div class="step">
-            <span class="step-num">Step 1: Pad</span><br />
-            Find the number with the most digits. Pad all others with leading
-            zeroes.<br />
-            Given: {321, 2, 14, 135, 932, 65, 999, 23}<br />
-            After padding: {321, 002, 014, 135, 932, 065, 999, 023}
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step 2: Create Labels 0–9</span><br />
-            Draw 10 buckets labeled 0 through 9.
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step 3: Analyze ONES digit (rightmost)</span
-            ><br />
-            321→1, 002→2, 014→4, 135→5, 932→2, 065→5, 999→9, 023→3<br />
-            Place in buckets by ones digit. Remove left-to-right, bottom-up.<br />
-            New array: {321, 002, 932, 023, 014, 135, 065, 999}
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step 4: Analyze TENS digit</span><br />
-            321→2, 002→0, 932→3, 023→2, 014→1, 135→3, 065→6, 999→9<br />
-            Place in buckets. Remove left-to-right, bottom-up.<br />
-            New array: {002, 014, 321, 023, 932, 135, 065, 999}
-        </div>
-
-        <div class="step">
-            <span class="step-num">Step 5: Analyze HUNDREDS digit</span><br />
-            002→0, 014→0, 321→3, 023→0, 932→9, 135→1, 065→0, 999→9<br />
-            Place in buckets. Remove left-to-right, bottom-up.<br />
-            New array: {002, 014, 023, 065, 135, 321, 932, 999}<br />
-            Sorted: {2, 14, 23, 65, 135, 321, 932, 999}
-        </div>
-
-        <div class="box-warn">
-            On Quiz 7, -15 was deducted because 135 was written as 155 in one
-            step. Be very careful when copying numbers between passes — one
-            digit error costs points.
-        </div>
-
-        <hr class="divider" />
-
-        <!-- ============================== SORTING SUMMARY ============================== -->
-        <h1 id="sorting-summary">12. Sorting Complexities Summary</h1>
-
-        <table>
-            <tr>
-                <th>Algorithm</th>
-                <th>Time Complexity (Worst)</th>
-                <th>Space Complexity</th>
-            </tr>
-            <tr>
-                <td>Merge Sort</td>
-                <td>O(n log n)</td>
-                <td>O(n)</td>
-            </tr>
-            <tr>
-                <td>Quicksort</td>
-                <td>O(n²)</td>
-                <td>O(log n)</td>
-            </tr>
-            <tr>
-                <td>Insertion Sort</td>
-                <td>O(n²)</td>
-                <td>O(1)</td>
-            </tr>
-            <tr>
-                <td>Bubble Sort</td>
-                <td>O(n²)</td>
-                <td>O(1)</td>
-            </tr>
-            <tr>
-                <td>Selection Sort</td>
-                <td>O(n²)</td>
-                <td>O(1)</td>
-            </tr>
-            <tr>
-                <td>Radix Sort</td>
-                <td>O(p·(n+d))</td>
-                <td>O(n+d)</td>
-            </tr>
-        </table>
-
-        <p>These were directly tested on Quiz 6 (100/100). Know them cold.</p>
-
-        <hr class="divider" />
-
-        <!-- ============================== GRAPHS ============================== -->
-        <h1 id="graphs">13. Graph Algorithms — Fundamentals</h1>
-
-        <h2>Basic Definitions</h2>
-        <p>
-            A graph G = (V, E) where V = set of vertices (nodes), E = set of
-            edges.
-        </p>
-        <p>
-            The cardinality of edges is bounded by the Cartesian product of
-            vertices: |E| ≤ |V × V|, so <strong>|E| = O(V²)</strong>.
-        </p>
-
-        <h2>Dense vs Sparse</h2>
-        <table>
-            <tr>
-                <th>Type</th>
-                <th>Condition</th>
-                <th>Use</th>
-            </tr>
-            <tr>
-                <td>Dense</td>
-                <td>|E| ~ |V²| (lots of edges)</td>
-                <td>Adjacency Matrix</td>
-            </tr>
-            <tr>
-                <td>Sparse</td>
-                <td>|E| ~ |V| (few edges)</td>
-                <td>Adjacency List</td>
-            </tr>
-        </table>
-
-        <h2>Graph Variations</h2>
-        <p>
-            <strong>Undirected:</strong> edges have no direction (drawn as
-            lines, NO arrows). Edges are bidirectional.
-        </p>
-        <p>
-            <strong>Directed:</strong> edges go from one vertex to another
-            (drawn as arrows). Has in-degree and out-degree.
-        </p>
-        <p>
-            <strong>Weighted:</strong> edges have a cost/weight associated with
-            them.
-        </p>
-
-        <h2>Representation #1: Adjacency Matrix</h2>
-        <p>
-            A is an n×n matrix where a_{ij} = 1 if edge (i,j) ∈ E, and 0
-            otherwise.
-        </p>
-        <p>
-            For <strong>undirected</strong> graphs: the matrix is
-            <em>symmetric</em>.
-        </p>
-        <p>
-            <strong>Storage: Θ(V²)</strong> &nbsp;&nbsp;|&nbsp;&nbsp;
-            <strong>Edge lookup: O(1)</strong>
-        </p>
-
-        <h2>Representation #2: Adjacency List</h2>
-        <p>
-            For each vertex, keep a list of adjacent vertices. Represented as a
-            linked list.
-        </p>
-        <p>
-            <strong>Storage: Θ(V + E)</strong> &nbsp;&nbsp;|&nbsp;&nbsp;
-            <strong>Edge lookup: O(|Adj(u)|)</strong>
-        </p>
-
-        <h2>Out-Degree</h2>
-        <p>out-degree(u) = |Adj(u)| = number of outgoing edges from node u.</p>
-        <p>For directed graphs: Σ out-degree(u) = |E|</p>
-        <p>For undirected graphs: Σ degree(u) = 2|E|</p>
-
-        <h2>Comparison Table</h2>
-        <table>
-            <tr>
-                <th>Property</th>
-                <th>Adjacency Matrix</th>
-                <th>Adjacency List</th>
-            </tr>
-            <tr>
-                <td>Memory</td>
-                <td>Θ(V²)</td>
-                <td>Θ(V + E)</td>
-            </tr>
-            <tr>
-                <td>Is (u,v) ∈ E?</td>
-                <td>O(1)</td>
-                <td>O(|Adj(u)|) — NOT O(n)</td>
-            </tr>
-            <tr>
-                <td>Good for</td>
-                <td>Dense graphs</td>
-                <td>Sparse graphs</td>
-            </tr>
-        </table>
-
-        <hr class="divider" />
-
-        <!-- ============================== BFS ============================== -->
-        <h1 id="bfs">14. BFS (Breadth-First Search)</h1>
-
-        <h2>General Idea</h2>
-        <p>
-            (a) Find the shortest distance reachable from a starting vertex S in
-            the graph.
-        </p>
-        <p>
-            (b) Explore all reachable nodes from S and estimate shortest
-            distance from S to all others.
-        </p>
-
-        <h2>BFS Pseudocode</h2>
-        <pre><code>BFS(s):  // assume adjacency list representation
-1)  For each u ∈ V - {s}       // every node except start
-2)      do d[u] ← inf          // distance = infinity (not visited)
-3)  d[s] ← 0                   // start node distance = 0
-4)  Q ← {s}                    // enqueue start node
-5)  While Q ≠ ∅                // while queue not empty
-6)      do remove u from Q     // dequeue
-7)      for each v ∈ Adj[u]    // expand neighbors
-8)          do if d[v] = inf   // not visited yet
-9)              then d[v] ← d[u] + 1  // distance = parent + 1
-10)             put v onto Q   // enqueue</code></pre>
-
-        <div class="box-warn">
-            Key points from the professor's annotations: Line 8 checks d[v] =
-            inf, which means "you have not visited/examined this node." Line 9:
-            d[v] = d[u] + 1 means: distance of node v = distance to reach
-            ancestor u + 1. BFS uses a <strong>queue</strong> (FIFO).
-        </div>
-
-        <h2>BFS vs Dijkstra</h2>
-        <p>
-            <strong>BFS:</strong> shortest path in <em>unweighted</em> graphs
-            (all edges weight = 1).
-        </p>
-        <p>
-            <strong>Dijkstra:</strong> shortest path in
-            <em>weighted</em> graphs. BFS is essentially Dijkstra with all edge
-            weights equal to 1.
-        </p>
-
-        <hr class="divider" />
-
-        <!-- ============================== DFS ============================== -->
-        <h1 id="dfs">15. DFS (Depth-First Search)</h1>
-
-        <h2>Key Properties</h2>
-        <p>
-            Goal: explore every vertex and edge. Uses
-            <strong>adjacency list</strong> representation.
-        </p>
-        <p>
-            Each node u tracks: <strong>d[u]</strong> = discovery time,
-            <strong>f[u]</strong> = finish time, <strong>color[u]</strong> =
-            white/gray/black.
-        </p>
-
-        <table>
-            <tr>
-                <th>Color</th>
-                <th>Meaning</th>
-            </tr>
-            <tr>
-                <td>White</td>
-                <td>Not yet discovered</td>
-            </tr>
-            <tr>
-                <td>Gray</td>
-                <td>Discovered, still being explored (in the "stack")</td>
-            </tr>
-            <tr>
-                <td>Black</td>
-                <td>Fully explored (all neighbors finished)</td>
-            </tr>
-        </table>
-
-        <h2>DFS Pseudocode</h2>
-        <pre><code>DFS(G):
-1)  For each u ∈ V[G]
-2)      do color[u] ← white
-3)  time ← 0
-4)  For each u ∈ V[G]
-5)      do if color[u] = white
-6)          then DFS-VISIT(u)
-
-DFS-VISIT(u):
-1)  color[u] ← gray
-2)  d[u] ← time ← time + 1
-3)  for each v ∈ Adj[u]
-4)      do if color[v] = white
-5)          then DFS-VISIT(v)
-6)  color[u] ← black
-7)  f[u] ← time ← time + 1</code></pre>
-
-        <h2>Edge Classification</h2>
-        <table>
-            <tr>
-                <th>Edge Type</th>
-                <th>Description</th>
-                <th>Color Transition</th>
-            </tr>
-            <tr>
-                <td><strong>Tree edge</strong></td>
-                <td>Encounter a new node</td>
-                <td>gray → white</td>
-            </tr>
-            <tr>
-                <td><strong>Back edge</strong></td>
-                <td>Descendant to ancestor</td>
-                <td>gray → gray</td>
-            </tr>
-            <tr>
-                <td><strong>Forward edge</strong></td>
-                <td>Ancestor to descendant (non-tree)</td>
-                <td>gray → black</td>
-            </tr>
-            <tr>
-                <td><strong>Cross edge</strong></td>
-                <td>Between subtrees/trees</td>
-                <td>gray → black</td>
-            </tr>
-        </table>
-
-        <h2>DFS Example</h2>
-        <p>
-            For a graph with vertices {S, A, B, C, D, E, F, G}, starting from S:
-        </p>
-        <pre><code>S: d=1,  f=12
-A: d=2,  f=7
-B: d=3,  f=4
-C: d=8,  f=11
-D: d=5,  f=6
-E: d=13, f=16
-G: d=9,  f=10
-F: d=14, f=15</code></pre>
-
-        <p>
-            Edge labels: T = Tree, B = Back, F = Forward, C = Cross. Look at the
-            color of the destination node when the edge is explored.
-        </p>
-
-        <hr class="divider" />
-
-        <!-- ============================== DIJKSTRA ============================== -->
-        <h1 id="dijkstra">16. Dijkstra's Shortest Path Algorithm</h1>
-
-        <h2>General Idea</h2>
-        <div class="box">
-            <strong>1.</strong> Let distance of start vertex from start = 0.<br />
-            <strong>2.</strong> Let distance of all other vertices from start =
-            INFINITY.<br /><br />
-            <strong>REPEAT:</strong><br />
-            <strong>3.</strong> Visit the unvisited vertex with the
-            <em>smallest known distance</em> from start.<br />
-            <strong>4.</strong> For the current vertex, examine its
-            <em>unvisited</em> neighbors.<br />
-            <strong>5.</strong> For each neighbor, calculate distance from
-            start. If calculated distance is <em>smaller than</em> the known
-            distance, update the shortest distance.<br />
-            <strong>5b.</strong> Update previous vertex for each updated
-            distance.<br />
-            <strong>6.</strong> Add current vertex to visited list and
-            <em>remove it from unvisited list</em>.<br /><br />
-            <strong>UNTIL ALL VERTICES ARE VISITED.</strong>
-        </div>
-
-        <div class="box-warn">
-            Key terms the professor <strong>underlines/bolds</strong> in the
-            Dijkstra handout: "smallest known distance", "unvisited neighbors",
-            "smaller than", "remove it from the unvisited list." These are the
-            critical decision points in the algorithm.
-        </div>
-
-        <hr class="divider" />
-
-        <div
-            style="text-align: center; padding: 40px 0; color: var(--text-dim)"
-        >
-            <p style="font-size: 1.2em; color: var(--accent)">
-                End of Study Guide
-            </p>
-            <p>Good luck on the final. You've got this.</p>
-            <p style="font-size: 0.85em; margin-top: 20px">
-                All methods shown as taught in class by Dr. Colmenares · CMPS
-                3013 · Spring 2026
-            </p>
-        </div>
-    </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMPS 3233 Final Study Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #0f111a;
+    --surface: #1a1d2e;
+    --surface2: #232740;
+    --border: #2e3348;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --heading: #e6edf3;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --warn: #f0883e;
+    --highlight: #ffd700;
+    --code-bg: #161b22;
+    --example-bg: #1c2333;
+    --step-bg: #1a2332;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .header h1 {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .header .sub {
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 30px;
+    margin-bottom: 40px;
+  }
+  .toc h2 { color: var(--accent); font-size: 1.2rem; margin-bottom: 12px; }
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 0.95rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+  .toc .indent { padding-left: 20px; color: var(--text-dim); font-size: 0.9rem; }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin: 30px 0 16px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    color: var(--highlight);
+    font-size: 1.2rem;
+    margin: 24px 0 10px 0;
+  }
+
+  h4 {
+    color: var(--accent2);
+    font-size: 1.05rem;
+    margin: 18px 0 8px 0;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* CONCEPT BOX */
+  .concept {
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .concept .label {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  /* EXAMPLE / WORKED PROBLEM */
+  .example {
+    background: var(--example-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .example .ex-title {
+    color: var(--warn);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .example .ex-title::before { content: "Worked Example"; }
+
+  /* STEP BY STEP */
+  .step {
+    background: var(--step-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .step .step-label {
+    color: var(--accent2);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  /* KEY POINT */
+  .key {
+    background: #2a1f00;
+    border-left: 4px solid var(--highlight);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .key strong { color: var(--highlight); }
+
+  /* WARNING */
+  .warn {
+    background: #2a1500;
+    border-left: 4px solid var(--warn);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* CODE */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    color: #e6edf3;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #e6edf3;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.95rem;
+  }
+  th {
+    background: var(--surface2);
+    color: var(--accent);
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+    font-weight: 700;
+  }
+  td {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+  }
+  tr:nth-child(even) td { background: var(--surface); }
+
+  /* DERIVATION TABLE (for tracing) */
+  .trace-table td { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+
+  /* ARROW notation */
+  .arrow { color: var(--accent); font-weight: bold; }
+  .produces { color: var(--accent2); }
+
+  ul, ol { margin: 8px 0 12px 24px; }
+  li { margin-bottom: 4px; }
+
+  .emoji { font-style: normal; }
+
+  /* Print friendly */
+  @media print {
+    body { background: #fff; color: #111; }
+    .concept, .example, .step, .key, .warn { border-color: #999; background: #f5f5f5; }
+    h2, h3 { color: #111; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>CMPS 3233 Final Study Guide</h1>
+  <div class="sub">Theory of Computation &mdash; Dr. Stringfellow &mdash; Chapters 5, 6, 7, 8, 9, 11</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. The Big Picture: Language Hierarchy (T/F and MC prep)</a>
+  <a href="#s2">2. Context-Free Grammars: What They Are and How They Work</a>
+  <a href="#s3">3. Simplifying CFGs and Converting to Chomsky Normal Form</a>
+  <a class="indent" href="#s3a">&mdash; Removing Epsilon Productions</a>
+  <a class="indent" href="#s3b">&mdash; Removing Unit Productions</a>
+  <a class="indent" href="#s3c">&mdash; Converting to CNF (removeMixed + removeLong)</a>
+  <a class="indent" href="#s3d">&mdash; Full Worked Problem (Sample Final Q1a)</a>
+  <a href="#s4">4. Pushdown Automata: What They Are</a>
+  <a href="#s5">5. Reading a PDA: Accept/Reject Strings and Describe Its Language</a>
+  <a href="#s6">6. Directly Constructing a PDA for a Language</a>
+  <a href="#s7">7. GNF Grammar to Top-Down PDA</a>
+  <a href="#s8">8. Turing Machines: What They Are</a>
+  <a href="#s9">9. Tracing a Turing Machine</a>
+  <a href="#s10">10. Building a Turing Machine</a>
+  <a href="#s11">11. Pumping Lemma and Closure Properties (T/F prep)</a>
+</div>
+
+<!-- ======================= SECTION 1 ======================= -->
+<div class="section" id="s1">
+<h2>1. The Big Picture: Language Hierarchy</h2>
+
+<p>Think of languages as categories of problems, and machines as the tools that solve them. Some problems are easy (you only need a simple tool), and some are hard (you need a powerful tool). The hierarchy goes from simple to powerful:</p>
+
+<div class="concept">
+  <div class="label">The Hierarchy (Least to Most Powerful)</div>
+  <p><strong>Regular Languages</strong> &sub; <strong>Context-Free Languages</strong> &sub; <strong>Decidable Languages</strong> &sub; <strong>Semidecidable Languages</strong></p>
+  <p>Each level is strictly contained in the next. Every regular language is also context-free, every context-free language is also decidable, etc.</p>
+</div>
+
+<h3>What "Recognizes" Each Type of Language?</h3>
+
+<p>Each language family has a <strong>machine</strong> that can recognize it and a <strong>grammar</strong> that can generate it:</p>
+
+<table>
+  <tr><th>Language Type</th><th>Machine</th><th>Grammar</th><th>Example</th></tr>
+  <tr><td>Regular</td><td>Finite State Machine (FSM)</td><td>Regular grammar</td><td>a*b* (any a's then any b's)</td></tr>
+  <tr><td>Context-Free</td><td>Pushdown Automaton (PDA)</td><td>Context-free grammar (CFG)</td><td>a<sup>n</sup>b<sup>n</sup> (n a's then n b's)</td></tr>
+  <tr><td>Decidable</td><td>Turing Machine (always halts)</td><td>Unrestricted grammar</td><td>a<sup>n</sup>b<sup>n</sup>c<sup>n</sup></td></tr>
+  <tr><td>Semidecidable</td><td>Turing Machine (may loop)</td><td>Unrestricted grammar</td><td>Halting problem</td></tr>
+</table>
+
+<h3>How to Tell Which Family a Language Belongs To</h3>
+
+<p><strong>Ask yourself: what does a machine need to remember to accept this language?</strong></p>
+
+<ul>
+  <li><strong>Nothing beyond "where am I":</strong> Regular. An FSM with a fixed number of states is enough. Example: "strings that end in 'ab'" &mdash; you just need to remember the last two characters.</li>
+  <li><strong>One counter or one "matching" task:</strong> Probably Context-Free. A stack (PDA) can handle one level of matching. Example: a<sup>n</sup>b<sup>n</sup> &mdash; push a's, then pop one a for each b.</li>
+  <li><strong>Two or more simultaneous matching tasks:</strong> NOT Context-Free. A stack cannot track two independent counts at the same time. Example: a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> &mdash; you need to match a's to b's AND b's to c's simultaneously.</li>
+  <li><strong>Finite language:</strong> ALWAYS regular. No matter how big, a finite set of strings can always be recognized by an FSM.</li>
+</ul>
+
+<h3>Key T/F Facts You Need to Know</h3>
+
+<div class="key">
+  <strong>Regular Language Closure:</strong> Regular languages are closed under union, intersection, complement, concatenation, Kleene star, difference, reverse, and letter substitution. "Closed under X" means: if you start with regular languages and apply operation X, you always get another regular language.
+</div>
+
+<div class="key">
+  <strong>CFL Closure:</strong> Context-free languages are closed under union, concatenation, and Kleene star. They are NOT closed under complement and NOT closed under intersection.
+</div>
+
+<div class="key">
+  <strong>DFSMs = NDFSMs</strong> in power (you can always convert an NDFSM to a DFSM). But <strong>DPDAs &ne; NPDAs</strong> &mdash; nondeterministic PDAs are strictly more powerful. Some CFLs (like ww<sup>R</sup>) have no deterministic PDA.
+</div>
+
+<div class="key">
+  <strong>Turing Machines</strong> are NOT guaranteed to halt. There is no algorithm to force them to. FSMs always halt. PDAs might not halt but you can build equivalent ones that do.
+</div>
+
+<div class="key">
+  <strong>Generator vs. Recognizer:</strong> A generator produces solutions (like a program that computes A+B). A recognizer checks if a proposed solution is correct (like checking if A+B=C). Most problems can be recast as decision problems (yes/no questions about strings).
+</div>
+
+<div class="key">
+  <strong>Encoding:</strong> Almost anything can be represented as a string. &lt;X&gt; means "the string encoding of object X." This lets us turn any problem into a language recognition problem.
+</div>
+
+</div>
+
+<!-- ======================= SECTION 2 ======================= -->
+<div class="section" id="s2">
+<h2>2. Context-Free Grammars: What They Are and How They Work</h2>
+
+<h3>What is a CFG?</h3>
+
+<p>A <strong>context-free grammar (CFG)</strong> is a set of rules for generating strings. Think of it like a recipe for building strings character by character.</p>
+
+<div class="concept">
+  <div class="label">Formal Definition</div>
+  <p>A CFG G = (V, &Sigma;, R, S) where:</p>
+  <ul>
+    <li><strong>V</strong> = all symbols (both terminals and nonterminals)</li>
+    <li><strong>&Sigma;</strong> = terminal symbols (the actual characters in your final string, like a, b, c)</li>
+    <li><strong>R</strong> = rules (also called productions). Each rule has a single nonterminal on the left and anything on the right.</li>
+    <li><strong>S</strong> = start symbol (a nonterminal where every derivation begins)</li>
+  </ul>
+</div>
+
+<p><strong>Terminals</strong> are the final characters (a, b, c, (, ), etc.). <strong>Nonterminals</strong> are working variables (S, A, B, T, etc.) that get replaced during derivation and disappear in the final string.</p>
+
+<h3>How Derivation Works</h3>
+
+<p>You start with the start symbol S and keep applying rules until only terminal symbols remain:</p>
+
+<div class="example">
+  <div class="ex-title">: Generating a<sup>n</sup>b<sup>n</sup></div>
+  <p>Grammar rules: S &rarr; aSb | &epsilon;</p>
+  <p>To generate "aabb":</p>
+  <pre>S  &rArr;  aSb         (applied S &rarr; aSb)
+   &rArr;  aaSbb       (applied S &rarr; aSb again)
+   &rArr;  aabb        (applied S &rarr; &epsilon;, S disappears)</pre>
+  <p>The &rArr; symbol means "one derivation step." Each step, you pick one nonterminal and replace it using a rule.</p>
+</div>
+
+<h3>Parse Trees</h3>
+
+<p>A <strong>parse tree</strong> shows the structure of a derivation. The root is S, each internal node is a nonterminal, and leaves are terminals. Parse trees are why we care about CFGs &mdash; they show us the <strong>structure</strong> of strings (like how an arithmetic expression is grouped).</p>
+
+<h3>Ambiguity</h3>
+
+<p>A grammar is <strong>ambiguous</strong> if some string has more than one parse tree. This is usually bad because it means the structure is not unique (e.g., does 2+3*4 mean (2+3)*4 or 2+(3*4)?).</p>
+
+<p>A language is <strong>inherently ambiguous</strong> if EVERY grammar for it is ambiguous. Both "is this grammar ambiguous?" and "is this language inherently ambiguous?" are <strong>undecidable</strong> problems (no algorithm can always answer them).</p>
+
+<h3>Self-Embedding: Where CFGs Get Their Power</h3>
+
+<p>A grammar is <strong>self-embedding</strong> if a nonterminal can derive itself with nonempty strings on BOTH sides. Example: S &rarr; aSb is self-embedding (a on the left, b on the right of S).</p>
+
+<div class="key">
+  <strong>Key theorem:</strong> If a grammar is NOT self-embedding, then its language is regular. If EVERY grammar for a language is self-embedding, then the language is NOT regular.
+</div>
+
+</div>
+
+<!-- ======================= SECTION 3 ======================= -->
+<div class="section" id="s3">
+<h2>3. Simplifying CFGs and Converting to Chomsky Normal Form</h2>
+
+<p>This is a <strong>10-point question</strong> on the exam. You will be given a CFG and must show your work for each step. The overall process is:</p>
+
+<ol>
+  <li>Remove epsilon (&epsilon;) productions</li>
+  <li>Remove unit productions</li>
+  <li>Remove useless productions</li>
+  <li>Convert to Chomsky Normal Form (removeMixed, then removeLong)</li>
+</ol>
+
+<!-- 3a: EPSILON -->
+<h3 id="s3a">Step 1: Remove Epsilon Productions</h3>
+
+<p>An <strong>epsilon production</strong> is any rule like X &rarr; &epsilon; (a variable producing the empty string). These cause ambiguity, so we want to get rid of them.</p>
+
+<h4>Part A: Find All Nullable Variables</h4>
+
+<p>A variable is <strong>nullable</strong> if it can eventually produce &epsilon;. There are two ways:</p>
+<ol>
+  <li><strong>Directly nullable:</strong> There is a rule X &rarr; &epsilon;.</li>
+  <li><strong>Indirectly nullable:</strong> There is a rule X &rarr; ABC... where ALL of A, B, C are nullable.</li>
+</ol>
+<p>Keep checking until you find no new nullable variables.</p>
+
+<h4>Part B: Add New Rules</h4>
+
+<p>For every rule that contains a nullable variable, add new versions where that nullable variable is "deleted" (replaced with &epsilon;). Do this for every combination of nullable variables in the rule.</p>
+
+<h4>Part C: Delete All X &rarr; &epsilon; Rules</h4>
+
+<div class="example">
+  <div class="ex-title">: Remove Epsilon Productions</div>
+  <p><strong>Given grammar:</strong></p>
+<pre>S &rarr; aTa
+T &rarr; ABC
+A &rarr; aA | C
+B &rarr; Bb | C
+C &rarr; c | &epsilon;</pre>
+
+  <div class="step">
+    <div class="step-label">Step 1: Find nullable variables</div>
+    <p><strong>Round 1:</strong> C is nullable (C &rarr; &epsilon; is a rule). Nullable = {C}</p>
+    <p><strong>Round 2:</strong> A is nullable (A &rarr; C, and C is nullable). B is nullable (B &rarr; C, and C is nullable). Nullable = {C, A, B}</p>
+    <p><strong>Round 3:</strong> T is nullable (T &rarr; ABC, and A, B, C are ALL nullable). Nullable = {C, A, B, T}</p>
+    <p><strong>Round 4:</strong> S is NOT nullable (S &rarr; aTa, but 'a' is a terminal and cannot be &epsilon;). No new variables. Done.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 2: Add new rules (substitute &epsilon; for nullable variables)</div>
+    <p>Go through each rule and create versions where nullable variables are removed:</p>
+    <p><strong>S &rarr; aTa:</strong> T is nullable, so add S &rarr; aa</p>
+    <p><strong>T &rarr; ABC:</strong> A, B, C are all nullable. Generate all combos of removing them:</p>
+    <ul>
+      <li>Remove A: T &rarr; BC</li>
+      <li>Remove B: T &rarr; AC</li>
+      <li>Remove C: T &rarr; AB</li>
+      <li>Remove A,B: T &rarr; C</li>
+      <li>Remove A,C: T &rarr; B</li>
+      <li>Remove B,C: T &rarr; A</li>
+      <li>Remove A,B,C: T &rarr; &epsilon; (but we do NOT add this &mdash; we are getting rid of epsilon rules)</li>
+    </ul>
+    <p><strong>A &rarr; aA:</strong> A is nullable, so add A &rarr; a</p>
+    <p><strong>A &rarr; C:</strong> C is nullable, so this would give A &rarr; &epsilon;. Don't add it (A is not the start symbol).</p>
+    <p><strong>B &rarr; Bb:</strong> B is nullable, so add B &rarr; b</p>
+    <p><strong>B &rarr; C:</strong> C is nullable, would give B &rarr; &epsilon;. Don't add.</p>
+    <p><strong>C &rarr; c:</strong> No nullable variables in RHS. No new rule.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 3: Delete all X &rarr; &epsilon; rules</div>
+    <p>Remove C &rarr; &epsilon;. Final result:</p>
+<pre>S &rarr; aTa | aa
+T &rarr; ABC | BC | AC | AB | A | B | C
+A &rarr; aA | C | a
+B &rarr; Bb | C | b
+C &rarr; c</pre>
+  </div>
+</div>
+
+<!-- 3b: UNIT -->
+<h3 id="s3b">Step 2: Remove Unit Productions</h3>
+
+<p>A <strong>unit production</strong> is a rule where the right side is a single nonterminal, like A &rarr; B. These are unnecessary indirection.</p>
+
+<h4>The Algorithm</h4>
+<ol>
+  <li>Pick any unit production X &rarr; Y.</li>
+  <li>Remove it.</li>
+  <li>Look at all remaining rules for Y (like Y &rarr; abc, Y &rarr; DE). For each one, add X &rarr; abc, X &rarr; DE, etc. But do NOT add any rule that was already removed.</li>
+  <li>Repeat until no unit productions remain.</li>
+</ol>
+
+<div class="example">
+  <div class="ex-title">: Remove Unit Productions</div>
+  <p><strong>Starting grammar (from epsilon removal):</strong></p>
+<pre>S &rarr; XY
+X &rarr; A
+A &rarr; B | a
+B &rarr; b
+Y &rarr; T
+T &rarr; Y | c</pre>
+
+  <div class="step">
+    <div class="step-label">Remove X &rarr; A</div>
+    <p>A's rules are: A &rarr; B | a. So add X &rarr; B and X &rarr; a. (X &rarr; B is itself a unit production, we will handle it next.)</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Remove X &rarr; B</div>
+    <p>B's rules are: B &rarr; b. So add X &rarr; b.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Remove A &rarr; B</div>
+    <p>B's rules are: B &rarr; b. So add A &rarr; b.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Remove Y &rarr; T</div>
+    <p>T's rules are: T &rarr; Y | c. Add Y &rarr; Y (useless, ignore) and Y &rarr; c.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Remove T &rarr; Y</div>
+    <p>Y's remaining rules: Y &rarr; c. Add T &rarr; c.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Result (no unit productions left):</div>
+<pre>S &rarr; XY
+X &rarr; a | b
+A &rarr; a | b
+B &rarr; b
+Y &rarr; c
+T &rarr; c</pre>
+  </div>
+</div>
+
+<!-- 3c: CNF -->
+<h3 id="s3c">Steps 4-5: Convert to Chomsky Normal Form</h3>
+
+<div class="concept">
+  <div class="label">What is CNF?</div>
+  <p>In Chomsky Normal Form, every rule looks like one of these two forms:</p>
+  <ul>
+    <li><strong>A &rarr; BC</strong> (exactly two nonterminals)</li>
+    <li><strong>A &rarr; a</strong> (exactly one terminal)</li>
+  </ul>
+  <p>No mixing terminals with nonterminals in the same rule. No rules with more than 2 symbols on the right.</p>
+</div>
+
+<h4>removeMixed: Fix Rules That Mix Terminals and Nonterminals</h4>
+
+<p>If a rule has length &gt; 1 on the right side AND contains a terminal, replace each terminal with a new variable.</p>
+
+<div class="example">
+  <div class="ex-title">: removeMixed</div>
+<pre>Before:                     After:
+A &rarr; a             A &rarr; a              (length 1, leave alone)
+A &rarr; aB            A &rarr; T<sub>a</sub>B            (replaced 'a' with T<sub>a</sub>)
+A &rarr; BaC           A &rarr; BT<sub>a</sub>C           (replaced 'a' with T<sub>a</sub>)
+A &rarr; BbC           A &rarr; BT<sub>b</sub>C           (replaced 'b' with T<sub>b</sub>)
+
+Add new rules:
+T<sub>a</sub> &rarr; a
+T<sub>b</sub> &rarr; b</pre>
+</div>
+
+<h4>removeLong: Break Rules With More Than 2 Symbols</h4>
+
+<p>If a rule has more than 2 nonterminals on the right, chain it into pairs using new variables.</p>
+
+<div class="example">
+  <div class="ex-title">: removeLong</div>
+<pre>Before:                     After:
+A &rarr; BCDE                  A  &rarr; BM<sub>2</sub>
+                            M<sub>2</sub> &rarr; CM<sub>3</sub>
+                            M<sub>3</sub> &rarr; DE</pre>
+  <p>The idea: take the first symbol, pair it with a new variable that represents "the rest." Repeat until each rule has exactly 2 symbols.</p>
+</div>
+
+<!-- 3d: FULL WORKED -->
+<h3 id="s3d">Full Worked Problem: Sample Final Question 1a</h3>
+
+<div class="example">
+  <div class="ex-title">: Complete CNF Conversion</div>
+  <p><strong>Given:</strong></p>
+<pre>S &rarr; AbbA | BC | B
+A &rarr; aA | a | &lambda;
+B &rarr; CD | b
+C &rarr; cC | cD
+D &rarr; ddC</pre>
+
+  <div class="step">
+    <div class="step-label">Step 1: Find nullable variables</div>
+    <p>A &rarr; &lambda;, so A is nullable. Nullable = {A}</p>
+    <p>Check S &rarr; AbbA: not all symbols nullable (bb are terminals). S not nullable.</p>
+    <p>No other variables have all-nullable right sides. Done. <strong>Nullable = {A}</strong></p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 2: Remove epsilon productions</div>
+    <p><strong>S &rarr; AbbA:</strong> A is nullable (appears twice). Add combos:</p>
+    <ul>
+      <li>Remove first A: S &rarr; bbA</li>
+      <li>Remove second A: S &rarr; Abb</li>
+      <li>Remove both A's: S &rarr; bb</li>
+    </ul>
+    <p><strong>A &rarr; aA:</strong> A nullable. Add A &rarr; a (already have it, so no duplicate).</p>
+    <p>Delete A &rarr; &lambda;.</p>
+    <p><strong>Result:</strong></p>
+<pre>S &rarr; AbbA | bbA | Abb | bb | BC | B
+A &rarr; aA | a
+B &rarr; CD | b
+C &rarr; cC | cD
+D &rarr; ddC</pre>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 3: Remove unit productions</div>
+    <p>S &rarr; B is a unit production. Remove it. B's rules: B &rarr; CD | b. Add S &rarr; CD and S &rarr; b.</p>
+    <p><strong>Result:</strong></p>
+<pre>S &rarr; AbbA | bbA | Abb | bb | BC | CD | b
+A &rarr; aA | a
+B &rarr; CD | b
+C &rarr; cC | cD
+D &rarr; ddC</pre>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 4: Remove useless productions</div>
+    <p>Check productivity: all variables can derive terminal strings (trace through each). All are productive.</p>
+    <p>Check reachability from S: S uses A, B, C, D. B uses C, D. C uses D. All reachable.</p>
+    <p>Nothing to remove.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 5: removeMixed (fix rules mixing terminals and nonterminals)</div>
+    <p>Rules with length &gt; 1 containing terminals:</p>
+    <ul>
+      <li>S &rarr; AbbA becomes S &rarr; AT<sub>b</sub>T<sub>b</sub>A</li>
+      <li>S &rarr; bbA becomes S &rarr; T<sub>b</sub>T<sub>b</sub>A</li>
+      <li>S &rarr; Abb becomes S &rarr; AT<sub>b</sub>T<sub>b</sub></li>
+      <li>S &rarr; bb becomes S &rarr; T<sub>b</sub>T<sub>b</sub></li>
+      <li>A &rarr; aA becomes A &rarr; T<sub>a</sub>A</li>
+      <li>C &rarr; cC becomes C &rarr; T<sub>c</sub>C</li>
+      <li>C &rarr; cD becomes C &rarr; T<sub>c</sub>D</li>
+      <li>D &rarr; ddC becomes D &rarr; T<sub>d</sub>T<sub>d</sub>C</li>
+    </ul>
+    <p>Add: T<sub>a</sub> &rarr; a, T<sub>b</sub> &rarr; b, T<sub>c</sub> &rarr; c, T<sub>d</sub> &rarr; d</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 6: removeLong (break rules with &gt; 2 symbols)</div>
+    <p>S &rarr; AT<sub>b</sub>T<sub>b</sub>A (length 4):</p>
+<pre>S  &rarr; AM<sub>1</sub>
+M<sub>1</sub> &rarr; T<sub>b</sub>M<sub>2</sub>
+M<sub>2</sub> &rarr; T<sub>b</sub>A</pre>
+    <p>S &rarr; T<sub>b</sub>T<sub>b</sub>A (length 3):</p>
+<pre>S  &rarr; T<sub>b</sub>M<sub>3</sub>
+M<sub>3</sub> &rarr; T<sub>b</sub>A</pre>
+    <p>S &rarr; AT<sub>b</sub>T<sub>b</sub> (length 3):</p>
+<pre>S  &rarr; AM<sub>4</sub>
+M<sub>4</sub> &rarr; T<sub>b</sub>T<sub>b</sub></pre>
+    <p>D &rarr; T<sub>d</sub>T<sub>d</sub>C (length 3):</p>
+<pre>D  &rarr; T<sub>d</sub>M<sub>5</sub>
+M<sub>5</sub> &rarr; T<sub>d</sub>C</pre>
+    <p>Rules already length 2 or 1 are fine: S &rarr; T<sub>b</sub>T<sub>b</sub>, S &rarr; BC, S &rarr; CD, S &rarr; b, A &rarr; T<sub>a</sub>A, A &rarr; a, B &rarr; CD, B &rarr; b, C &rarr; T<sub>c</sub>C, C &rarr; T<sub>c</sub>D.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- ======================= SECTION 4 ======================= -->
+<div class="section" id="s4">
+<h2>4. Pushdown Automata: What They Are</h2>
+
+<p>A PDA is like an FSM but with a <strong>stack</strong> attached &mdash; an unlimited scratch pad where you can only access the top element. This extra memory is exactly what lets PDAs handle context-free languages that FSMs cannot.</p>
+
+<div class="concept">
+  <div class="label">Definition: PDA</div>
+  <p>M = (K, &Sigma;, &Gamma;, &Delta;, s, A) where:</p>
+  <ul>
+    <li><strong>K</strong> = set of states</li>
+    <li><strong>&Sigma;</strong> = input alphabet (the characters you read)</li>
+    <li><strong>&Gamma;</strong> = stack alphabet (the characters you can push/pop)</li>
+    <li><strong>s</strong> = start state</li>
+    <li><strong>A</strong> = set of accepting states</li>
+    <li><strong>&Delta;</strong> = transitions: ((state, input_or_&epsilon;, what_to_pop), (new_state, what_to_push))</li>
+  </ul>
+</div>
+
+<h3>How the Stack Works</h3>
+<p>The stack is like a pile of plates. You can only see/remove the top plate (pop), and you can only add new plates on top (push). Written left to right, the leftmost character is the top.</p>
+<p>If the stack contains "cab" (c on top), and you push "xy", the stack becomes "xycab" (x is now on top).</p>
+
+<h3>Reading Transition Labels</h3>
+<p>Transitions are written as: <code>input / pop / push</code></p>
+<ul>
+  <li><strong>input:</strong> what character to consume from the input (or &epsilon; to consume nothing)</li>
+  <li><strong>pop:</strong> what to remove from the top of the stack (or &epsilon; to pop nothing)</li>
+  <li><strong>push:</strong> what to add to the top of the stack (or &epsilon; to push nothing)</li>
+</ul>
+
+<h3>Accepting a String</h3>
+<p>A PDA <strong>accepts</strong> a string w if there exists at least one sequence of transitions that:</p>
+<ol>
+  <li>Starts in the start state with empty stack</li>
+  <li>Reads all of w (consumes every character)</li>
+  <li>Ends in an accepting state with empty stack</li>
+</ol>
+<p>Since PDAs are <strong>nondeterministic</strong>, there may be multiple paths. If ANY path accepts, the string is accepted.</p>
+
+<div class="warn">
+  <strong>A PDA rejects w</strong> only if ALL paths fail (dead end, non-accepting state, or stack not empty). If even one path accepts, the string is accepted.
+</div>
+
+</div>
+
+<!-- ======================= SECTION 5 ======================= -->
+<div class="section" id="s5">
+<h2>5. Reading a PDA: Accept/Reject Strings and Describe Its Language</h2>
+
+<p>This is a <strong>10-point question</strong>. You will be given a PDA diagram and must: (1) trace specific strings, (2) say if they are accepted or rejected, (3) describe the language in English.</p>
+
+<h3>How to Trace a String Through a PDA</h3>
+
+<div class="example">
+  <div class="ex-title">: Tracing the Sample Final PDA</div>
+  <p>From the Sample Final, the PDA has transitions:</p>
+<pre>q0: a;a,R &rarr; q0    (read a, pop nothing, push a)
+    b;a,R &rarr; q1    (read b, pop a, push R)
+    &empty;;b,R &rarr; q4   (read nothing, pop b, push R)
+q1: a;b,L &rarr; q3    (read a, pop b, push L)
+    b;b,R &rarr; q4    (read b, pop b, push R)</pre>
+  <p>(Reading from the diagram &mdash; each edge is: input ; stack_top_to_pop ; push_onto_stack)</p>
+
+  <p><strong>Trace input "ab":</strong></p>
+  <table class="trace-table">
+    <tr><th>Step</th><th>State</th><th>Remaining Input</th><th>Stack</th><th>Action</th></tr>
+    <tr><td>0</td><td>q0</td><td>ab</td><td>(empty)</td><td>Start</td></tr>
+    <tr><td>1</td><td>q0</td><td>b</td><td>a</td><td>Read 'a', push 'a'</td></tr>
+    <tr><td>2</td><td>q1</td><td>(empty)</td><td>R</td><td>Read 'b', pop 'a', push 'R'</td></tr>
+  </table>
+  <p>Input consumed. Is q1 accepting? Check the diagram for double circles. If yes &rarr; accepted (if stack condition met). If no &rarr; rejected.</p>
+</div>
+
+<h3>How to Describe a PDA's Language</h3>
+
+<p>Look for the pattern:</p>
+<ol>
+  <li><strong>What gets pushed?</strong> Usually one type of symbol for one section of input.</li>
+  <li><strong>What gets popped?</strong> Usually another section of input "matches" what was pushed.</li>
+  <li><strong>What is the relationship?</strong> Equal counts? Double? Greater than?</li>
+</ol>
+
+<p>Example: If the PDA pushes one 'a' for each input 'a', then pops one 'a' for each input 'b', the language is {a<sup>n</sup>b<sup>n</sup> : n &ge; 0}.</p>
+
+</div>
+
+<!-- ======================= SECTION 6 ======================= -->
+<div class="section" id="s6">
+<h2>6. Directly Constructing a PDA for a Language</h2>
+
+<p>This is a <strong>10-point question</strong>. Dr. Stringfellow says: <strong>"DO NOT try to generate the grammar first."</strong> Build the PDA directly from the language description.</p>
+
+<h3>The General Strategy</h3>
+<ol>
+  <li><strong>Identify the "phases" of the input.</strong> What comes first? What comes second?</li>
+  <li><strong>Use the stack to count/remember.</strong> Push during one phase, pop during another.</li>
+  <li><strong>Design states for each phase.</strong></li>
+  <li><strong>Handle acceptance:</strong> Accept when input is consumed AND stack is empty AND in accepting state.</li>
+</ol>
+
+<div class="example">
+  <div class="ex-title">: PDA for a<sup>n</sup>b<sup>n</sup> (n &ge; 0)</div>
+  <p><strong>Phases:</strong> First read a's, then read b's. Number of a's must equal number of b's.</p>
+
+  <div class="step">
+    <div class="step-label">State 1 (start, accepting): Reading a's phase</div>
+    <p>Transition: read 'a', pop nothing, push 'a'. Stay in State 1.</p>
+    <p>This pushes one 'a' onto the stack for each 'a' in the input.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">State 1 &rarr; State 2: Switch to reading b's</div>
+    <p>Transition: read 'b', pop 'a', push nothing. Go to State 2.</p>
+    <p>When we see the first 'b', start popping.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">State 2: Reading b's phase</div>
+    <p>Transition: read 'b', pop 'a', push nothing. Stay in State 2.</p>
+    <p>Each 'b' removes one 'a' from the stack.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Acceptance</div>
+    <p>State 1 is accepting (handles n=0, empty string).</p>
+    <p>State 2 accepts when input is done AND stack is empty (equal counts).</p>
+  </div>
+
+  <p><strong>Written formally:</strong></p>
+<pre>States: {q1, q2}, Start: q1, Accept: {q1, q2}
+Transitions:
+  ((q1, a, &epsilon;), (q1, a))    -- read a, push a
+  ((q1, b, a), (q2, &epsilon;))    -- read b, pop a
+  ((q2, b, a), (q2, &epsilon;))    -- read b, pop a</pre>
+</div>
+
+<div class="example">
+  <div class="ex-title">: PDA for {w &isin; {a,b}* : #a(w) = #b(w)}</div>
+  <p><strong>Key insight:</strong> Unlike a<sup>n</sup>b<sup>n</sup>, the a's and b's can come in any order. The stack needs to track the "imbalance."</p>
+
+  <div class="step">
+    <div class="step-label">The idea</div>
+    <p>If we have more a's than b's so far, the stack has a's in it.</p>
+    <p>If we have more b's than a's so far, the stack has b's in it.</p>
+    <p>If they are equal, the stack is empty.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Transitions (single state q1, start and accepting)</div>
+<pre>Read 'a', stack top is 'b' &rarr; pop 'b' (they cancel out)
+Read 'a', stack top is 'a' or empty &rarr; push 'a'
+Read 'b', stack top is 'a' &rarr; pop 'a' (they cancel out)
+Read 'b', stack top is 'b' or empty &rarr; push 'b'</pre>
+  </div>
+  <p>Accept when input consumed and stack empty (counts are equal).</p>
+</div>
+
+<div class="example">
+  <div class="ex-title">: PDA for {a<sup>m</sup>b<sup>n</sup> : m &ne; n, m,n &gt; 0}</div>
+  <p><strong>Key insight from Dr. Stringfellow:</strong> Start with the equal case and handle the two mismatch cases.</p>
+
+  <div class="step">
+    <div class="step-label">Base: match a's and b's</div>
+    <p>State 1: read a, push a. State 2: read b, pop a.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Case 1: More a's than b's (m &gt; n)</div>
+    <p>Input is done but stack still has a's. Go to accepting State 3, pop remaining a's.</p>
+    <p>Transition: (&epsilon; / a / &epsilon;) in a loop at State 3.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Case 2: More b's than a's (m &lt; n)</div>
+    <p>Stack is empty but input still has b's. Go to accepting State 4, consume remaining b's.</p>
+    <p>Transition: (b / &epsilon; / &epsilon;) in a loop at State 4.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">The tricky part: detecting bottom of stack and end of input</div>
+    <p><strong>Detect bottom of stack:</strong> Push a special marker '#' before starting. When you see '#', you know the stack is "empty."</p>
+    <p><strong>Detect end of input:</strong> Use nondeterminism &mdash; at any point during b-reading, nondeterministically guess "this is the last b" and try to transition.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- ======================= SECTION 7 ======================= -->
+<div class="section" id="s7">
+<h2>7. GNF Grammar to Top-Down PDA</h2>
+
+<p>This is a <strong>5-point question</strong>. You are given a grammar already in Greibach Normal Form and must build the corresponding PDA.</p>
+
+<h3>What is Greibach Normal Form (GNF)?</h3>
+<p>Every rule looks like: A &rarr; a&alpha; where 'a' is a <strong>single terminal</strong> and &alpha; is a <strong>string of zero or more nonterminals</strong>.</p>
+<p>Example: S &rarr; aSA | a (both start with a terminal).</p>
+
+<h3>The Construction (Memorize This)</h3>
+
+<div class="concept">
+  <div class="label">GNF to PDA Algorithm</div>
+  <p>PDA has 3 states: q<sub>0</sub> (start), q<sub>1</sub> (working), q<sub>f</sub> (accept). Stack alphabet = grammar variables. Use 'z' as stack bottom marker.</p>
+  <ol>
+    <li><strong>Startup:</strong> &delta;(q<sub>0</sub>, &epsilon;, z) = {(q<sub>1</sub>, Sz)} &mdash; push start symbol S on top of z.</li>
+    <li><strong>For each rule A &rarr; aX<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>:</strong><br>
+        &delta;(q<sub>1</sub>, a, A) includes (q<sub>1</sub>, X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>) &mdash; read 'a', pop A, push X<sub>1</sub>...X<sub>n</sub> (X<sub>1</sub> on top).</li>
+    <li><strong>For each rule A &rarr; a (no variables):</strong><br>
+        &delta;(q<sub>1</sub>, a, A) includes (q<sub>1</sub>, &epsilon;) &mdash; read 'a', pop A, push nothing.</li>
+    <li><strong>Finish:</strong> &delta;(q<sub>1</sub>, &epsilon;, z) = {(q<sub>f</sub>, &epsilon;)} &mdash; if stack only has z (everything matched), accept.</li>
+  </ol>
+</div>
+
+<div class="example">
+  <div class="ex-title">: GNF Grammar to PDA</div>
+  <p><strong>Given GNF grammar:</strong></p>
+<pre>S &rarr; aSA | a
+A &rarr; bB
+B &rarr; b</pre>
+
+  <div class="step">
+    <div class="step-label">Build the transitions</div>
+<pre>Startup:
+  &delta;(q<sub>0</sub>, &epsilon;, z) = {(q<sub>1</sub>, Sz)}        Push S onto stack
+
+From S &rarr; aSA:
+  &delta;(q<sub>1</sub>, a, S) includes (q<sub>1</sub>, SA)    Read 'a', pop S, push SA (S on top)
+
+From S &rarr; a:
+  &delta;(q<sub>1</sub>, a, S) includes (q<sub>1</sub>, &epsilon;)     Read 'a', pop S, push nothing
+
+From A &rarr; bB:
+  &delta;(q<sub>1</sub>, b, A) = {(q<sub>1</sub>, B)}           Read 'b', pop A, push B
+
+From B &rarr; b:
+  &delta;(q<sub>1</sub>, b, B) = {(q<sub>1</sub>, &epsilon;)}         Read 'b', pop B, push nothing
+
+Finish:
+  &delta;(q<sub>1</sub>, &epsilon;, z) = {(q<sub>f</sub>, &epsilon;)}        Accept when stack empty</pre>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Trace input "aabb"</div>
+    <table class="trace-table">
+      <tr><th>Trans</th><th>State</th><th>Unread Input</th><th>Stack</th></tr>
+      <tr><td>startup</td><td>q<sub>0</sub> &rarr; q<sub>1</sub></td><td>aabb</td><td>Sz</td></tr>
+      <tr><td>S&rarr;aSA</td><td>q<sub>1</sub></td><td>abb</td><td>SAz</td></tr>
+      <tr><td>S&rarr;a</td><td>q<sub>1</sub></td><td>bb</td><td>Az</td></tr>
+      <tr><td>A&rarr;bB</td><td>q<sub>1</sub></td><td>b</td><td>Bz</td></tr>
+      <tr><td>B&rarr;b</td><td>q<sub>1</sub></td><td>(empty)</td><td>z</td></tr>
+      <tr><td>finish</td><td>q<sub>f</sub></td><td>(empty)</td><td>(empty)</td></tr>
+    </table>
+    <p>Input consumed, accepting state reached. <strong>"aabb" is accepted.</strong></p>
+  </div>
+</div>
+
+</div>
+
+<!-- ======================= SECTION 8 ======================= -->
+<div class="section" id="s8">
+<h2>8. Turing Machines: What They Are</h2>
+
+<p>A Turing Machine (TM) is the most powerful computational model we study. It has an <strong>infinite tape</strong> (memory), a <strong>read/write head</strong> that can move left or right, and a <strong>finite control</strong> (states).</p>
+
+<div class="concept">
+  <div class="label">Definition: Turing Machine</div>
+  <p>M = (Q, &Sigma;, &Gamma;, &delta;, q<sub>0</sub>, F) where:</p>
+  <ul>
+    <li><strong>Q</strong> = finite set of states</li>
+    <li><strong>&Sigma;</strong> = input alphabet (no blank symbol)</li>
+    <li><strong>&Gamma;</strong> = tape alphabet (includes blank &#9633; and all of &Sigma;)</li>
+    <li><strong>q<sub>0</sub></strong> = initial state</li>
+    <li><strong>F</strong> = halting/final states</li>
+    <li><strong>&delta;:</strong> (Q - F) &times; &Gamma; &rarr; Q &times; &Gamma; &times; {L, R}</li>
+  </ul>
+  <p>&delta; is a <strong>function</strong> (deterministic). Given a non-halting state and tape symbol, it tells you: new state, symbol to write, direction to move.</p>
+</div>
+
+<h3>Key Differences from FSMs and PDAs</h3>
+<ul>
+  <li>The tape is <strong>infinite</strong> in both directions.</li>
+  <li>The head can <strong>read AND write</strong> (FSMs only read; PDAs read input and read/write a stack).</li>
+  <li>The head can move <strong>both left and right</strong> (FSMs/PDAs only move right through input).</li>
+  <li>TMs are <strong>NOT guaranteed to halt</strong>. They can loop forever.</li>
+  <li>TMs can <strong>compute functions</strong> (produce output), not just accept/reject.</li>
+</ul>
+
+<h3>How a Transition Works</h3>
+<p>&delta;(q<sub>0</sub>, a) = (q<sub>1</sub>, b, R) means: "In state q<sub>0</sub>, reading 'a' on the tape: write 'b' (replacing 'a'), move head Right, go to state q<sub>1</sub>."</p>
+
+<h3>Deciding vs. Semideciding</h3>
+<ul>
+  <li><strong>M decides L:</strong> M halts on EVERY input. Accepts w if w &isin; L. Rejects w if w &notin; L. Language is in class D.</li>
+  <li><strong>M semidecides L:</strong> M accepts w if w &isin; L. If w &notin; L, M may reject OR loop forever. Language is in class SD.</li>
+</ul>
+
+</div>
+
+<!-- ======================= SECTION 9 ======================= -->
+<div class="section" id="s9">
+<h2>9. Tracing a Turing Machine</h2>
+
+<p>This is a <strong>10-point question</strong>. Given a TM's transition table or diagram, trace its execution on a given input and determine what it does.</p>
+
+<h3>How to Write Configurations</h3>
+<p>A configuration shows the complete state of the machine at one moment: (state, tape contents with head position). The head is scanning the character immediately after the state label in the tape string.</p>
+
+<div class="example">
+  <div class="ex-title">: Trace the "Replace a's with b's" TM</div>
+  <p><strong>Given:</strong> Q = {q<sub>0</sub>, q<sub>1</sub>}, &Sigma; = {a, b}, F = {q<sub>1</sub>}</p>
+<pre>&delta;(q<sub>0</sub>, a) = (q<sub>0</sub>, b, R)   -- see 'a': replace with 'b', move right, stay in q<sub>0</sub>
+&delta;(q<sub>0</sub>, b) = (q<sub>0</sub>, b, R)   -- see 'b': leave as 'b', move right, stay in q<sub>0</sub>
+&delta;(q<sub>0</sub>, &#9633;) = (q<sub>1</sub>, &#9633;, L)   -- see blank: don't write, move left, go to q<sub>1</sub> (HALT)</pre>
+
+  <p><strong>Trace input "aab":</strong></p>
+  <table class="trace-table">
+    <tr><th>Step</th><th>State</th><th>Tape</th><th>Head Position</th><th>Action</th></tr>
+    <tr><td>0</td><td>q<sub>0</sub></td><td>&#9633; a a b &#9633;</td><td>^ on first 'a'</td><td>Start</td></tr>
+    <tr><td>1</td><td>q<sub>0</sub></td><td>&#9633; <strong>b</strong> a b &#9633;</td><td>^ on second 'a'</td><td>Wrote b, moved R</td></tr>
+    <tr><td>2</td><td>q<sub>0</sub></td><td>&#9633; b <strong>b</strong> b &#9633;</td><td>^ on 'b'</td><td>Wrote b, moved R</td></tr>
+    <tr><td>3</td><td>q<sub>0</sub></td><td>&#9633; b b b &#9633;</td><td>^ on last 'b'</td><td>Left b, moved R</td></tr>
+    <tr><td>4</td><td>q<sub>1</sub></td><td>&#9633; b b b &#9633;</td><td>^ on last 'b'</td><td>Hit &#9633;, moved L, HALTED</td></tr>
+  </table>
+  <p><strong>What does this TM do?</strong> It replaces all a's with b's, leaving b's unchanged. The output tape contains all b's.</p>
+</div>
+
+<div class="example">
+  <div class="ex-title">: TM from Sample Final (Turing Machine that copies 1's)</div>
+  <p><strong>From the Sample Final Q2:</strong> Design a TM that copies strings of 1's. Input: &#9633;1111&#9633;, Output: &#9633;11111111&#9633;</p>
+  <p>The intuitive process given:</p>
+  <ol>
+    <li>Replace every 1 by a marker (like #).</li>
+    <li>Find the rightmost # and replace it with 1.</li>
+    <li>Travel to the right end of the current nonblank region and create a 1 there.</li>
+    <li>Repeat steps 2 and 3 until there are no more #'s.</li>
+  </ol>
+  <p>This doubles the string of 1's by marking each original 1, then expanding each mark into an additional copy at the end.</p>
+</div>
+
+</div>
+
+<!-- ======================= SECTION 10 ======================= -->
+<div class="section" id="s10">
+<h2>10. Building a Turing Machine</h2>
+
+<p>This is a <strong>10-point question</strong> (extra credit for shorthand notation).</p>
+
+<h3>The Long Notation (Transition Table)</h3>
+<p>Write out every transition as: &delta;(state, tape_char) = (new_state, write_char, direction).</p>
+
+<h3>Common TM Design Patterns</h3>
+
+<h4>Pattern 1: "Scan and Mark" (for matching problems)</h4>
+<p>Used for languages like a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> or wcw.</p>
+<ol>
+  <li>Find an unmarked 'a'. Mark it (replace with special symbol like '$').</li>
+  <li>Scan right to find an unmarked 'b'. Mark it.</li>
+  <li>Scan right to find an unmarked 'c'. Mark it.</li>
+  <li>Scan all the way back to the start.</li>
+  <li>Repeat. If you run out of a's, check that b's and c's are also gone.</li>
+  <li>If everything matches: accept. If mismatch at any point: reject.</li>
+</ol>
+
+<h4>Pattern 2: "Copy" (for duplication)</h4>
+<p>To copy w: for each character in w, mark it, scan to the end, write a copy, scan back.</p>
+
+<h3>Shorthand Notation (Extra Credit)</h3>
+
+<div class="concept">
+  <div class="label">Basic Shorthand Machines</div>
+  <ul>
+    <li><strong>a, b, c, &#9633;</strong> &mdash; writes that symbol on the current square, then halts.</li>
+    <li><strong>R</strong> &mdash; moves head right one square, halts.</li>
+    <li><strong>L</strong> &mdash; moves head left one square, halts.</li>
+    <li><strong>y</strong> &mdash; halts and accepts.</li>
+    <li><strong>n</strong> &mdash; halts and rejects.</li>
+  </ul>
+</div>
+
+<div class="concept">
+  <div class="label">Combining Machines</div>
+  <ul>
+    <li><strong>M1 M2</strong> &mdash; run M1, then when it halts, immediately run M2 (no condition).</li>
+    <li><strong>M1 &mdash;a&rarr; M2</strong> &mdash; run M1, when it halts look at the tape: if current symbol is 'a', go to M2.</li>
+    <li><strong>M1 &mdash;a&rarr; M2, &mdash;b&rarr; M3</strong> &mdash; branch: if 'a' go to M2, if 'b' go to M3.</li>
+  </ul>
+</div>
+
+<div class="concept">
+  <div class="label">Useful Macro Machines</div>
+  <ul>
+    <li><strong>R<sub>&#9633;</sub></strong> &mdash; scan right until you find a blank.</li>
+    <li><strong>L<sub>&#9633;</sub></strong> &mdash; scan left until you find a blank.</li>
+    <li><strong>R<sub>&#172;&#9633;</sub></strong> &mdash; scan right until you find a NON-blank.</li>
+    <li><strong>L<sub>&#172;&#9633;</sub></strong> &mdash; scan left until you find a NON-blank.</li>
+    <li><strong>R<sub>a</sub></strong> &mdash; scan right until you find 'a'.</li>
+    <li><strong>L<sub>a</sub></strong> &mdash; scan left until you find 'a'.</li>
+  </ul>
+</div>
+
+<div class="example">
+  <div class="ex-title">: TM for a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> in Shorthand</div>
+  <p><strong>Strategy:</strong> Repeatedly mark one a, one b, one c. Then verify all are marked.</p>
+<pre>&gt; R<sub>&#172;&#9633;</sub>     Start: find the first nonblank character.
+
+LOOP:
+  If current = 'a': write '$', go to FIND_B
+  If current = '$': move right, stay in LOOP (skip marked)
+  If current = '&#9633;': go to CHECK (no more a's to mark)
+
+FIND_B:
+  R<sub>b</sub>          Scan right to find unmarked 'b'
+  write '$'   Mark it
+  go to FIND_C
+
+FIND_C:
+  R<sub>c</sub>          Scan right to find unmarked 'c'
+  write '$'   Mark it
+  L<sub>&#9633;</sub> R       Scan back to start of string
+  go to LOOP
+
+CHECK:
+  Scan entire string. If any unmarked b or c remains: REJECT.
+  Otherwise: ACCEPT.</pre>
+</div>
+
+</div>
+
+<!-- ======================= SECTION 11 ======================= -->
+<div class="section" id="s11">
+<h2>11. Pumping Lemma and Closure Properties (T/F Prep)</h2>
+
+<h3>Pumping Lemma for Regular Languages</h3>
+
+<div class="concept">
+  <div class="label">The Theorem (in plain English)</div>
+  <p>If a language L is regular, then there is some number k such that every string in L that is at least k characters long can be "pumped." That means you can split it into three parts x, y, z where:</p>
+  <ul>
+    <li>The string is w = xyz</li>
+    <li>|xy| &le; k (x and y together are in the first k characters)</li>
+    <li>y is not empty</li>
+    <li>You can repeat y any number of times (including 0) and the result is still in L</li>
+  </ul>
+</div>
+
+<h3>How to Use It to Prove a Language is NOT Regular</h3>
+
+<div class="example">
+  <div class="ex-title">: Prove a<sup>n</sup>b<sup>n</sup> is Not Regular</div>
+
+  <div class="step">
+    <div class="step-label">Step 1: Assume L is regular</div>
+    <p>Then there exists some k from the Pumping Lemma.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 2: Choose a string w in L with |w| &ge; k</div>
+    <p>Let w = a<sup>k</sup>b<sup>k</sup>. This is in L (equal a's and b's) and has length 2k &ge; k.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 3: Show that no valid split works</div>
+    <p>Since |xy| &le; k, both x and y must fall entirely within the first k characters, which are all a's. So y = a<sup>p</sup> for some p &ge; 1.</p>
+    <p>Now pump with q = 2 (repeat y twice): xy<sup>2</sup>z = a<sup>k+p</sup>b<sup>k</sup>.</p>
+    <p>This string has more a's than b's, so it is NOT in L. Contradiction.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Step 4: Conclude</div>
+    <p>Since we found a string that cannot be pumped, L is not regular.</p>
+  </div>
+</div>
+
+<h3>Using Closure Properties Instead of Pumping</h3>
+
+<p>Sometimes pumping is hard. Closure properties offer an easier path:</p>
+
+<div class="example">
+  <div class="ex-title">: Prove {w &isin; {a,b}* : #a(w) = #b(w)} is Not Regular</div>
+  <p>If L were regular, then L &cap; a*b* would also be regular (regular languages are closed under intersection, and a*b* is regular).</p>
+  <p>But L &cap; a*b* = {a<sup>n</sup>b<sup>n</sup> : n &ge; 0}, which we already proved is not regular.</p>
+  <p>Contradiction. So L is not regular.</p>
+</div>
+
+<div class="example">
+  <div class="ex-title">: Prove {a<sup>i</sup>b<sup>j</sup> : i &ne; j} is Not Regular</div>
+  <p>If L is regular, then the complement of L is also regular (closure under complement).</p>
+  <p>complement(L) &cap; a*b* = {a<sup>n</sup>b<sup>n</sup>} &cup; {strings not of form a*b*}.</p>
+  <p>Actually, even simpler: complement(L) includes all strings with equal a's and b's in a*b* form, which is a<sup>n</sup>b<sup>n</sup>. Since complement(L) &cap; a*b* = a<sup>n</sup>b<sup>n</sup>, and a<sup>n</sup>b<sup>n</sup> is not regular, complement(L) cannot be regular. So L cannot be regular either.</p>
+</div>
+
+<div class="key">
+  <strong>Dr. Stringfellow's tips for pumping:</strong>
+  <ul>
+    <li>Choose w that is "barely" in L and makes the first k characters as uniform as possible.</li>
+    <li>Try q = 0 (pump out) or q = 2 (pump in) first.</li>
+    <li>If direct pumping is awkward, try closure properties instead.</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding: 30px 0; color: var(--text-dim); font-size: 0.85rem;">
+  CMPS 3233 &mdash; Theory of Computation &mdash; Final Study Guide<br>
+  Good luck on the final, Jesus.
+</div>
+
+</div>
+</body>
 </html>
