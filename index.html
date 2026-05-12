@@ -3,1166 +3,1103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMPS 3233 Final Study Guide</title>
+<title>CMPS 3023 — Logic Design Final Exam Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap');
-
   :root {
-    --bg: #0f111a;
-    --surface: #1a1d2e;
-    --surface2: #232740;
-    --border: #2e3348;
-    --text: #c9d1d9;
-    --text-dim: #8b949e;
-    --heading: #e6edf3;
-    --accent: #58a6ff;
-    --accent2: #3fb950;
-    --warn: #f0883e;
-    --highlight: #ffd700;
-    --code-bg: #161b22;
-    --example-bg: #1c2333;
-    --step-bg: #1a2332;
+    --bg: #faf8f5;
+    --bg-card: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #5c5c5c;
+    --accent: #b44a2f;
+    --accent-light: #f3e8e3;
+    --accent-dark: #8a3520;
+    --border: #e0dcd6;
+    --code-bg: #f0ede8;
+    --table-header: #2c2c2c;
+    --table-header-text: #f5f3f0;
+    --table-stripe: #f7f5f2;
+    --highlight: #fef3cd;
+    --topic1: #b44a2f;
+    --topic2: #2e7d5b;
+    --topic3: #3a5ba0;
+    --topic4: #8b5e3c;
+    --topic5: #6b3a7d;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.75;
-    font-size: 16px;
-    padding: 20px;
+    line-height: 1.72;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .container { max-width: 900px; margin: 0 auto; }
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
 
-  /* HEADER */
-  .header {
+  /* ── HEADER ── */
+  .doc-header {
     text-align: center;
-    padding: 40px 20px;
-    margin-bottom: 40px;
-    border-bottom: 2px solid var(--accent);
+    padding: 48px 0 40px;
+    border-bottom: 3px solid var(--text);
+    margin-bottom: 48px;
   }
-  .header h1 {
-    font-size: 2rem;
-    color: var(--accent);
+  .doc-header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
     margin-bottom: 8px;
   }
-  .header .sub {
-    color: var(--text-dim);
-    font-size: 1rem;
+  .doc-header .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
-  /* TABLE OF CONTENTS */
+  /* ── TOC ── */
   .toc {
-    background: var(--surface);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 24px 30px;
-    margin-bottom: 40px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
   }
-  .toc h2 { color: var(--accent); font-size: 1.2rem; margin-bottom: 12px; }
-  .toc a {
-    color: var(--accent);
-    text-decoration: none;
-    display: block;
-    padding: 4px 0;
-    font-size: 0.95rem;
-  }
-  .toc a:hover { text-decoration: underline; }
-  .toc .indent { padding-left: 20px; color: var(--text-dim); font-size: 0.9rem; }
-
-  /* SECTIONS */
-  .section {
-    margin-bottom: 50px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  h2 {
-    color: var(--accent);
-    font-size: 1.6rem;
-    margin: 30px 0 16px 0;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  h3 {
-    color: var(--highlight);
-    font-size: 1.2rem;
-    margin: 24px 0 10px 0;
-  }
-
-  h4 {
-    color: var(--accent2);
-    font-size: 1.05rem;
-    margin: 18px 0 8px 0;
-  }
-
-  p { margin-bottom: 12px; }
-
-  /* CONCEPT BOX */
-  .concept {
-    background: var(--surface);
-    border-left: 4px solid var(--accent);
-    padding: 16px 20px;
-    margin: 16px 0;
-    border-radius: 0 6px 6px 0;
-  }
-  .concept .label {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.85rem;
+  .toc h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc ol li {
+    counter-increment: toc;
     margin-bottom: 6px;
   }
-
-  /* EXAMPLE / WORKED PROBLEM */
-  .example {
-    background: var(--example-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .example .ex-title {
-    color: var(--warn);
-    font-weight: 700;
+  .toc ol li a {
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    transition: color 0.2s;
   }
-  .example .ex-title::before { content: "Worked Example"; }
+  .toc ol li a:hover { color: var(--accent); }
+  .toc ol li a::before {
+    content: "0" counter(toc);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+  }
+  .toc ol li:nth-child(1) a::before { background: var(--topic1); }
+  .toc ol li:nth-child(2) a::before { background: var(--topic2); }
+  .toc ol li:nth-child(3) a::before { background: var(--topic3); }
+  .toc ol li:nth-child(4) a::before { background: var(--topic4); }
+  .toc ol li:nth-child(5) a::before { background: var(--topic5); }
+  .toc ol li:nth-child(6) a::before { background: var(--text); }
 
-  /* STEP BY STEP */
-  .step {
-    background: var(--step-bg);
-    border-left: 3px solid var(--accent2);
-    padding: 12px 16px;
-    margin: 10px 0;
-    border-radius: 0 6px 6px 0;
+  /* ── TOPIC SECTIONS ── */
+  .topic {
+    margin-bottom: 56px;
+    scroll-margin-top: 24px;
   }
-  .step .step-label {
-    color: var(--accent2);
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .topic-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+  .topic:nth-of-type(1) .topic-number { background: var(--topic1); }
+  .topic:nth-of-type(2) .topic-number { background: var(--topic2); }
+  .topic:nth-of-type(3) .topic-number { background: var(--topic3); }
+  .topic:nth-of-type(4) .topic-number { background: var(--topic4); }
+  .topic:nth-of-type(5) .topic-number { background: var(--topic5); }
+  .topic:nth-of-type(6) .topic-number { background: var(--text); }
+
+  .topic-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    font-size: 0.85rem;
+    letter-spacing: -0.3px;
   }
 
-  /* KEY POINT */
-  .key {
-    background: #2a1f00;
-    border-left: 4px solid var(--highlight);
-    padding: 12px 16px;
-    margin: 14px 0;
-    border-radius: 0 6px 6px 0;
+  /* ── SUBSECTIONS ── */
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--text);
   }
-  .key strong { color: var(--highlight); }
-
-  /* WARNING */
-  .warn {
-    background: #2a1500;
-    border-left: 4px solid var(--warn);
-    padding: 12px 16px;
-    margin: 14px 0;
-    border-radius: 0 6px 6px 0;
+  h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 8px;
   }
 
-  /* CODE */
+  p { margin-bottom: 14px; }
+
+  strong { font-weight: 700; }
+
+  /* ── CODE ── */
   code {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88em;
     background: var(--code-bg);
     padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    color: #e6edf3;
-  }
-  pre {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px;
-    overflow-x: auto;
-    margin: 12px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: #e6edf3;
+    border-radius: 4px;
   }
 
-  /* TABLES */
+  pre {
+    background: #2c2c2c;
+    color: #e8e4df;
+    padding: 20px 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 16px 0 20px;
+    line-height: 1.55;
+    font-size: 0.88rem;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+  .keyword { color: #e8917a; }
+  .comment { color: #7a7a7a; font-style: italic; }
+  .string { color: #a8d4a0; }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0 20px;
+  }
   table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 14px 0;
-    font-size: 0.95rem;
+    width: 100%;
+    font-size: 0.92rem;
   }
   th {
-    background: var(--surface2);
-    color: var(--accent);
+    background: var(--table-header);
+    color: var(--table-header-text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     padding: 10px 14px;
     text-align: left;
-    border: 1px solid var(--border);
-    font-weight: 700;
   }
   td {
-    padding: 8px 14px;
-    border: 1px solid var(--border);
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.86rem;
   }
-  tr:nth-child(even) td { background: var(--surface); }
+  tr:nth-child(even) td { background: var(--table-stripe); }
 
-  /* DERIVATION TABLE (for tracing) */
-  .trace-table td { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    background: var(--bg-card);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0 20px;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout.example {
+    border-left-color: #2e7d5b;
+    background: #f4faf7;
+  }
+  .callout.important {
+    border-left-color: #c9a227;
+    background: #fefcf3;
+  }
+  .callout .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .callout.example .label { color: #2e7d5b; }
+  .callout.important .label { color: #a68620; }
 
-  /* ARROW notation */
-  .arrow { color: var(--accent); font-weight: bold; }
-  .produces { color: var(--accent2); }
+  /* ── LISTS ── */
+  ul, ol {
+    margin: 8px 0 16px 24px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  li ul, li ol {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
 
-  ul, ol { margin: 8px 0 12px 24px; }
-  li { margin-bottom: 4px; }
+  /* ── BIT FIELD DIAGRAM ── */
+  .bit-field {
+    display: flex;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    margin: 16px 0 20px;
+    border: 2px solid var(--text);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bit-field .field {
+    text-align: center;
+    padding: 10px 8px 6px;
+    border-right: 1px solid var(--border);
+    flex: 1;
+  }
+  .bit-field .field:last-child { border-right: none; }
+  .bit-field .field .bits {
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .bit-field .field .lbl {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .bit-field .sign { background: #fce4e4; flex: 0.3; }
+  .bit-field .exp { background: #e4ecfc; }
+  .bit-field .frac { background: #e8f5e4; flex: 2; }
 
-  .emoji { font-style: normal; }
+  /* ── SEPARATOR ── */
+  hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 48px 0;
+  }
 
-  /* Print friendly */
+  /* ── CHECKLIST SECTION ── */
+  .checklist-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .checklist-section h4 {
+    margin-top: 0;
+    font-size: 1.05rem;
+  }
+  .checklist-section ul {
+    list-style: none;
+    margin-left: 0;
+  }
+  .checklist-section ul li::before {
+    content: "☐ ";
+    font-size: 1.1em;
+  }
+
+  /* ── ASCII DIAGRAMS ── */
+  .diagram {
+    background: #fdfcfa;
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin: 16px 0 20px;
+    overflow-x: auto;
+  }
+  .diagram pre {
+    background: transparent;
+    color: var(--text);
+    padding: 0;
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .page-wrapper { padding: 24px 16px 60px; }
+    .doc-header h1 { font-size: 1.6rem; }
+    .topic-header h2 { font-size: 1.2rem; }
+    pre { padding: 14px 16px; font-size: 0.82rem; }
+    td, th { padding: 7px 10px; font-size: 0.8rem; }
+  }
+
   @media print {
-    body { background: #fff; color: #111; }
-    .concept, .example, .step, .key, .warn { border-color: #999; background: #f5f5f5; }
-    h2, h3 { color: #111; }
+    body { font-size: 11pt; }
+    .page-wrapper { max-width: 100%; padding: 0; }
+    .topic { page-break-inside: avoid; }
+    pre { background: #f0f0f0 !important; color: #222 !important; }
   }
 </style>
 </head>
 <body>
-<div class="container">
-
-<div class="header">
-  <h1>CMPS 3233 Final Study Guide</h1>
-  <div class="sub">Theory of Computation &mdash; Dr. Stringfellow &mdash; Chapters 5, 6, 7, 8, 9, 11</div>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-<div class="toc">
-  <h2>Table of Contents</h2>
-  <a href="#s1">1. The Big Picture: Language Hierarchy (T/F and MC prep)</a>
-  <a href="#s2">2. Context-Free Grammars: What They Are and How They Work</a>
-  <a href="#s3">3. Simplifying CFGs and Converting to Chomsky Normal Form</a>
-  <a class="indent" href="#s3a">&mdash; Removing Epsilon Productions</a>
-  <a class="indent" href="#s3b">&mdash; Removing Unit Productions</a>
-  <a class="indent" href="#s3c">&mdash; Converting to CNF (removeMixed + removeLong)</a>
-  <a class="indent" href="#s3d">&mdash; Full Worked Problem (Sample Final Q1a)</a>
-  <a href="#s4">4. Pushdown Automata: What They Are</a>
-  <a href="#s5">5. Reading a PDA: Accept/Reject Strings and Describe Its Language</a>
-  <a href="#s6">6. Directly Constructing a PDA for a Language</a>
-  <a href="#s7">7. GNF Grammar to Top-Down PDA</a>
-  <a href="#s8">8. Turing Machines: What They Are</a>
-  <a href="#s9">9. Tracing a Turing Machine</a>
-  <a href="#s10">10. Building a Turing Machine</a>
-  <a href="#s11">11. Pumping Lemma and Closure Properties (T/F prep)</a>
-</div>
-
-<!-- ======================= SECTION 1 ======================= -->
-<div class="section" id="s1">
-<h2>1. The Big Picture: Language Hierarchy</h2>
-
-<p>Think of languages as categories of problems, and machines as the tools that solve them. Some problems are easy (you only need a simple tool), and some are hard (you need a powerful tool). The hierarchy goes from simple to powerful:</p>
-
-<div class="concept">
-  <div class="label">The Hierarchy (Least to Most Powerful)</div>
-  <p><strong>Regular Languages</strong> &sub; <strong>Context-Free Languages</strong> &sub; <strong>Decidable Languages</strong> &sub; <strong>Semidecidable Languages</strong></p>
-  <p>Each level is strictly contained in the next. Every regular language is also context-free, every context-free language is also decidable, etc.</p>
-</div>
-
-<h3>What "Recognizes" Each Type of Language?</h3>
-
-<p>Each language family has a <strong>machine</strong> that can recognize it and a <strong>grammar</strong> that can generate it:</p>
-
-<table>
-  <tr><th>Language Type</th><th>Machine</th><th>Grammar</th><th>Example</th></tr>
-  <tr><td>Regular</td><td>Finite State Machine (FSM)</td><td>Regular grammar</td><td>a*b* (any a's then any b's)</td></tr>
-  <tr><td>Context-Free</td><td>Pushdown Automaton (PDA)</td><td>Context-free grammar (CFG)</td><td>a<sup>n</sup>b<sup>n</sup> (n a's then n b's)</td></tr>
-  <tr><td>Decidable</td><td>Turing Machine (always halts)</td><td>Unrestricted grammar</td><td>a<sup>n</sup>b<sup>n</sup>c<sup>n</sup></td></tr>
-  <tr><td>Semidecidable</td><td>Turing Machine (may loop)</td><td>Unrestricted grammar</td><td>Halting problem</td></tr>
-</table>
-
-<h3>How to Tell Which Family a Language Belongs To</h3>
-
-<p><strong>Ask yourself: what does a machine need to remember to accept this language?</strong></p>
-
-<ul>
-  <li><strong>Nothing beyond "where am I":</strong> Regular. An FSM with a fixed number of states is enough. Example: "strings that end in 'ab'" &mdash; you just need to remember the last two characters.</li>
-  <li><strong>One counter or one "matching" task:</strong> Probably Context-Free. A stack (PDA) can handle one level of matching. Example: a<sup>n</sup>b<sup>n</sup> &mdash; push a's, then pop one a for each b.</li>
-  <li><strong>Two or more simultaneous matching tasks:</strong> NOT Context-Free. A stack cannot track two independent counts at the same time. Example: a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> &mdash; you need to match a's to b's AND b's to c's simultaneously.</li>
-  <li><strong>Finite language:</strong> ALWAYS regular. No matter how big, a finite set of strings can always be recognized by an FSM.</li>
-</ul>
-
-<h3>Key T/F Facts You Need to Know</h3>
-
-<div class="key">
-  <strong>Regular Language Closure:</strong> Regular languages are closed under union, intersection, complement, concatenation, Kleene star, difference, reverse, and letter substitution. "Closed under X" means: if you start with regular languages and apply operation X, you always get another regular language.
-</div>
-
-<div class="key">
-  <strong>CFL Closure:</strong> Context-free languages are closed under union, concatenation, and Kleene star. They are NOT closed under complement and NOT closed under intersection.
-</div>
-
-<div class="key">
-  <strong>DFSMs = NDFSMs</strong> in power (you can always convert an NDFSM to a DFSM). But <strong>DPDAs &ne; NPDAs</strong> &mdash; nondeterministic PDAs are strictly more powerful. Some CFLs (like ww<sup>R</sup>) have no deterministic PDA.
-</div>
-
-<div class="key">
-  <strong>Turing Machines</strong> are NOT guaranteed to halt. There is no algorithm to force them to. FSMs always halt. PDAs might not halt but you can build equivalent ones that do.
-</div>
-
-<div class="key">
-  <strong>Generator vs. Recognizer:</strong> A generator produces solutions (like a program that computes A+B). A recognizer checks if a proposed solution is correct (like checking if A+B=C). Most problems can be recast as decision problems (yes/no questions about strings).
-</div>
-
-<div class="key">
-  <strong>Encoding:</strong> Almost anything can be represented as a string. &lt;X&gt; means "the string encoding of object X." This lets us turn any problem into a language recognition problem.
-</div>
-
-</div>
-
-<!-- ======================= SECTION 2 ======================= -->
-<div class="section" id="s2">
-<h2>2. Context-Free Grammars: What They Are and How They Work</h2>
-
-<h3>What is a CFG?</h3>
-
-<p>A <strong>context-free grammar (CFG)</strong> is a set of rules for generating strings. Think of it like a recipe for building strings character by character.</p>
-
-<div class="concept">
-  <div class="label">Formal Definition</div>
-  <p>A CFG G = (V, &Sigma;, R, S) where:</p>
-  <ul>
-    <li><strong>V</strong> = all symbols (both terminals and nonterminals)</li>
-    <li><strong>&Sigma;</strong> = terminal symbols (the actual characters in your final string, like a, b, c)</li>
-    <li><strong>R</strong> = rules (also called productions). Each rule has a single nonterminal on the left and anything on the right.</li>
-    <li><strong>S</strong> = start symbol (a nonterminal where every derivation begins)</li>
-  </ul>
-</div>
-
-<p><strong>Terminals</strong> are the final characters (a, b, c, (, ), etc.). <strong>Nonterminals</strong> are working variables (S, A, B, T, etc.) that get replaced during derivation and disappear in the final string.</p>
-
-<h3>How Derivation Works</h3>
-
-<p>You start with the start symbol S and keep applying rules until only terminal symbols remain:</p>
-
-<div class="example">
-  <div class="ex-title">: Generating a<sup>n</sup>b<sup>n</sup></div>
-  <p>Grammar rules: S &rarr; aSb | &epsilon;</p>
-  <p>To generate "aabb":</p>
-  <pre>S  &rArr;  aSb         (applied S &rarr; aSb)
-   &rArr;  aaSbb       (applied S &rarr; aSb again)
-   &rArr;  aabb        (applied S &rarr; &epsilon;, S disappears)</pre>
-  <p>The &rArr; symbol means "one derivation step." Each step, you pick one nonterminal and replace it using a rule.</p>
-</div>
-
-<h3>Parse Trees</h3>
-
-<p>A <strong>parse tree</strong> shows the structure of a derivation. The root is S, each internal node is a nonterminal, and leaves are terminals. Parse trees are why we care about CFGs &mdash; they show us the <strong>structure</strong> of strings (like how an arithmetic expression is grouped).</p>
-
-<h3>Ambiguity</h3>
-
-<p>A grammar is <strong>ambiguous</strong> if some string has more than one parse tree. This is usually bad because it means the structure is not unique (e.g., does 2+3*4 mean (2+3)*4 or 2+(3*4)?).</p>
-
-<p>A language is <strong>inherently ambiguous</strong> if EVERY grammar for it is ambiguous. Both "is this grammar ambiguous?" and "is this language inherently ambiguous?" are <strong>undecidable</strong> problems (no algorithm can always answer them).</p>
-
-<h3>Self-Embedding: Where CFGs Get Their Power</h3>
-
-<p>A grammar is <strong>self-embedding</strong> if a nonterminal can derive itself with nonempty strings on BOTH sides. Example: S &rarr; aSb is self-embedding (a on the left, b on the right of S).</p>
-
-<div class="key">
-  <strong>Key theorem:</strong> If a grammar is NOT self-embedding, then its language is regular. If EVERY grammar for a language is self-embedding, then the language is NOT regular.
-</div>
-
-</div>
-
-<!-- ======================= SECTION 3 ======================= -->
-<div class="section" id="s3">
-<h2>3. Simplifying CFGs and Converting to Chomsky Normal Form</h2>
-
-<p>This is a <strong>10-point question</strong> on the exam. You will be given a CFG and must show your work for each step. The overall process is:</p>
-
-<ol>
-  <li>Remove epsilon (&epsilon;) productions</li>
-  <li>Remove unit productions</li>
-  <li>Remove useless productions</li>
-  <li>Convert to Chomsky Normal Form (removeMixed, then removeLong)</li>
-</ol>
-
-<!-- 3a: EPSILON -->
-<h3 id="s3a">Step 1: Remove Epsilon Productions</h3>
-
-<p>An <strong>epsilon production</strong> is any rule like X &rarr; &epsilon; (a variable producing the empty string). These cause ambiguity, so we want to get rid of them.</p>
-
-<h4>Part A: Find All Nullable Variables</h4>
-
-<p>A variable is <strong>nullable</strong> if it can eventually produce &epsilon;. There are two ways:</p>
-<ol>
-  <li><strong>Directly nullable:</strong> There is a rule X &rarr; &epsilon;.</li>
-  <li><strong>Indirectly nullable:</strong> There is a rule X &rarr; ABC... where ALL of A, B, C are nullable.</li>
-</ol>
-<p>Keep checking until you find no new nullable variables.</p>
-
-<h4>Part B: Add New Rules</h4>
-
-<p>For every rule that contains a nullable variable, add new versions where that nullable variable is "deleted" (replaced with &epsilon;). Do this for every combination of nullable variables in the rule.</p>
-
-<h4>Part C: Delete All X &rarr; &epsilon; Rules</h4>
-
-<div class="example">
-  <div class="ex-title">: Remove Epsilon Productions</div>
-  <p><strong>Given grammar:</strong></p>
-<pre>S &rarr; aTa
-T &rarr; ABC
-A &rarr; aA | C
-B &rarr; Bb | C
-C &rarr; c | &epsilon;</pre>
-
-  <div class="step">
-    <div class="step-label">Step 1: Find nullable variables</div>
-    <p><strong>Round 1:</strong> C is nullable (C &rarr; &epsilon; is a rule). Nullable = {C}</p>
-    <p><strong>Round 2:</strong> A is nullable (A &rarr; C, and C is nullable). B is nullable (B &rarr; C, and C is nullable). Nullable = {C, A, B}</p>
-    <p><strong>Round 3:</strong> T is nullable (T &rarr; ABC, and A, B, C are ALL nullable). Nullable = {C, A, B, T}</p>
-    <p><strong>Round 4:</strong> S is NOT nullable (S &rarr; aTa, but 'a' is a terminal and cannot be &epsilon;). No new variables. Done.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 2: Add new rules (substitute &epsilon; for nullable variables)</div>
-    <p>Go through each rule and create versions where nullable variables are removed:</p>
-    <p><strong>S &rarr; aTa:</strong> T is nullable, so add S &rarr; aa</p>
-    <p><strong>T &rarr; ABC:</strong> A, B, C are all nullable. Generate all combos of removing them:</p>
-    <ul>
-      <li>Remove A: T &rarr; BC</li>
-      <li>Remove B: T &rarr; AC</li>
-      <li>Remove C: T &rarr; AB</li>
-      <li>Remove A,B: T &rarr; C</li>
-      <li>Remove A,C: T &rarr; B</li>
-      <li>Remove B,C: T &rarr; A</li>
-      <li>Remove A,B,C: T &rarr; &epsilon; (but we do NOT add this &mdash; we are getting rid of epsilon rules)</li>
-    </ul>
-    <p><strong>A &rarr; aA:</strong> A is nullable, so add A &rarr; a</p>
-    <p><strong>A &rarr; C:</strong> C is nullable, so this would give A &rarr; &epsilon;. Don't add it (A is not the start symbol).</p>
-    <p><strong>B &rarr; Bb:</strong> B is nullable, so add B &rarr; b</p>
-    <p><strong>B &rarr; C:</strong> C is nullable, would give B &rarr; &epsilon;. Don't add.</p>
-    <p><strong>C &rarr; c:</strong> No nullable variables in RHS. No new rule.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 3: Delete all X &rarr; &epsilon; rules</div>
-    <p>Remove C &rarr; &epsilon;. Final result:</p>
-<pre>S &rarr; aTa | aa
-T &rarr; ABC | BC | AC | AB | A | B | C
-A &rarr; aA | C | a
-B &rarr; Bb | C | b
-C &rarr; c</pre>
-  </div>
-</div>
-
-<!-- 3b: UNIT -->
-<h3 id="s3b">Step 2: Remove Unit Productions</h3>
-
-<p>A <strong>unit production</strong> is a rule where the right side is a single nonterminal, like A &rarr; B. These are unnecessary indirection.</p>
-
-<h4>The Algorithm</h4>
-<ol>
-  <li>Pick any unit production X &rarr; Y.</li>
-  <li>Remove it.</li>
-  <li>Look at all remaining rules for Y (like Y &rarr; abc, Y &rarr; DE). For each one, add X &rarr; abc, X &rarr; DE, etc. But do NOT add any rule that was already removed.</li>
-  <li>Repeat until no unit productions remain.</li>
-</ol>
-
-<div class="example">
-  <div class="ex-title">: Remove Unit Productions</div>
-  <p><strong>Starting grammar (from epsilon removal):</strong></p>
-<pre>S &rarr; XY
-X &rarr; A
-A &rarr; B | a
-B &rarr; b
-Y &rarr; T
-T &rarr; Y | c</pre>
-
-  <div class="step">
-    <div class="step-label">Remove X &rarr; A</div>
-    <p>A's rules are: A &rarr; B | a. So add X &rarr; B and X &rarr; a. (X &rarr; B is itself a unit production, we will handle it next.)</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Remove X &rarr; B</div>
-    <p>B's rules are: B &rarr; b. So add X &rarr; b.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Remove A &rarr; B</div>
-    <p>B's rules are: B &rarr; b. So add A &rarr; b.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Remove Y &rarr; T</div>
-    <p>T's rules are: T &rarr; Y | c. Add Y &rarr; Y (useless, ignore) and Y &rarr; c.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Remove T &rarr; Y</div>
-    <p>Y's remaining rules: Y &rarr; c. Add T &rarr; c.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Result (no unit productions left):</div>
-<pre>S &rarr; XY
-X &rarr; a | b
-A &rarr; a | b
-B &rarr; b
-Y &rarr; c
-T &rarr; c</pre>
-  </div>
-</div>
-
-<!-- 3c: CNF -->
-<h3 id="s3c">Steps 4-5: Convert to Chomsky Normal Form</h3>
-
-<div class="concept">
-  <div class="label">What is CNF?</div>
-  <p>In Chomsky Normal Form, every rule looks like one of these two forms:</p>
-  <ul>
-    <li><strong>A &rarr; BC</strong> (exactly two nonterminals)</li>
-    <li><strong>A &rarr; a</strong> (exactly one terminal)</li>
-  </ul>
-  <p>No mixing terminals with nonterminals in the same rule. No rules with more than 2 symbols on the right.</p>
-</div>
-
-<h4>removeMixed: Fix Rules That Mix Terminals and Nonterminals</h4>
-
-<p>If a rule has length &gt; 1 on the right side AND contains a terminal, replace each terminal with a new variable.</p>
-
-<div class="example">
-  <div class="ex-title">: removeMixed</div>
-<pre>Before:                     After:
-A &rarr; a             A &rarr; a              (length 1, leave alone)
-A &rarr; aB            A &rarr; T<sub>a</sub>B            (replaced 'a' with T<sub>a</sub>)
-A &rarr; BaC           A &rarr; BT<sub>a</sub>C           (replaced 'a' with T<sub>a</sub>)
-A &rarr; BbC           A &rarr; BT<sub>b</sub>C           (replaced 'b' with T<sub>b</sub>)
-
-Add new rules:
-T<sub>a</sub> &rarr; a
-T<sub>b</sub> &rarr; b</pre>
-</div>
-
-<h4>removeLong: Break Rules With More Than 2 Symbols</h4>
-
-<p>If a rule has more than 2 nonterminals on the right, chain it into pairs using new variables.</p>
-
-<div class="example">
-  <div class="ex-title">: removeLong</div>
-<pre>Before:                     After:
-A &rarr; BCDE                  A  &rarr; BM<sub>2</sub>
-                            M<sub>2</sub> &rarr; CM<sub>3</sub>
-                            M<sub>3</sub> &rarr; DE</pre>
-  <p>The idea: take the first symbol, pair it with a new variable that represents "the rest." Repeat until each rule has exactly 2 symbols.</p>
-</div>
-
-<!-- 3d: FULL WORKED -->
-<h3 id="s3d">Full Worked Problem: Sample Final Question 1a</h3>
-
-<div class="example">
-  <div class="ex-title">: Complete CNF Conversion</div>
-  <p><strong>Given:</strong></p>
-<pre>S &rarr; AbbA | BC | B
-A &rarr; aA | a | &lambda;
-B &rarr; CD | b
-C &rarr; cC | cD
-D &rarr; ddC</pre>
-
-  <div class="step">
-    <div class="step-label">Step 1: Find nullable variables</div>
-    <p>A &rarr; &lambda;, so A is nullable. Nullable = {A}</p>
-    <p>Check S &rarr; AbbA: not all symbols nullable (bb are terminals). S not nullable.</p>
-    <p>No other variables have all-nullable right sides. Done. <strong>Nullable = {A}</strong></p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 2: Remove epsilon productions</div>
-    <p><strong>S &rarr; AbbA:</strong> A is nullable (appears twice). Add combos:</p>
-    <ul>
-      <li>Remove first A: S &rarr; bbA</li>
-      <li>Remove second A: S &rarr; Abb</li>
-      <li>Remove both A's: S &rarr; bb</li>
-    </ul>
-    <p><strong>A &rarr; aA:</strong> A nullable. Add A &rarr; a (already have it, so no duplicate).</p>
-    <p>Delete A &rarr; &lambda;.</p>
-    <p><strong>Result:</strong></p>
-<pre>S &rarr; AbbA | bbA | Abb | bb | BC | B
-A &rarr; aA | a
-B &rarr; CD | b
-C &rarr; cC | cD
-D &rarr; ddC</pre>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 3: Remove unit productions</div>
-    <p>S &rarr; B is a unit production. Remove it. B's rules: B &rarr; CD | b. Add S &rarr; CD and S &rarr; b.</p>
-    <p><strong>Result:</strong></p>
-<pre>S &rarr; AbbA | bbA | Abb | bb | BC | CD | b
-A &rarr; aA | a
-B &rarr; CD | b
-C &rarr; cC | cD
-D &rarr; ddC</pre>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 4: Remove useless productions</div>
-    <p>Check productivity: all variables can derive terminal strings (trace through each). All are productive.</p>
-    <p>Check reachability from S: S uses A, B, C, D. B uses C, D. C uses D. All reachable.</p>
-    <p>Nothing to remove.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 5: removeMixed (fix rules mixing terminals and nonterminals)</div>
-    <p>Rules with length &gt; 1 containing terminals:</p>
-    <ul>
-      <li>S &rarr; AbbA becomes S &rarr; AT<sub>b</sub>T<sub>b</sub>A</li>
-      <li>S &rarr; bbA becomes S &rarr; T<sub>b</sub>T<sub>b</sub>A</li>
-      <li>S &rarr; Abb becomes S &rarr; AT<sub>b</sub>T<sub>b</sub></li>
-      <li>S &rarr; bb becomes S &rarr; T<sub>b</sub>T<sub>b</sub></li>
-      <li>A &rarr; aA becomes A &rarr; T<sub>a</sub>A</li>
-      <li>C &rarr; cC becomes C &rarr; T<sub>c</sub>C</li>
-      <li>C &rarr; cD becomes C &rarr; T<sub>c</sub>D</li>
-      <li>D &rarr; ddC becomes D &rarr; T<sub>d</sub>T<sub>d</sub>C</li>
-    </ul>
-    <p>Add: T<sub>a</sub> &rarr; a, T<sub>b</sub> &rarr; b, T<sub>c</sub> &rarr; c, T<sub>d</sub> &rarr; d</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Step 6: removeLong (break rules with &gt; 2 symbols)</div>
-    <p>S &rarr; AT<sub>b</sub>T<sub>b</sub>A (length 4):</p>
-<pre>S  &rarr; AM<sub>1</sub>
-M<sub>1</sub> &rarr; T<sub>b</sub>M<sub>2</sub>
-M<sub>2</sub> &rarr; T<sub>b</sub>A</pre>
-    <p>S &rarr; T<sub>b</sub>T<sub>b</sub>A (length 3):</p>
-<pre>S  &rarr; T<sub>b</sub>M<sub>3</sub>
-M<sub>3</sub> &rarr; T<sub>b</sub>A</pre>
-    <p>S &rarr; AT<sub>b</sub>T<sub>b</sub> (length 3):</p>
-<pre>S  &rarr; AM<sub>4</sub>
-M<sub>4</sub> &rarr; T<sub>b</sub>T<sub>b</sub></pre>
-    <p>D &rarr; T<sub>d</sub>T<sub>d</sub>C (length 3):</p>
-<pre>D  &rarr; T<sub>d</sub>M<sub>5</sub>
-M<sub>5</sub> &rarr; T<sub>d</sub>C</pre>
-    <p>Rules already length 2 or 1 are fine: S &rarr; T<sub>b</sub>T<sub>b</sub>, S &rarr; BC, S &rarr; CD, S &rarr; b, A &rarr; T<sub>a</sub>A, A &rarr; a, B &rarr; CD, B &rarr; b, C &rarr; T<sub>c</sub>C, C &rarr; T<sub>c</sub>D.</p>
-  </div>
-</div>
-
-</div>
-
-<!-- ======================= SECTION 4 ======================= -->
-<div class="section" id="s4">
-<h2>4. Pushdown Automata: What They Are</h2>
-
-<p>A PDA is like an FSM but with a <strong>stack</strong> attached &mdash; an unlimited scratch pad where you can only access the top element. This extra memory is exactly what lets PDAs handle context-free languages that FSMs cannot.</p>
-
-<div class="concept">
-  <div class="label">Definition: PDA</div>
-  <p>M = (K, &Sigma;, &Gamma;, &Delta;, s, A) where:</p>
-  <ul>
-    <li><strong>K</strong> = set of states</li>
-    <li><strong>&Sigma;</strong> = input alphabet (the characters you read)</li>
-    <li><strong>&Gamma;</strong> = stack alphabet (the characters you can push/pop)</li>
-    <li><strong>s</strong> = start state</li>
-    <li><strong>A</strong> = set of accepting states</li>
-    <li><strong>&Delta;</strong> = transitions: ((state, input_or_&epsilon;, what_to_pop), (new_state, what_to_push))</li>
-  </ul>
-</div>
-
-<h3>How the Stack Works</h3>
-<p>The stack is like a pile of plates. You can only see/remove the top plate (pop), and you can only add new plates on top (push). Written left to right, the leftmost character is the top.</p>
-<p>If the stack contains "cab" (c on top), and you push "xy", the stack becomes "xycab" (x is now on top).</p>
-
-<h3>Reading Transition Labels</h3>
-<p>Transitions are written as: <code>input / pop / push</code></p>
-<ul>
-  <li><strong>input:</strong> what character to consume from the input (or &epsilon; to consume nothing)</li>
-  <li><strong>pop:</strong> what to remove from the top of the stack (or &epsilon; to pop nothing)</li>
-  <li><strong>push:</strong> what to add to the top of the stack (or &epsilon; to push nothing)</li>
-</ul>
-
-<h3>Accepting a String</h3>
-<p>A PDA <strong>accepts</strong> a string w if there exists at least one sequence of transitions that:</p>
-<ol>
-  <li>Starts in the start state with empty stack</li>
-  <li>Reads all of w (consumes every character)</li>
-  <li>Ends in an accepting state with empty stack</li>
-</ol>
-<p>Since PDAs are <strong>nondeterministic</strong>, there may be multiple paths. If ANY path accepts, the string is accepted.</p>
-
-<div class="warn">
-  <strong>A PDA rejects w</strong> only if ALL paths fail (dead end, non-accepting state, or stack not empty). If even one path accepts, the string is accepted.
-</div>
-
-</div>
-
-<!-- ======================= SECTION 5 ======================= -->
-<div class="section" id="s5">
-<h2>5. Reading a PDA: Accept/Reject Strings and Describe Its Language</h2>
-
-<p>This is a <strong>10-point question</strong>. You will be given a PDA diagram and must: (1) trace specific strings, (2) say if they are accepted or rejected, (3) describe the language in English.</p>
-
-<h3>How to Trace a String Through a PDA</h3>
-
-<div class="example">
-  <div class="ex-title">: Tracing the Sample Final PDA</div>
-  <p>From the Sample Final, the PDA has transitions:</p>
-<pre>q0: a;a,R &rarr; q0    (read a, pop nothing, push a)
-    b;a,R &rarr; q1    (read b, pop a, push R)
-    &empty;;b,R &rarr; q4   (read nothing, pop b, push R)
-q1: a;b,L &rarr; q3    (read a, pop b, push L)
-    b;b,R &rarr; q4    (read b, pop b, push R)</pre>
-  <p>(Reading from the diagram &mdash; each edge is: input ; stack_top_to_pop ; push_onto_stack)</p>
-
-  <p><strong>Trace input "ab":</strong></p>
-  <table class="trace-table">
-    <tr><th>Step</th><th>State</th><th>Remaining Input</th><th>Stack</th><th>Action</th></tr>
-    <tr><td>0</td><td>q0</td><td>ab</td><td>(empty)</td><td>Start</td></tr>
-    <tr><td>1</td><td>q0</td><td>b</td><td>a</td><td>Read 'a', push 'a'</td></tr>
-    <tr><td>2</td><td>q1</td><td>(empty)</td><td>R</td><td>Read 'b', pop 'a', push 'R'</td></tr>
-  </table>
-  <p>Input consumed. Is q1 accepting? Check the diagram for double circles. If yes &rarr; accepted (if stack condition met). If no &rarr; rejected.</p>
-</div>
-
-<h3>How to Describe a PDA's Language</h3>
-
-<p>Look for the pattern:</p>
-<ol>
-  <li><strong>What gets pushed?</strong> Usually one type of symbol for one section of input.</li>
-  <li><strong>What gets popped?</strong> Usually another section of input "matches" what was pushed.</li>
-  <li><strong>What is the relationship?</strong> Equal counts? Double? Greater than?</li>
-</ol>
-
-<p>Example: If the PDA pushes one 'a' for each input 'a', then pops one 'a' for each input 'b', the language is {a<sup>n</sup>b<sup>n</sup> : n &ge; 0}.</p>
-
-</div>
-
-<!-- ======================= SECTION 6 ======================= -->
-<div class="section" id="s6">
-<h2>6. Directly Constructing a PDA for a Language</h2>
-
-<p>This is a <strong>10-point question</strong>. Dr. Stringfellow says: <strong>"DO NOT try to generate the grammar first."</strong> Build the PDA directly from the language description.</p>
-
-<h3>The General Strategy</h3>
-<ol>
-  <li><strong>Identify the "phases" of the input.</strong> What comes first? What comes second?</li>
-  <li><strong>Use the stack to count/remember.</strong> Push during one phase, pop during another.</li>
-  <li><strong>Design states for each phase.</strong></li>
-  <li><strong>Handle acceptance:</strong> Accept when input is consumed AND stack is empty AND in accepting state.</li>
-</ol>
-
-<div class="example">
-  <div class="ex-title">: PDA for a<sup>n</sup>b<sup>n</sup> (n &ge; 0)</div>
-  <p><strong>Phases:</strong> First read a's, then read b's. Number of a's must equal number of b's.</p>
-
-  <div class="step">
-    <div class="step-label">State 1 (start, accepting): Reading a's phase</div>
-    <p>Transition: read 'a', pop nothing, push 'a'. Stay in State 1.</p>
-    <p>This pushes one 'a' onto the stack for each 'a' in the input.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">State 1 &rarr; State 2: Switch to reading b's</div>
-    <p>Transition: read 'b', pop 'a', push nothing. Go to State 2.</p>
-    <p>When we see the first 'b', start popping.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">State 2: Reading b's phase</div>
-    <p>Transition: read 'b', pop 'a', push nothing. Stay in State 2.</p>
-    <p>Each 'b' removes one 'a' from the stack.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Acceptance</div>
-    <p>State 1 is accepting (handles n=0, empty string).</p>
-    <p>State 2 accepts when input is done AND stack is empty (equal counts).</p>
-  </div>
-
-  <p><strong>Written formally:</strong></p>
-<pre>States: {q1, q2}, Start: q1, Accept: {q1, q2}
-Transitions:
-  ((q1, a, &epsilon;), (q1, a))    -- read a, push a
-  ((q1, b, a), (q2, &epsilon;))    -- read b, pop a
-  ((q2, b, a), (q2, &epsilon;))    -- read b, pop a</pre>
-</div>
-
-<div class="example">
-  <div class="ex-title">: PDA for {w &isin; {a,b}* : #a(w) = #b(w)}</div>
-  <p><strong>Key insight:</strong> Unlike a<sup>n</sup>b<sup>n</sup>, the a's and b's can come in any order. The stack needs to track the "imbalance."</p>
-
-  <div class="step">
-    <div class="step-label">The idea</div>
-    <p>If we have more a's than b's so far, the stack has a's in it.</p>
-    <p>If we have more b's than a's so far, the stack has b's in it.</p>
-    <p>If they are equal, the stack is empty.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Transitions (single state q1, start and accepting)</div>
-<pre>Read 'a', stack top is 'b' &rarr; pop 'b' (they cancel out)
-Read 'a', stack top is 'a' or empty &rarr; push 'a'
-Read 'b', stack top is 'a' &rarr; pop 'a' (they cancel out)
-Read 'b', stack top is 'b' or empty &rarr; push 'b'</pre>
-  </div>
-  <p>Accept when input consumed and stack empty (counts are equal).</p>
-</div>
-
-<div class="example">
-  <div class="ex-title">: PDA for {a<sup>m</sup>b<sup>n</sup> : m &ne; n, m,n &gt; 0}</div>
-  <p><strong>Key insight from Dr. Stringfellow:</strong> Start with the equal case and handle the two mismatch cases.</p>
-
-  <div class="step">
-    <div class="step-label">Base: match a's and b's</div>
-    <p>State 1: read a, push a. State 2: read b, pop a.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Case 1: More a's than b's (m &gt; n)</div>
-    <p>Input is done but stack still has a's. Go to accepting State 3, pop remaining a's.</p>
-    <p>Transition: (&epsilon; / a / &epsilon;) in a loop at State 3.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">Case 2: More b's than a's (m &lt; n)</div>
-    <p>Stack is empty but input still has b's. Go to accepting State 4, consume remaining b's.</p>
-    <p>Transition: (b / &epsilon; / &epsilon;) in a loop at State 4.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-label">The tricky part: detecting bottom of stack and end of input</div>
-    <p><strong>Detect bottom of stack:</strong> Push a special marker '#' before starting. When you see '#', you know the stack is "empty."</p>
-    <p><strong>Detect end of input:</strong> Use nondeterminism &mdash; at any point during b-reading, nondeterministically guess "this is the last b" and try to transition.</p>
-  </div>
-</div>
-
-</div>
-
-<!-- ======================= SECTION 7 ======================= -->
-<div class="section" id="s7">
-<h2>7. GNF Grammar to Top-Down PDA</h2>
-
-<p>This is a <strong>5-point question</strong>. You are given a grammar already in Greibach Normal Form and must build the corresponding PDA.</p>
-
-<h3>What is Greibach Normal Form (GNF)?</h3>
-<p>Every rule looks like: A &rarr; a&alpha; where 'a' is a <strong>single terminal</strong> and &alpha; is a <strong>string of zero or more nonterminals</strong>.</p>
-<p>Example: S &rarr; aSA | a (both start with a terminal).</p>
-
-<h3>The Construction (Memorize This)</h3>
-
-<div class="concept">
-  <div class="label">GNF to PDA Algorithm</div>
-  <p>PDA has 3 states: q<sub>0</sub> (start), q<sub>1</sub> (working), q<sub>f</sub> (accept). Stack alphabet = grammar variables. Use 'z' as stack bottom marker.</p>
+<div class="page-wrapper">
+
+<!-- ═══════════════════════════════════════ HEADER ═══════════════════════════════════════ -->
+<header class="doc-header">
+  <div class="subtitle">Final Exam Study Guide</div>
+  <h1>CMPS 3023 — Logic Design</h1>
+</header>
+
+<!-- ═══════════════════════════════════════ TOC ═══════════════════════════════════════ -->
+<nav class="toc">
+  <h2>Contents</h2>
   <ol>
-    <li><strong>Startup:</strong> &delta;(q<sub>0</sub>, &epsilon;, z) = {(q<sub>1</sub>, Sz)} &mdash; push start symbol S on top of z.</li>
-    <li><strong>For each rule A &rarr; aX<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>:</strong><br>
-        &delta;(q<sub>1</sub>, a, A) includes (q<sub>1</sub>, X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>) &mdash; read 'a', pop A, push X<sub>1</sub>...X<sub>n</sub> (X<sub>1</sub> on top).</li>
-    <li><strong>For each rule A &rarr; a (no variables):</strong><br>
-        &delta;(q<sub>1</sub>, a, A) includes (q<sub>1</sub>, &epsilon;) &mdash; read 'a', pop A, push nothing.</li>
-    <li><strong>Finish:</strong> &delta;(q<sub>1</sub>, &epsilon;, z) = {(q<sub>f</sub>, &epsilon;)} &mdash; if stack only has z (everything matched), accept.</li>
+    <li><a href="#topic1">Floating-Point Representation</a></li>
+    <li><a href="#topic2">Karnaugh Maps (K-Maps)</a></li>
+    <li><a href="#topic3">VHDL</a></li>
+    <li><a href="#topic4">Finite State Machines (FSM) — Equations &amp; Drawings</a></li>
+    <li><a href="#topic5">FSMD — Algorithms</a></li>
+    <li><a href="#checklist">Quick Reference: Exam Checklist</a></li>
   </ol>
-</div>
+</nav>
 
-<div class="example">
-  <div class="ex-title">: GNF Grammar to PDA</div>
-  <p><strong>Given GNF grammar:</strong></p>
-<pre>S &rarr; aSA | a
-A &rarr; bB
-B &rarr; b</pre>
-
-  <div class="step">
-    <div class="step-label">Build the transitions</div>
-<pre>Startup:
-  &delta;(q<sub>0</sub>, &epsilon;, z) = {(q<sub>1</sub>, Sz)}        Push S onto stack
-
-From S &rarr; aSA:
-  &delta;(q<sub>1</sub>, a, S) includes (q<sub>1</sub>, SA)    Read 'a', pop S, push SA (S on top)
-
-From S &rarr; a:
-  &delta;(q<sub>1</sub>, a, S) includes (q<sub>1</sub>, &epsilon;)     Read 'a', pop S, push nothing
-
-From A &rarr; bB:
-  &delta;(q<sub>1</sub>, b, A) = {(q<sub>1</sub>, B)}           Read 'b', pop A, push B
-
-From B &rarr; b:
-  &delta;(q<sub>1</sub>, b, B) = {(q<sub>1</sub>, &epsilon;)}         Read 'b', pop B, push nothing
-
-Finish:
-  &delta;(q<sub>1</sub>, &epsilon;, z) = {(q<sub>f</sub>, &epsilon;)}        Accept when stack empty</pre>
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  TOPIC 1: FLOATING-POINT                                                        ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="topic1">
+  <div class="topic-header">
+    <span class="topic-number">01</span>
+    <h2>Floating-Point Representation</h2>
   </div>
 
-  <div class="step">
-    <div class="step-label">Trace input "aabb"</div>
-    <table class="trace-table">
-      <tr><th>Trans</th><th>State</th><th>Unread Input</th><th>Stack</th></tr>
-      <tr><td>startup</td><td>q<sub>0</sub> &rarr; q<sub>1</sub></td><td>aabb</td><td>Sz</td></tr>
-      <tr><td>S&rarr;aSA</td><td>q<sub>1</sub></td><td>abb</td><td>SAz</td></tr>
-      <tr><td>S&rarr;a</td><td>q<sub>1</sub></td><td>bb</td><td>Az</td></tr>
-      <tr><td>A&rarr;bB</td><td>q<sub>1</sub></td><td>b</td><td>Bz</td></tr>
-      <tr><td>B&rarr;b</td><td>q<sub>1</sub></td><td>(empty)</td><td>z</td></tr>
-      <tr><td>finish</td><td>q<sub>f</sub></td><td>(empty)</td><td>(empty)</td></tr>
+  <h3>1.1 Fixed-Point Numbers (Foundation)</h3>
+  <p>Fixed-point uses a set number of integer bits and fraction bits. The binary point is implied, not stored.</p>
+
+  <p><strong>Converting decimal fractions to binary:</strong></p>
+  <ul>
+    <li>Integer part: divide by 2 repeatedly, collect remainders bottom-to-top</li>
+    <li>Fraction part: multiply by 2 repeatedly, collect integer parts top-to-bottom</li>
+  </ul>
+
+  <div class="callout example">
+    <span class="label">Lecture Example</span>
+    Represent <strong>7.5</strong> in 8-bit fixed-point (4 integer, 4 fraction):<br>
+    7 = 0111₂ &nbsp;|&nbsp; 0.5 = .1₂ &nbsp;→&nbsp; Combined: 0111.1000 → stored as <code>01111000</code>
+  </div>
+
+  <div class="callout example">
+    <span class="label">Signed Fixed-Point (Two's Complement)</span>
+    Represent <strong>−7.5</strong>:<br>
+    1. Start with +7.5 → <code>01111000</code><br>
+    2. Invert all bits → <code>10000111</code><br>
+    3. Add 1 to LSB → <code>10001000</code>
+  </div>
+
+  <h3>1.2 IEEE 754 Single-Precision (32-bit) Format</h3>
+
+  <div class="bit-field">
+    <div class="field sign"><span class="bits">1</span><span class="lbl">Sign</span></div>
+    <div class="field exp"><span class="bits">8 bits</span><span class="lbl">Exponent</span></div>
+    <div class="field frac"><span class="bits">23 bits</span><span class="lbl">Fraction</span></div>
+  </div>
+
+  <ul>
+    <li><strong>Sign bit:</strong> 0 = positive, 1 = negative</li>
+    <li><strong>Bias</strong> = 127</li>
+    <li><strong>Biased exponent</strong> = actual exponent + 127</li>
+    <li><strong>Implicit leading 1:</strong> The mantissa always starts with 1.xxxx, so only the fraction after the decimal is stored</li>
+  </ul>
+
+  <h3>1.3 Step-by-Step: Decimal → IEEE 754 Hex</h3>
+
+  <div class="callout example">
+    <span class="label">Professor's Example — Convert −58.25 to IEEE 754 Hex</span>
+    <p><strong>Step 1 — Convert to binary:</strong><br>
+    58 = 111010₂ &nbsp;|&nbsp; 0.25 = .01₂ → −58.25 = −111010.01₂</p>
+
+    <p><strong>Step 2 — Normalize:</strong><br>
+    111010.01 = 1.1101001 × 2⁵</p>
+
+    <p><strong>Step 3 — Fill in each field:</strong><br>
+    Sign = 1 (negative)<br>
+    Exponent = 5 + 127 = 132 = 10000100₂<br>
+    Fraction = 11010010000000000000000</p>
+
+    <p><strong>Step 4 — Assemble:</strong><br>
+    1 | 10000100 | 11010010000000000000000<br>
+    Nibbles: 1100 0010 0110 1001 0000 0000 0000 0000<br>
+    → <strong>0xC2690000</strong></p>
+  </div>
+
+  <h3>1.4 Floating-Point Addition (Professor's 8-Step Method)</h3>
+
+  <div class="callout example">
+    <span class="label">Lecture Example — Add 0x3FC00000 + 0x40500000</span>
+    <p><strong>1. Extract exponent and fraction bits:</strong><br>
+    N1: S=0, E=127, F=.1 &nbsp;|&nbsp; N2: S=0, E=128, F=.101</p>
+
+    <p><strong>2. Prepend leading 1:</strong><br>
+    N1: 1.1 &nbsp;|&nbsp; N2: 1.101</p>
+
+    <p><strong>3. Compare exponents:</strong><br>
+    127 − 128 = −1, so shift N1 right by 1</p>
+
+    <p><strong>4. Shift smaller mantissa:</strong><br>
+    N1 → 0.11 (× 2¹)</p>
+
+    <p><strong>5. Add mantissas:</strong><br>
+    0.11 + 1.101 = 10.011 (× 2¹)</p>
+
+    <p><strong>6. Normalize &amp; adjust exponent:</strong><br>
+    10.011 × 2¹ = 1.0011 × 2²</p>
+
+    <p><strong>7. Round:</strong> Fits in 23 bits, no rounding needed</p>
+
+    <p><strong>8. Assemble:</strong><br>
+    S=0, E = 2 + 127 = 129 = 10000001₂, F = 00110…<br>
+    → <strong>0x40980000</strong></p>
+  </div>
+
+  <h3>1.5 Special Cases</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Number</th><th>Sign</th><th>Exponent</th><th>Fraction</th></tr>
+      <tr><td>Zero</td><td>X</td><td>00000000</td><td>All zeros</td></tr>
+      <tr><td>+Infinity</td><td>0</td><td>11111111</td><td>All zeros</td></tr>
+      <tr><td>−Infinity</td><td>1</td><td>11111111</td><td>All zeros</td></tr>
+      <tr><td>NaN</td><td>X</td><td>11111111</td><td>Non-zero</td></tr>
     </table>
-    <p>Input consumed, accepting state reached. <strong>"aabb" is accepted.</strong></p>
-  </div>
-</div>
-
-</div>
-
-<!-- ======================= SECTION 8 ======================= -->
-<div class="section" id="s8">
-<h2>8. Turing Machines: What They Are</h2>
-
-<p>A Turing Machine (TM) is the most powerful computational model we study. It has an <strong>infinite tape</strong> (memory), a <strong>read/write head</strong> that can move left or right, and a <strong>finite control</strong> (states).</p>
-
-<div class="concept">
-  <div class="label">Definition: Turing Machine</div>
-  <p>M = (Q, &Sigma;, &Gamma;, &delta;, q<sub>0</sub>, F) where:</p>
-  <ul>
-    <li><strong>Q</strong> = finite set of states</li>
-    <li><strong>&Sigma;</strong> = input alphabet (no blank symbol)</li>
-    <li><strong>&Gamma;</strong> = tape alphabet (includes blank &#9633; and all of &Sigma;)</li>
-    <li><strong>q<sub>0</sub></strong> = initial state</li>
-    <li><strong>F</strong> = halting/final states</li>
-    <li><strong>&delta;:</strong> (Q - F) &times; &Gamma; &rarr; Q &times; &Gamma; &times; {L, R}</li>
-  </ul>
-  <p>&delta; is a <strong>function</strong> (deterministic). Given a non-halting state and tape symbol, it tells you: new state, symbol to write, direction to move.</p>
-</div>
-
-<h3>Key Differences from FSMs and PDAs</h3>
-<ul>
-  <li>The tape is <strong>infinite</strong> in both directions.</li>
-  <li>The head can <strong>read AND write</strong> (FSMs only read; PDAs read input and read/write a stack).</li>
-  <li>The head can move <strong>both left and right</strong> (FSMs/PDAs only move right through input).</li>
-  <li>TMs are <strong>NOT guaranteed to halt</strong>. They can loop forever.</li>
-  <li>TMs can <strong>compute functions</strong> (produce output), not just accept/reject.</li>
-</ul>
-
-<h3>How a Transition Works</h3>
-<p>&delta;(q<sub>0</sub>, a) = (q<sub>1</sub>, b, R) means: "In state q<sub>0</sub>, reading 'a' on the tape: write 'b' (replacing 'a'), move head Right, go to state q<sub>1</sub>."</p>
-
-<h3>Deciding vs. Semideciding</h3>
-<ul>
-  <li><strong>M decides L:</strong> M halts on EVERY input. Accepts w if w &isin; L. Rejects w if w &notin; L. Language is in class D.</li>
-  <li><strong>M semidecides L:</strong> M accepts w if w &isin; L. If w &notin; L, M may reject OR loop forever. Language is in class SD.</li>
-</ul>
-
-</div>
-
-<!-- ======================= SECTION 9 ======================= -->
-<div class="section" id="s9">
-<h2>9. Tracing a Turing Machine</h2>
-
-<p>This is a <strong>10-point question</strong>. Given a TM's transition table or diagram, trace its execution on a given input and determine what it does.</p>
-
-<h3>How to Write Configurations</h3>
-<p>A configuration shows the complete state of the machine at one moment: (state, tape contents with head position). The head is scanning the character immediately after the state label in the tape string.</p>
-
-<div class="example">
-  <div class="ex-title">: Trace the "Replace a's with b's" TM</div>
-  <p><strong>Given:</strong> Q = {q<sub>0</sub>, q<sub>1</sub>}, &Sigma; = {a, b}, F = {q<sub>1</sub>}</p>
-<pre>&delta;(q<sub>0</sub>, a) = (q<sub>0</sub>, b, R)   -- see 'a': replace with 'b', move right, stay in q<sub>0</sub>
-&delta;(q<sub>0</sub>, b) = (q<sub>0</sub>, b, R)   -- see 'b': leave as 'b', move right, stay in q<sub>0</sub>
-&delta;(q<sub>0</sub>, &#9633;) = (q<sub>1</sub>, &#9633;, L)   -- see blank: don't write, move left, go to q<sub>1</sub> (HALT)</pre>
-
-  <p><strong>Trace input "aab":</strong></p>
-  <table class="trace-table">
-    <tr><th>Step</th><th>State</th><th>Tape</th><th>Head Position</th><th>Action</th></tr>
-    <tr><td>0</td><td>q<sub>0</sub></td><td>&#9633; a a b &#9633;</td><td>^ on first 'a'</td><td>Start</td></tr>
-    <tr><td>1</td><td>q<sub>0</sub></td><td>&#9633; <strong>b</strong> a b &#9633;</td><td>^ on second 'a'</td><td>Wrote b, moved R</td></tr>
-    <tr><td>2</td><td>q<sub>0</sub></td><td>&#9633; b <strong>b</strong> b &#9633;</td><td>^ on 'b'</td><td>Wrote b, moved R</td></tr>
-    <tr><td>3</td><td>q<sub>0</sub></td><td>&#9633; b b b &#9633;</td><td>^ on last 'b'</td><td>Left b, moved R</td></tr>
-    <tr><td>4</td><td>q<sub>1</sub></td><td>&#9633; b b b &#9633;</td><td>^ on last 'b'</td><td>Hit &#9633;, moved L, HALTED</td></tr>
-  </table>
-  <p><strong>What does this TM do?</strong> It replaces all a's with b's, leaving b's unchanged. The output tape contains all b's.</p>
-</div>
-
-<div class="example">
-  <div class="ex-title">: TM from Sample Final (Turing Machine that copies 1's)</div>
-  <p><strong>From the Sample Final Q2:</strong> Design a TM that copies strings of 1's. Input: &#9633;1111&#9633;, Output: &#9633;11111111&#9633;</p>
-  <p>The intuitive process given:</p>
-  <ol>
-    <li>Replace every 1 by a marker (like #).</li>
-    <li>Find the rightmost # and replace it with 1.</li>
-    <li>Travel to the right end of the current nonblank region and create a 1 there.</li>
-    <li>Repeat steps 2 and 3 until there are no more #'s.</li>
-  </ol>
-  <p>This doubles the string of 1's by marking each original 1, then expanding each mark into an additional copy at the end.</p>
-</div>
-
-</div>
-
-<!-- ======================= SECTION 10 ======================= -->
-<div class="section" id="s10">
-<h2>10. Building a Turing Machine</h2>
-
-<p>This is a <strong>10-point question</strong> (extra credit for shorthand notation).</p>
-
-<h3>The Long Notation (Transition Table)</h3>
-<p>Write out every transition as: &delta;(state, tape_char) = (new_state, write_char, direction).</p>
-
-<h3>Common TM Design Patterns</h3>
-
-<h4>Pattern 1: "Scan and Mark" (for matching problems)</h4>
-<p>Used for languages like a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> or wcw.</p>
-<ol>
-  <li>Find an unmarked 'a'. Mark it (replace with special symbol like '$').</li>
-  <li>Scan right to find an unmarked 'b'. Mark it.</li>
-  <li>Scan right to find an unmarked 'c'. Mark it.</li>
-  <li>Scan all the way back to the start.</li>
-  <li>Repeat. If you run out of a's, check that b's and c's are also gone.</li>
-  <li>If everything matches: accept. If mismatch at any point: reject.</li>
-</ol>
-
-<h4>Pattern 2: "Copy" (for duplication)</h4>
-<p>To copy w: for each character in w, mark it, scan to the end, write a copy, scan back.</p>
-
-<h3>Shorthand Notation (Extra Credit)</h3>
-
-<div class="concept">
-  <div class="label">Basic Shorthand Machines</div>
-  <ul>
-    <li><strong>a, b, c, &#9633;</strong> &mdash; writes that symbol on the current square, then halts.</li>
-    <li><strong>R</strong> &mdash; moves head right one square, halts.</li>
-    <li><strong>L</strong> &mdash; moves head left one square, halts.</li>
-    <li><strong>y</strong> &mdash; halts and accepts.</li>
-    <li><strong>n</strong> &mdash; halts and rejects.</li>
-  </ul>
-</div>
-
-<div class="concept">
-  <div class="label">Combining Machines</div>
-  <ul>
-    <li><strong>M1 M2</strong> &mdash; run M1, then when it halts, immediately run M2 (no condition).</li>
-    <li><strong>M1 &mdash;a&rarr; M2</strong> &mdash; run M1, when it halts look at the tape: if current symbol is 'a', go to M2.</li>
-    <li><strong>M1 &mdash;a&rarr; M2, &mdash;b&rarr; M3</strong> &mdash; branch: if 'a' go to M2, if 'b' go to M3.</li>
-  </ul>
-</div>
-
-<div class="concept">
-  <div class="label">Useful Macro Machines</div>
-  <ul>
-    <li><strong>R<sub>&#9633;</sub></strong> &mdash; scan right until you find a blank.</li>
-    <li><strong>L<sub>&#9633;</sub></strong> &mdash; scan left until you find a blank.</li>
-    <li><strong>R<sub>&#172;&#9633;</sub></strong> &mdash; scan right until you find a NON-blank.</li>
-    <li><strong>L<sub>&#172;&#9633;</sub></strong> &mdash; scan left until you find a NON-blank.</li>
-    <li><strong>R<sub>a</sub></strong> &mdash; scan right until you find 'a'.</li>
-    <li><strong>L<sub>a</sub></strong> &mdash; scan left until you find 'a'.</li>
-  </ul>
-</div>
-
-<div class="example">
-  <div class="ex-title">: TM for a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> in Shorthand</div>
-  <p><strong>Strategy:</strong> Repeatedly mark one a, one b, one c. Then verify all are marked.</p>
-<pre>&gt; R<sub>&#172;&#9633;</sub>     Start: find the first nonblank character.
-
-LOOP:
-  If current = 'a': write '$', go to FIND_B
-  If current = '$': move right, stay in LOOP (skip marked)
-  If current = '&#9633;': go to CHECK (no more a's to mark)
-
-FIND_B:
-  R<sub>b</sub>          Scan right to find unmarked 'b'
-  write '$'   Mark it
-  go to FIND_C
-
-FIND_C:
-  R<sub>c</sub>          Scan right to find unmarked 'c'
-  write '$'   Mark it
-  L<sub>&#9633;</sub> R       Scan back to start of string
-  go to LOOP
-
-CHECK:
-  Scan entire string. If any unmarked b or c remains: REJECT.
-  Otherwise: ACCEPT.</pre>
-</div>
-
-</div>
-
-<!-- ======================= SECTION 11 ======================= -->
-<div class="section" id="s11">
-<h2>11. Pumping Lemma and Closure Properties (T/F Prep)</h2>
-
-<h3>Pumping Lemma for Regular Languages</h3>
-
-<div class="concept">
-  <div class="label">The Theorem (in plain English)</div>
-  <p>If a language L is regular, then there is some number k such that every string in L that is at least k characters long can be "pumped." That means you can split it into three parts x, y, z where:</p>
-  <ul>
-    <li>The string is w = xyz</li>
-    <li>|xy| &le; k (x and y together are in the first k characters)</li>
-    <li>y is not empty</li>
-    <li>You can repeat y any number of times (including 0) and the result is still in L</li>
-  </ul>
-</div>
-
-<h3>How to Use It to Prove a Language is NOT Regular</h3>
-
-<div class="example">
-  <div class="ex-title">: Prove a<sup>n</sup>b<sup>n</sup> is Not Regular</div>
-
-  <div class="step">
-    <div class="step-label">Step 1: Assume L is regular</div>
-    <p>Then there exists some k from the Pumping Lemma.</p>
   </div>
 
-  <div class="step">
-    <div class="step-label">Step 2: Choose a string w in L with |w| &ge; k</div>
-    <p>Let w = a<sup>k</sup>b<sup>k</sup>. This is in L (equal a's and b's) and has length 2k &ge; k.</p>
+  <h3>1.6 Rounding Modes</h3>
+  <p>Given 1.100101 (round to 3 fraction bits):</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Mode</th><th>Result</th><th>Why</th></tr>
+      <tr><td>Down</td><td>1.100</td><td>Truncate</td></tr>
+      <tr><td>Up</td><td>1.101</td><td>Round up</td></tr>
+      <tr><td>Toward zero</td><td>1.100</td><td>Truncate toward 0</td></tr>
+      <tr><td>To nearest</td><td>1.101</td><td>1.625 closer to 1.578125 than 1.5 is</td></tr>
+    </table>
   </div>
 
-  <div class="step">
-    <div class="step-label">Step 3: Show that no valid split works</div>
-    <p>Since |xy| &le; k, both x and y must fall entirely within the first k characters, which are all a's. So y = a<sup>p</sup> for some p &ge; 1.</p>
-    <p>Now pump with q = 2 (repeat y twice): xy<sup>2</sup>z = a<sup>k+p</sup>b<sup>k</sup>.</p>
-    <p>This string has more a's than b's, so it is NOT in L. Contradiction.</p>
+  <h3>1.7 Single vs. Double Precision</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Property</th><th>Single</th><th>Double</th></tr>
+      <tr><td>Total bits</td><td>32</td><td>64</td></tr>
+      <tr><td>Sign bits</td><td>1</td><td>1</td></tr>
+      <tr><td>Exponent bits</td><td>8</td><td>11</td></tr>
+      <tr><td>Fraction bits</td><td>23</td><td>52</td></tr>
+      <tr><td>Bias</td><td>127</td><td>1023</td></tr>
+    </table>
+  </div>
+</section>
+
+<hr>
+
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  TOPIC 2: K-MAPS                                                                ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="topic2">
+  <div class="topic-header">
+    <span class="topic-number">02</span>
+    <h2>Karnaugh Maps (K-Maps)</h2>
   </div>
 
-  <div class="step">
-    <div class="step-label">Step 4: Conclude</div>
-    <p>Since we found a string that cannot be pumped, L is not regular.</p>
-  </div>
-</div>
-
-<h3>Using Closure Properties Instead of Pumping</h3>
-
-<p>Sometimes pumping is hard. Closure properties offer an easier path:</p>
-
-<div class="example">
-  <div class="ex-title">: Prove {w &isin; {a,b}* : #a(w) = #b(w)} is Not Regular</div>
-  <p>If L were regular, then L &cap; a*b* would also be regular (regular languages are closed under intersection, and a*b* is regular).</p>
-  <p>But L &cap; a*b* = {a<sup>n</sup>b<sup>n</sup> : n &ge; 0}, which we already proved is not regular.</p>
-  <p>Contradiction. So L is not regular.</p>
-</div>
-
-<div class="example">
-  <div class="ex-title">: Prove {a<sup>i</sup>b<sup>j</sup> : i &ne; j} is Not Regular</div>
-  <p>If L is regular, then the complement of L is also regular (closure under complement).</p>
-  <p>complement(L) &cap; a*b* = {a<sup>n</sup>b<sup>n</sup>} &cup; {strings not of form a*b*}.</p>
-  <p>Actually, even simpler: complement(L) includes all strings with equal a's and b's in a*b* form, which is a<sup>n</sup>b<sup>n</sup>. Since complement(L) &cap; a*b* = a<sup>n</sup>b<sup>n</sup>, and a<sup>n</sup>b<sup>n</sup> is not regular, complement(L) cannot be regular. So L cannot be regular either.</p>
-</div>
-
-<div class="key">
-  <strong>Dr. Stringfellow's tips for pumping:</strong>
+  <h3>2.1 Key Definitions</h3>
   <ul>
-    <li>Choose w that is "barely" in L and makes the first k characters as uniform as possible.</li>
-    <li>Try q = 0 (pump out) or q = 2 (pump in) first.</li>
-    <li>If direct pumping is awkward, try closure properties instead.</li>
+    <li><strong>Complement:</strong> variable with a bar (A̅, B̅, C̅)</li>
+    <li><strong>Literal:</strong> a variable or its complement (A, A̅, B, B̅)</li>
+    <li><strong>Implicant:</strong> product of literals (AB̅C)</li>
+    <li><strong>Prime implicant:</strong> implicant corresponding to the largest possible circle in a K-map</li>
   </ul>
-</div>
 
-</div>
+  <h3>2.2 K-Map Rules (Professor's Rules)</h3>
+  <div class="callout important">
+    <span class="label">Memorize These 5 Rules</span>
+    <ol>
+      <li>Every 1 in the K-map must be circled at least once</li>
+      <li>Each circle must span a power of 2 (1, 2, 4, 8…) squares in each direction</li>
+      <li>Each circle must be as large as possible</li>
+      <li>A circle may wrap around the edges of the K-map</li>
+      <li>A "don't care" (X) is circled only if it helps minimize the equation</li>
+    </ol>
+  </div>
 
-<!-- FOOTER -->
-<div style="text-align:center; padding: 30px 0; color: var(--text-dim); font-size: 0.85rem;">
-  CMPS 3233 &mdash; Theory of Computation &mdash; Final Study Guide<br>
-  Good luck on the final, Jesus.
-</div>
+  <h3>2.3 Reading the Answer from Circles</h3>
+  <p>After circling, for each circle: include only the variables that do <strong>NOT</strong> change within that circle. If the variable is always 1 in the circle, include it uncomplemented. If always 0, include it complemented.</p>
+
+  <h3>2.4 Three-Variable K-Map Example</h3>
+  <p><strong>Important:</strong> Column ordering is <code>00, 01, 11, 10</code> (Gray code — only one bit changes between adjacent columns).</p>
+
+  <div class="diagram"><pre>       AB
+C\AB | 00 | 01 | 11 | 10 |
+  0  |  0 |  1 |  1 |  0 |
+  1  |  0 |  1 |  0 |  0 |</pre></div>
+
+  <p>Circle (01,0) and (11,0) → B C̅<br>
+  Circle (01,0) and (01,1) → A̅ B</p>
+  <p><strong>Result: Y = A̅B + BC̅</strong></p>
+
+  <h3>2.5 Four-Variable K-Map (Seven-Segment Display, Segment "a")</h3>
+  <div class="diagram"><pre>b1b0\b3b2 | 00 | 01 | 11 | 10 |
+    00     |  1 |  0 |  1 |  1 |
+    01     |  0 |  1 |  1 |  1 |
+    11     |  0 |  0 |  0 |  0 |
+    10     |  1 |  0 |  0 |  1 |</pre></div>
+
+  <p><strong>a = b̅₃b₁ + b₃b̅₂b̅₁ + b̅₃b₂b₀ + b̅₂b̅₀</strong></p>
+
+  <h3>2.6 K-Maps with Don't Cares</h3>
+  <p>When input combinations can never occur (e.g., BCD values 10–15), mark those cells as X. Circle them as 1's only when doing so makes a group larger.</p>
+
+  <div class="diagram"><pre>b1b0\b3b2 | 00 | 01 | 11 | 10 |
+    00     |  1 |  0 |  X |  1 |
+    01     |  0 |  1 |  X |  1 |
+    11     |  1 |  1 |  X |  X |
+    10     |  1 |  1 |  X |  X |</pre></div>
+
+  <p><strong>a = b₁ + b₃ + b̅₂b̅₀ + b₂b₀</strong></p>
+
+  <h3>2.7 Five-Variable K-Map (Integer Square Root)</h3>
+  <p>For 5 variables, use rows = last 2 variables, columns = first 3 variables (Gray code). Professor's results:</p>
+  <ul>
+    <li><strong>Y₂ = A</strong></li>
+    <li><strong>Y₁ = A̅C + A̅B</strong></li>
+    <li><strong>Y₀ = BE + BD + BC + A̅C̅E + A̅C̅D</strong></li>
+  </ul>
+</section>
+
+<hr>
+
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  TOPIC 3: VHDL                                                                  ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="topic3">
+  <div class="topic-header">
+    <span class="topic-number">03</span>
+    <h2>VHDL</h2>
+  </div>
+
+  <h3>3.1 Basic Structure</h3>
+  <p>Every VHDL design has two parts: the <strong>entity</strong> (interface) and the <strong>architecture</strong> (behavior).</p>
+
+  <pre><code><span class="keyword">library</span> IEEE;
+<span class="keyword">use</span> IEEE.STD_Logic_1164.all;
+
+<span class="comment">-- ENTITY: declares inputs/outputs</span>
+<span class="keyword">entity</span> example <span class="keyword">is</span>
+    <span class="keyword">port</span>(a, b, c: <span class="keyword">in</span> STD_LOGIC;
+         y:      <span class="keyword">out</span> STD_LOGIC);
+<span class="keyword">end</span>;
+
+<span class="comment">-- ARCHITECTURE: defines the behavior</span>
+<span class="keyword">architecture</span> synth <span class="keyword">of</span> example <span class="keyword">is</span>
+    <span class="keyword">signal</span> p, g: STD_LOGIC;  <span class="comment">-- internal signals</span>
+<span class="keyword">begin</span>
+    y &lt;= a <span class="keyword">and</span> b;
+<span class="keyword">end</span>;</code></pre>
+
+  <h3>3.2 Data Types</h3>
+  <ul>
+    <li><code>STD_LOGIC</code> — single bit ('0', '1', 'Z', 'X', etc.)</li>
+    <li><code>STD_LOGIC_VECTOR (N downto 0)</code> — bus of N+1 bits</li>
+  </ul>
+
+  <h3>3.3 Operators</h3>
+  <p>Bitwise: <code>and</code>, <code>or</code>, <code>xor</code>, <code>nand</code>, <code>nor</code>, <code>not</code></p>
+
+  <h3>3.4 Conditional Assignment (Multiplexer)</h3>
+  <pre><code><span class="comment">-- 2:1 MUX</span>
+y &lt;= d0 <span class="keyword">when</span> s = <span class="string">'0'</span> <span class="keyword">else</span> d1;</code></pre>
+
+  <h3>3.5 Vector Elements &amp; Bit Slicing</h3>
+  <pre><code><span class="comment">-- Access individual bits</span>
+y &lt;= a(7) <span class="keyword">and</span> a(6) <span class="keyword">and</span> a(5) <span class="keyword">and</span> a(4) <span class="keyword">and</span>
+     a(3) <span class="keyword">and</span> a(2) <span class="keyword">and</span> a(1) <span class="keyword">and</span> a(0);
+
+<span class="comment">-- Slice a range</span>
+b &lt;= a(7 <span class="keyword">downto</span> 4);  <span class="comment">-- upper 4 bits</span></code></pre>
+
+  <h3>3.6 Internal Signals</h3>
+  <pre><code><span class="keyword">architecture</span> synth <span class="keyword">of</span> fulladder <span class="keyword">is</span>
+    <span class="keyword">signal</span> p, g: STD_LOGIC;
+<span class="keyword">begin</span>
+    p &lt;= a <span class="keyword">xor</span> b;
+    g &lt;= a <span class="keyword">and</span> b;
+    s &lt;= p <span class="keyword">xor</span> cin;
+    cout &lt;= g <span class="keyword">or</span> (p <span class="keyword">and</span> cin);
+<span class="keyword">end</span>;</code></pre>
+
+  <h3>3.7 Numbers in VHDL</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Notation</th><th>Bits</th><th>Base</th><th>Decimal</th><th>Stored</th></tr>
+      <tr><td>'1'</td><td>1</td><td>binary</td><td>1</td><td>1</td></tr>
+      <tr><td>"101"</td><td>3</td><td>binary</td><td>5</td><td>101</td></tr>
+      <tr><td>X"AB"</td><td>8</td><td>hex</td><td>171</td><td>10101011</td></tr>
+    </table>
+  </div>
+
+  <h3>3.8 D Flip-Flop (Sequential Logic)</h3>
+  <h4>Basic D Flip-Flop</h4>
+  <pre><code><span class="keyword">process</span> (clk) <span class="keyword">begin</span>
+    <span class="keyword">if</span> clk'event <span class="keyword">and</span> clk=<span class="string">'1'</span> <span class="keyword">then</span>
+        q &lt;= d;
+    <span class="keyword">end if</span>;
+<span class="keyword">end process</span>;</code></pre>
+
+  <h4>Resettable D Flip-Flop (Asynchronous Reset)</h4>
+  <pre><code><span class="keyword">process</span> (clk, reset) <span class="keyword">begin</span>
+    <span class="keyword">if</span> reset = <span class="string">'1'</span> <span class="keyword">then</span>
+        q &lt;= <span class="string">"0000"</span>;
+    <span class="keyword">elsif</span> clk'event <span class="keyword">and</span> clk=<span class="string">'1'</span> <span class="keyword">then</span>
+        q &lt;= d;
+    <span class="keyword">end if</span>;
+<span class="keyword">end process</span>;</code></pre>
+
+  <h4>Enabled Register</h4>
+  <pre><code><span class="keyword">process</span> (ck) <span class="keyword">begin</span>
+    <span class="keyword">if</span> (rising_edge(ck)) <span class="keyword">then</span>
+        <span class="keyword">if</span> (enable = <span class="string">'1'</span>) <span class="keyword">then</span>
+            rt &lt;= rin;
+        <span class="keyword">end if</span>;
+    <span class="keyword">end if</span>;
+<span class="keyword">end process</span>;
+rout &lt;= rt;</code></pre>
+
+  <h3>3.9 Structural Modeling (Components &amp; Port Maps)</h3>
+  <p>Structural VHDL describes how a module is built from simpler modules.</p>
+
+  <h4>Step 1 — Declare the component</h4>
+  <pre><code><span class="keyword">architecture</span> rr <span class="keyword">of</span> top_module <span class="keyword">is</span>
+    <span class="keyword">component</span> add
+        <span class="keyword">port</span> (a: <span class="keyword">in</span> std_logic_vector(2 <span class="keyword">downto</span> 0);
+              b: <span class="keyword">in</span> std_logic_vector(2 <span class="keyword">downto</span> 0);
+              c: <span class="keyword">out</span> std_logic_vector(2 <span class="keyword">downto</span> 0));
+    <span class="keyword">end component</span>;
+    <span class="keyword">signal</span> wire: std_logic_vector(2 <span class="keyword">downto</span> 0);
+<span class="keyword">begin</span></code></pre>
+
+  <h4>Step 2 — Instantiate with port map</h4>
+  <pre><code>    my_adder: add <span class="keyword">port map</span> (x, y, wire);
+<span class="keyword">end</span>;</code></pre>
+
+  <div class="callout example">
+    <span class="label">Professor's Example — 8-bit MUX from two 4-bit MUXes</span>
+    <pre style="background:transparent;color:inherit;padding:0;margin:0;"><code>lsbmux: mux2 port map(d0(3 downto 0), d1(3 downto 0), s, y(3 downto 0));
+msbmux: mux2 port map(d0(7 downto 4), d1(7 downto 4), s, y(7 downto 4));</code></pre>
+  </div>
+
+  <h3>3.10 ROM in VHDL (used for FSMD Controller)</h3>
+  <pre><code><span class="keyword">architecture</span> test <span class="keyword">of</span> GCDROM <span class="keyword">is</span>
+    <span class="keyword">type</span> inside <span class="keyword">is array</span> (0 <span class="keyword">to</span> 127) <span class="keyword">of</span> std_logic_vector(8 <span class="keyword">downto</span> 0);
+    <span class="keyword">constant</span> ROM_SIGNALS : inside := (
+        0 =&gt; <span class="string">"000000001"</span>,
+        1 =&gt; <span class="string">"000000010"</span>,
+        2 =&gt; <span class="string">"000000100"</span>,
+        3 =&gt; <span class="string">"000001000"</span>,
+        <span class="keyword">others</span> =&gt; <span class="string">"111111111"</span>);
+<span class="keyword">begin</span>
+    <span class="keyword">process</span>(clk) <span class="keyword">begin</span>
+        <span class="keyword">if</span> rising_edge(clk) <span class="keyword">then</span>
+            data &lt;= ROM_SIGNALS(to_integer(unsigned(addr)));
+        <span class="keyword">end if</span>;
+    <span class="keyword">end process</span>;
+<span class="keyword">end</span> test;</code></pre>
+</section>
+
+<hr>
+
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  TOPIC 4: FSM                                                                   ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="topic4">
+  <div class="topic-header">
+    <span class="topic-number">04</span>
+    <h2>Finite State Machines (FSM) — Equations &amp; Drawings</h2>
+  </div>
+
+  <h3>4.1 FSM Components</h3>
+  <ul>
+    <li><strong>State register:</strong> stores current state, loads next state on clock edge</li>
+    <li><strong>Next state logic:</strong> combinational logic computing S' from S and inputs</li>
+    <li><strong>Output logic:</strong> combinational logic computing outputs from S (and inputs for Mealy)</li>
+  </ul>
+
+  <h3>4.2 Moore vs. Mealy</h3>
+  <ul>
+    <li><strong>Moore FSM:</strong> outputs depend ONLY on current state (outputs labeled inside states)</li>
+    <li><strong>Mealy FSM:</strong> outputs depend on current state AND inputs (notation on arcs: input/output)</li>
+  </ul>
+
+  <h3>4.3 FSM Design Procedure (Professor's Method)</h3>
+  <div class="callout important">
+    <span class="label">Memorize This Procedure</span>
+    <ol>
+      <li>Identify inputs and outputs</li>
+      <li>Sketch a state transition diagram</li>
+      <li>Write a state transition table</li>
+      <li>Select state encodings (binary or one-hot)</li>
+      <li><strong>Moore:</strong> rewrite encoded transition table + separate output table<br>
+          <strong>Mealy:</strong> rewrite combined transition &amp; output table with encodings</li>
+      <li>Write Boolean equations for next state and output logic</li>
+      <li>Sketch the circuit schematic</li>
+    </ol>
+  </div>
+
+  <h3>4.4 Worked Example: Traffic Light Controller (Moore FSM)</h3>
+
+  <h4>State Transition Diagram</h4>
+  <div class="diagram"><pre>         ─── T̅ₐ ───
+        ↓           |
+      [S0] ── Tₐ ──→ [S1]
+   Lₐ:green        Lₐ:yellow
+   L_B:red          L_B:red
+        ↑               ↓ (always)
+      [S3] ←─ T̅_B ── [S2]
+   Lₐ:red          Lₐ:red
+   L_B:yellow       L_B:green
+        |              ↑
+         ─── T_B ──────</pre></div>
+
+  <h4>State Encoding</h4>
+  <div class="table-wrap">
+    <table>
+      <tr><th>State</th><th>S₁S₀</th></tr>
+      <tr><td>S0</td><td>00</td></tr>
+      <tr><td>S1</td><td>01</td></tr>
+      <tr><td>S2</td><td>10</td></tr>
+      <tr><td>S3</td><td>11</td></tr>
+    </table>
+  </div>
+
+  <h4>Encoded State Transition Table</h4>
+  <div class="table-wrap">
+    <table>
+      <tr><th>S₁</th><th>S₀</th><th>Tₐ</th><th>T_B</th><th>S'₁</th><th>S'₀</th></tr>
+      <tr><td>0</td><td>0</td><td>0</td><td>X</td><td>0</td><td>1</td></tr>
+      <tr><td>0</td><td>0</td><td>1</td><td>X</td><td>0</td><td>0</td></tr>
+      <tr><td>0</td><td>1</td><td>X</td><td>X</td><td>1</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>X</td><td>0</td><td>1</td><td>1</td></tr>
+      <tr><td>1</td><td>0</td><td>X</td><td>1</td><td>1</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>X</td><td>X</td><td>0</td><td>0</td></tr>
+    </table>
+  </div>
+
+  <h4>Next State Equations</h4>
+  <ul>
+    <li><strong>S'₁ = S₁ ⊕ S₀</strong></li>
+    <li><strong>S'₀ = S̅₁ S̅₀ T̅ₐ + S₁ S̅₀ T̅_B</strong></li>
+  </ul>
+
+  <h4>Output Table (green=00, yellow=01, red=10)</h4>
+  <div class="table-wrap">
+    <table>
+      <tr><th>S₁</th><th>S₀</th><th>Lₐ₁</th><th>Lₐ₀</th><th>L_B₁</th><th>L_B₀</th></tr>
+      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+      <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+    </table>
+  </div>
+
+  <h4>Output Equations</h4>
+  <ul>
+    <li><strong>Lₐ₁ = S₁</strong></li>
+    <li><strong>Lₐ₀ = S̅₁ S₀</strong></li>
+    <li><strong>L_B₁ = S̅₁</strong></li>
+    <li><strong>L_B₀ = S₁ S₀</strong></li>
+  </ul>
+
+  <h3>4.5 Mealy FSM Example</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>S₁</th><th>S₀</th><th>A</th><th>S'₁</th><th>S'₀</th><th>Y</th></tr>
+      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+      <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+    </table>
+  </div>
+  <p>Key difference from Moore: Y depends on both state AND input (output is on the arc, not in the state).</p>
+
+  <h3>4.6 State Encoding Options</h3>
+  <ul>
+    <li><strong>Binary:</strong> minimum flip-flops (4 states → 2 bits: 00, 01, 10, 11)</li>
+    <li><strong>One-hot:</strong> one flip-flop per state (4 states → 0001, 0010, 0100, 1000). More flip-flops but often simpler logic.</li>
+  </ul>
+
+  <h3>4.7 FSM Schematic Structure</h3>
+  <p>Draw three blocks left to right: <strong>Inputs → Next State Logic</strong> (gates) → <strong>State Register</strong> (flip-flops with CLK, Reset) → <strong>Output Logic</strong> (gates) → <strong>Outputs</strong>. Feed S₁, S₀ back from register to next state logic.</p>
+</section>
+
+<hr>
+
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  TOPIC 5: FSMD                                                                  ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="topic5">
+  <div class="topic-header">
+    <span class="topic-number">05</span>
+    <h2>FSMD — Algorithms</h2>
+  </div>
+
+  <h3>5.1 What is an FSMD?</h3>
+  <p><strong>FSMD = Finite State Machine with Datapath.</strong> It starts from an algorithm (C-like pseudocode) and converts it into a hardware state machine that controls a custom datapath.</p>
+
+  <h3>5.2 State Diagram Templates (Professor's Templates)</h3>
+  <div class="callout important">
+    <span class="label">Memorize These 3 Templates</span>
+
+    <h4>Assignment Statement</h4>
+    <div class="diagram"><pre>a = b  →  [State: a = b] → next statement</pre></div>
+    <p>Each assignment gets its own state.</p>
+
+    <h4>Loop (while)</h4>
+    <div class="diagram"><pre>while (cond) {     →    ┌──→ [C: cond?] ── !cond ──→ next statement
+    loop-body           │        │ cond
+}                       │        ↓
+                        └── [loop-body states]
+                                 │
+                               [J: jump back to C]</pre></div>
+
+    <h4>Branch (if/else)</h4>
+    <div class="diagram"><pre>if (c1)            →  [C: check conditions]
+    c1 stmts               /    |    \
+else if (c2)            c1   !c1·c2  !c1·!c2
+    c2 stmts             ↓     ↓      ↓
+else                  [c1]   [c2]  [other]
+    other stmts           \    |    /
+                         [J: join] → next statement</pre></div>
+  </div>
+
+  <h3>5.3 Multiply Without Multiplier (FSMD Example)</h3>
+  <pre><code><span class="comment">// Algorithm</span>
+0: <span class="keyword">int</span> x, y, z;
+1: <span class="keyword">while</span> (!go_i);
+2: z = 0;
+3: x = x_i;
+4: y = y_i;
+5: <span class="keyword">while</span> (x != 0) {
+6:     x = x - 1;
+7:     z = z + y;
+}
+8: d_o = z;</code></pre>
+  <p>Each line becomes a state; loops and branches use the templates above.</p>
+
+  <h3>5.4 From FSMD to Controller + Datapath</h3>
+
+  <h4>Step 1 — Identify datapath components</h4>
+  <ul>
+    <li>All variables → <strong>registers</strong> (x, y, z)</li>
+    <li>All operations → <strong>functional units</strong> (subtractor, adder, comparator)</li>
+    <li>All external connections → <strong>ports</strong> (x_i, y_i, d_o, go_i)</li>
+  </ul>
+
+  <h4>Step 2 — Build the datapath</h4>
+  <ul>
+    <li>Connect ports, registers, and functional units</li>
+    <li>Add <strong>multiplexers</strong> wherever a register can be loaded from multiple sources</li>
+    <li>Add <strong>control signals:</strong> load enables (ldx, ldy, ldz), mux selects (selx, selz), output enables (ldd_o)</li>
+  </ul>
+
+  <h4>Step 3 — Create the controller FSM</h4>
+  <p>Replace complex operations with datapath control signal settings:</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>FSMD Operation</th><th>Controller Signals</th></tr>
+      <tr><td>z = 0</td><td>selz = 0; ldz = 1</td></tr>
+      <tr><td>x = x_i</td><td>selx = 0; ldx = 1</td></tr>
+      <tr><td>y = y_i</td><td>ldy = 1</td></tr>
+      <tr><td>x = x − 1</td><td>selx = 1; ldx = 1</td></tr>
+      <tr><td>z = z + y</td><td>selz = 1; ldz = 1</td></tr>
+      <tr><td>d_o = z</td><td>ldd_o = 1</td></tr>
+    </table>
+  </div>
+
+  <h4>Step 4 — Build the state transition table</h4>
+  <p>Map: (inputs, current state) → (next state, control signals)</p>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th>go_i</th><th>Q3</th><th>Q2</th><th>Q1</th><th>Q0</th><th>x=0</th><th>S3</th><th>S2</th><th>S1</th><th>S0</th><th>ldx</th><th>ldy</th><th>ldz</th><th>selx</th><th>selz</th><th>ldd_o</th></tr>
+      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>0</td><td>0</td><td>1</td><td>X</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>0</td><td>1</td><td>0</td><td>X</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>X</td><td>0</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>0</td><td>1</td><td>1</td><td>X</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>1</td><td>0</td><td>0</td><td>X</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>1</td><td>1</td><td>0</td><td>X</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>X</td><td>0</td></tr>
+      <tr><td>X</td><td>0</td><td>1</td><td>1</td><td>1</td><td>X</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>X</td><td>1</td><td>0</td></tr>
+      <tr><td>X</td><td>1</td><td>0</td><td>0</td><td>1</td><td>X</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>X</td><td>X</td><td>1</td></tr>
+    </table>
+  </div>
+
+  <h3>5.5 GCD Example (Greatest Common Divisor)</h3>
+  <pre><code>0: <span class="keyword">int</span> x, y;
+1: <span class="keyword">while</span> (1) {
+2:   <span class="keyword">while</span> (!go_i);
+3:   x = x_i;
+4:   y = y_i;
+5:   <span class="keyword">while</span> (x != y) {
+6:     <span class="keyword">if</span> (x &lt; y)
+7:       y = y - x;
+      <span class="keyword">else</span>
+8:       x = x - y;
+   }
+9:   d_o = x;
+}</code></pre>
+
+  <h4>GCD Datapath Components</h4>
+  <ul>
+    <li>Two registers: x, y</li>
+    <li>One output register: d</li>
+    <li>Two subtractors: (x − y) and (y − x)</li>
+    <li>Two comparators: (x ≠ y) and (x &lt; y)</li>
+    <li>Two 2:1 multiplexers: x_sel chooses x_i vs. (x − y), y_sel chooses y_i vs. (y − x)</li>
+  </ul>
+
+  <h4>Controller Signals</h4>
+  <p>Outputs: x_sel, y_sel, x_ld, y_ld, d_ld<br>
+  Status inputs: go_i, x_neq_y, x_lt_y</p>
+
+  <h3>5.6 Optimizing the FSMD (Professor's Rules)</h3>
+  <div class="callout important">
+    <span class="label">Optimization Techniques</span>
+    <ol>
+      <li><strong>Eliminate constant-transition states</strong> — State 1 (while(1)) always loops, remove it</li>
+      <li><strong>Merge state with its join state</strong> if no operation in between (merge 2 and 2-J)</li>
+      <li><strong>Merge independent assignments</strong> — states 3 and 4 can merge (x = x_i and y = y_i don't depend on each other)</li>
+      <li><strong>Merge condition checks</strong> — states 5 and 6 merge (state 6's transitions can evaluate in state 5)</li>
+      <li><strong>Eliminate unnecessary jump states</strong> — 5-J and 6-J removed (transitions originate from states 7, 8 directly)</li>
+      <li><strong>Eliminate redundant loop-back states</strong> — 1-J removed (state 9 goes directly to state 2)</li>
+    </ol>
+    <p><strong>Result:</strong> GCD goes from 13 states → 5 states</p>
+  </div>
+
+  <h3>5.7 ROM-Based Controller Implementation</h3>
+  <p>Instead of designing combinational logic with gates, store the entire state table in a ROM:</p>
+  <ul>
+    <li><strong>Address</strong> = current state bits + input signals</li>
+    <li><strong>Data</strong> = next state bits + control signals</li>
+  </ul>
+  <p>The professor demonstrated this with a VHDL ROM entity for the GCD controller: a 7-bit address produces a 9-bit output containing both next-state and control signal values.</p>
+</section>
+
+<hr>
+
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  EXAM CHECKLIST                                                                 ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════════════════╝ -->
+<section class="topic" id="checklist">
+  <div class="topic-header">
+    <span class="topic-number">✓</span>
+    <h2>Quick Reference: Exam Checklist</h2>
+  </div>
+
+  <div class="checklist-section">
+    <h4>Floating-Point — be able to:</h4>
+    <ul>
+      <li>Convert decimal → IEEE 754 hex (and back)</li>
+      <li>Perform floating-point addition using the 8-step method</li>
+      <li>Identify special cases (zero, infinity, NaN)</li>
+      <li>Know single vs. double precision differences</li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <h4>K-Maps — be able to:</h4>
+    <ul>
+      <li>Set up 3, 4, and 5-variable K-maps with proper Gray code ordering</li>
+      <li>Circle groups following the 5 rules</li>
+      <li>Extract minimized Boolean equations from circles</li>
+      <li>Handle don't cares correctly</li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <h4>VHDL — be able to:</h4>
+    <ul>
+      <li>Write an entity/architecture from scratch</li>
+      <li>Use concurrent signal assignments (and, or, xor, not, when/else)</li>
+      <li>Write sequential logic with process blocks (D flip-flop, resettable, enabled)</li>
+      <li>Use component declarations and port maps for structural design</li>
+      <li>Read and understand VHDL code given to you</li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <h4>FSM — be able to:</h4>
+    <ul>
+      <li>Draw state transition diagrams (Moore and Mealy)</li>
+      <li>Fill in state transition tables and output tables</li>
+      <li>Choose state encodings and fill in encoded tables</li>
+      <li>Derive next-state and output Boolean equations</li>
+      <li>Draw the complete schematic (next state logic → state register → output logic)</li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <h4>FSMD — be able to:</h4>
+    <ul>
+      <li>Convert an algorithm to an FSMD using the 3 templates (assignment, loop, branch)</li>
+      <li>Identify datapath components from the algorithm</li>
+      <li>Build a datapath diagram with registers, functional units, muxes, control signals</li>
+      <li>Create the controller state table mapping states/inputs to next states/control signals</li>
+      <li>Optimize an FSMD by merging/eliminating states</li>
+      <li>Understand ROM-based controller implementation</li>
+    </ul>
+  </div>
+</section>
 
 </div>
 </body>
