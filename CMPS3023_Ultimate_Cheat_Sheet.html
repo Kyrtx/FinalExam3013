@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMPS 3023 — Ultimate Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f4f1;--card:#fff;--text:#1a1a1a;--muted:#666;--border:#ddd;--red:#c0392b;--blue:#2471a3;--green:#1e8449;--purple:#7d3c98;--orange:#d35400;--teal:#117a65;--gold:#b7950b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+
+/* ── STICKY NAV ── */
+.topnav{position:sticky;top:0;z-index:100;background:#1a1a1a;padding:0;border-bottom:2px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.topnav-inner{max-width:960px;margin:0 auto;display:flex;align-items:stretch;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.topnav-inner::-webkit-scrollbar{display:none}
+.topnav a{color:#ccc;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s}
+.topnav a:hover,.topnav a.active{color:#fff;border-bottom-color:var(--gold)}
+.topnav a.fp{border-bottom-color:var(--red);color:#fff}
+.topnav a.km{border-bottom-color:var(--green);color:#fff}
+.topnav a.vh{border-bottom-color:var(--blue);color:#fff}
+.topnav a.fs{border-bottom-color:var(--orange);color:#fff}
+.topnav a.fd{border-bottom-color:var(--purple);color:#fff}
+
+.wrap{max-width:860px;margin:0 auto;padding:24px 20px 80px}
+header{text-align:center;padding:20px 0 28px;border-bottom:3px solid var(--text);margin-bottom:8px}
+header h1{font-size:1.5rem;font-weight:700;letter-spacing:-.3px}
+header p{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+
+/* ── PROBLEM CARDS ── */
+.prob{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+.prob-head{padding:10px 16px;font-weight:700;font-size:.88rem;color:#fff;display:flex;align-items:center;gap:8px}
+.prob-body{padding:14px 16px}
+.prob.fp .prob-head{background:var(--red)}
+.prob.km .prob-head{background:var(--green)}
+.prob.vh .prob-head{background:var(--blue)}
+.prob.fs .prob-head{background:var(--orange)}
+.prob.fd .prob-head{background:var(--purple)}
+.prob.warn-card .prob-head{background:var(--text)}
+
+.steps{counter-reset:st;margin:6px 0 4px;padding:0;list-style:none}
+.steps li{counter-increment:st;padding:4px 0 4px 30px;position:relative;margin-bottom:2px}
+.steps li::before{content:counter(st);position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;background:#eee;font-size:.68rem;font-weight:700;text-align:center;line-height:20px}
+.prob.fp .steps li::before{background:#fde;color:var(--red)}
+.prob.km .steps li::before{background:#e8f8e8;color:var(--green)}
+.prob.vh .steps li::before{background:#e0eef8;color:var(--blue)}
+.prob.fs .steps li::before{background:#fde8d8;color:var(--orange)}
+.prob.fd .steps li::before{background:#f0e0f8;color:var(--purple)}
+
+code{font-family:'IBM Plex Mono',monospace;font-size:.82em;background:#f0ede8;padding:1px 5px;border-radius:3px}
+pre{font-family:'IBM Plex Mono',monospace;background:#2c2c2c;color:#e8e4df;padding:11px 14px;border-radius:6px;overflow-x:auto;margin:6px 0 8px;font-size:.76rem;line-height:1.5}
+pre code{background:none;padding:0;color:inherit}
+.kw{color:#e8917a}.st{color:#a8d4a0}.cm{color:#888;font-style:italic}
+
+.tw{overflow-x:auto;margin:6px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:.78rem}
+th{background:#333;color:#f5f3f0;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;padding:6px 8px;text-align:left}
+td{padding:5px 8px;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:.76rem}
+tr:nth-child(even) td{background:#f9f8f6}
+
+.tip{background:#fefcf3;border-left:3px solid var(--gold);padding:7px 11px;margin:6px 0 8px;font-size:.8rem;border-radius:0 4px 4px 0}
+.tip b{color:var(--gold)}
+.warn{background:#fef0ef;border-left:3px solid var(--red);padding:7px 11px;margin:6px 0 8px;font-size:.8rem;border-radius:0 4px 4px 0}
+.warn b{color:var(--red)}
+
+.dia{background:#fdfcfa;border:1px solid var(--border);padding:10px 14px;border-radius:6px;margin:6px 0 8px;overflow-x:auto}
+.dia pre{background:transparent;color:var(--text);padding:0;margin:0;font-size:.74rem;line-height:1.35}
+
+/* ── SECTION LABELS ── */
+.section-anchor{scroll-margin-top:70px}
+.section-label{font-size:.68rem;text-transform:uppercase;letter-spacing:3px;color:var(--muted);text-align:center;margin:28px 0 10px;font-weight:700}
+hr{border:none;border-top:2px solid var(--border);margin:12px 0}
+
+/* ── BACK TO TOP ── */
+.back-top{text-align:center;margin:12px 0 24px}
+.back-top a{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);text-decoration:none;padding:6px 14px;border:1px solid var(--border);border-radius:20px;transition:all .2s}
+.back-top a:hover{color:var(--text);border-color:var(--text);background:#fff}
+
+p{margin-bottom:6px;font-size:.86rem}
+ul,ol{margin:4px 0 8px 20px;font-size:.84rem}
+li{margin-bottom:3px}
+strong{font-weight:700}
+h3{font-size:.96rem;font-weight:700;margin:14px 0 5px}
+h4{font-size:.86rem;font-weight:700;margin:10px 0 4px}
+
+/* ── FLOATING BACK TO TOP BUTTON ── */
+.fab{position:fixed;bottom:20px;right:20px;width:42px;height:42px;background:var(--text);color:#fff;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2);opacity:0;transition:opacity .3s;z-index:99;text-decoration:none}
+.fab.show{opacity:1}
+
+@media(max-width:600px){.wrap{padding:16px 12px 60px}header h1{font-size:1.2rem}pre{font-size:.7rem;padding:9px 11px}.topnav a{padding:10px 12px;font-size:.65rem}}
+@media print{.topnav,.fab,.back-top{display:none!important}body{font-size:9pt;background:#fff}.wrap{max-width:100%;padding:0}.prob{page-break-inside:avoid;border:1px solid #999}pre{background:#f0f0f0!important;color:#222!important}.prob-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<!-- ═══ STICKY NAVIGATION BAR ═══ -->
+<nav class="topnav" id="top">
+<div class="topnav-inner">
+<a href="#sec-fp" class="fp">① Floating-Point</a>
+<a href="#sec-km" class="km">② K-Maps</a>
+<a href="#sec-vh" class="vh">③ VHDL</a>
+<a href="#sec-fs" class="fs">④ FSM</a>
+<a href="#sec-fd" class="fd">⑤ FSMD</a>
+<a href="#sec-pitfalls">⚠ Pitfalls</a>
+</div>
+</nav>
+
+<a href="#top" class="fab" id="fab" title="Back to top">↑</a>
+
+<div class="wrap">
+
+<header>
+<h1>Complete Problem-Solving Cheat Sheet</h1>
+<p>CMPS 3023 Logic Design — Every Problem Type, Every Step</p>
+</header>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 1: FLOATING-POINT                                       ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-fp"></div>
+<div class="section-label">▌ 1 · Floating-Point ▌</div>
+
+<div class="prob fp">
+<div class="prob-head">① Decimal → IEEE 754 Hex</div>
+<div class="prob-body">
+<p><strong>Given:</strong> A decimal number. <strong>Find:</strong> 32-bit IEEE 754 hex.</p>
+<ol class="steps">
+<li><strong>Integer → binary.</strong> Divide by 2 repeatedly, remainders bottom→top. (58 → 111010)</li>
+<li><strong>Fraction → binary.</strong> Multiply by 2 repeatedly, integer parts top→down. (.25 → .01)</li>
+<li><strong>Combine.</strong> −58.25 = −111010.01₂</li>
+<li><strong>Normalize.</strong> Shift to get 1.xxxx × 2ⁿ. Count shifts = exponent. (1.1101001 × 2⁵)</li>
+<li><strong>Sign bit:</strong> positive = 0, negative = 1</li>
+<li><strong>Biased exponent</strong> = exponent + 127, convert to 8-bit binary. (5+127=132=10000100)</li>
+<li><strong>Fraction field</strong> = digits after leading 1, padded to 23 bits. (1101001→11010010000000000000000)</li>
+<li><strong>Assemble</strong> [S][E 8bits][F 23bits]. Group into nibbles → hex digits.</li>
+</ol>
+<div class="tip"><b>Verify:</b> S=1 → hex starts with 8-F. S=0 → hex starts with 0-7. If your answer violates this, recheck.</div>
+</div>
+</div>
+
+<div class="prob fp">
+<div class="prob-head">② Hex → Decimal</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Hex → 32-bit binary.</strong> Each hex digit = 4 bits.</li>
+<li><strong>Split:</strong> bit31 = S, bits[30:23] = E, bits[22:0] = F</li>
+<li><strong>Actual exponent</strong> = E (decimal) − 127</li>
+<li><strong>Mantissa</strong> = 1.F (prepend the implicit 1)</li>
+<li><strong>Shift binary point</strong> right by exponent (if positive) or left (if negative)</li>
+<li><strong>Binary → decimal.</strong> Integer part: add powers of 2. Fraction: 2⁻¹=0.5, 2⁻²=0.25, 2⁻³=0.125…</li>
+<li>Apply sign.</li>
+</ol>
+<h4>Fraction Powers Quick Reference</h4>
+<div class="tw"><table>
+<tr><th>Position after point</th><th>1st</th><th>2nd</th><th>3rd</th><th>4th</th><th>5th</th><th>6th</th></tr>
+<tr><td>Value</td><td>0.5</td><td>0.25</td><td>0.125</td><td>0.0625</td><td>0.03125</td><td>0.015625</td></tr>
+</table></div>
+</div>
+</div>
+
+<div class="prob fp">
+<div class="prob-head">③ Floating-Point Addition (8-Step Method)</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Extract</strong> S, E, F from both numbers</li>
+<li><strong>Prepend leading 1</strong> → mantissa. (F=.101 → M=1.101)</li>
+<li><strong>Compare exponents</strong> → find difference</li>
+<li><strong>Shift SMALLER exponent's mantissa RIGHT</strong> by the difference</li>
+<li><strong>Add mantissas</strong> (subtract if signs differ)</li>
+<li><strong>Normalize</strong> to 1.xxxx form, adjust exponent</li>
+<li><strong>Round</strong> to 23 fraction bits</li>
+<li><strong>Reassemble</strong> S + (exp+127) + fraction → hex</li>
+</ol>
+<div class="warn"><b>Step 4:</b> Always shift the SMALLER exponent's mantissa. Never shift the bigger one.</div>
+<div class="warn"><b>Step 8:</b> Don't forget to ADD 127 back to the exponent before assembling.</div>
+</div>
+</div>
+
+<div class="prob fp">
+<div class="prob-head">④ Special Values, Rounding &amp; Precision</div>
+<div class="prob-body">
+<div class="tw"><table>
+<tr><th>Value</th><th>S</th><th>Exponent</th><th>Fraction</th></tr>
+<tr><td>Zero</td><td>0 or 1</td><td>00000000</td><td>all 0s</td></tr>
+<tr><td>+∞</td><td>0</td><td>11111111</td><td>all 0s</td></tr>
+<tr><td>−∞</td><td>1</td><td>11111111</td><td>all 0s</td></tr>
+<tr><td>NaN</td><td>X</td><td>11111111</td><td>non-zero</td></tr>
+</table></div>
+<h4>Rounding (given 1.100101, round to 3 fraction bits)</h4>
+<div class="tw"><table>
+<tr><th>Mode</th><th>Result</th><th>Rule</th></tr>
+<tr><td>Down</td><td>1.100</td><td>Always truncate</td></tr>
+<tr><td>Up</td><td>1.101</td><td>Always round up</td></tr>
+<tr><td>Toward zero</td><td>1.100</td><td>Truncate toward 0</td></tr>
+<tr><td>To nearest</td><td>1.101</td><td>Pick closer; tie → round up</td></tr>
+</table></div>
+<h4>Single vs. Double Precision</h4>
+<div class="tw"><table>
+<tr><th></th><th>Single</th><th>Double</th></tr>
+<tr><td>Total bits</td><td>32</td><td>64</td></tr>
+<tr><td>Exponent bits</td><td>8</td><td>11</td></tr>
+<tr><td>Fraction bits</td><td>23</td><td>52</td></tr>
+<tr><td>Bias</td><td>127</td><td>1023</td></tr>
+</table></div>
+<h4>Useful Hex ↔ Binary Quick Table</h4>
+<div class="tw"><table>
+<tr><th>Hex</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><th>Bin</th><td>0000</td><td>0001</td><td>0010</td><td>0011</td><td>0100</td><td>0101</td><td>0110</td><td>0111</td><td>1000</td><td>1001</td><td>1010</td><td>1011</td><td>1100</td><td>1101</td><td>1110</td><td>1111</td></tr>
+</table></div>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+<hr>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 2: K-MAPS                                               ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-km"></div>
+<div class="section-label">▌ 2 · K-Maps ▌</div>
+
+<div class="prob km">
+<div class="prob-head">⑤ Minimize a Boolean Function</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Draw K-map grid</strong> with Gray code ordering (00, 01, 11, 10).</li>
+<li><strong>Fill in 1s</strong> from truth table. Mark don't cares as X.</li>
+<li><strong>Circle groups</strong> using the 5 rules (below).</li>
+<li><strong>Read each circle:</strong> variables constant within the circle stay; variables that change are dropped. Constant=1 → uncomplemented. Constant=0 → complemented.</li>
+<li><strong>OR all terms.</strong></li>
+</ol>
+<h4>The 5 Circling Rules</h4>
+<ol>
+<li>Every 1 must be in at least one circle</li>
+<li>Circle size = power of 2 (1, 2, 4, 8, 16)</li>
+<li>Each circle as LARGE as possible</li>
+<li>Circles can WRAP around edges</li>
+<li>Circle X's ONLY if it makes a group bigger</li>
+</ol>
+</div>
+</div>
+
+<div class="prob km">
+<div class="prob-head">⑥ K-Map Grid Layouts</div>
+<div class="prob-body">
+<h4>3-Variable</h4>
+<div class="dia"><pre>       AB
+C\   00  01  11  10
+0  |   |   |   |   |
+1  |   |   |   |   |</pre></div>
+<h4>4-Variable</h4>
+<div class="dia"><pre>        AB
+CD\  00  01  11  10
+00 |   |   |   |   |
+01 |   |   |   |   |
+11 |   |   |   |   |
+10 |   |   |   |   |</pre></div>
+<h4>5-Variable</h4>
+<p>Split into two 4-variable maps: one for the 5th variable = 0, one for = 1. Groups can span both maps.</p>
+<h4>Circle Size → Variables Eliminated</h4>
+<div class="tw"><table>
+<tr><th>Circle Size</th><th>Vars Dropped</th><th>Vars Remaining in Term (out of N)</th></tr>
+<tr><td>1</td><td>0</td><td>N</td></tr>
+<tr><td>2</td><td>1</td><td>N−1</td></tr>
+<tr><td>4</td><td>2</td><td>N−2</td></tr>
+<tr><td>8</td><td>3</td><td>N−3</td></tr>
+<tr><td>16</td><td>4</td><td>N−4</td></tr>
+</table></div>
+<div class="warn"><b>#1 K-Map mistake:</b> Wrong column order. It MUST be Gray code (00, 01, 11, 10). NEVER 00, 01, 10, 11.</div>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+<hr>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 3: VHDL                                                 ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-vh"></div>
+<div class="section-label">▌ 3 · VHDL ▌</div>
+
+<div class="prob vh">
+<div class="prob-head">⑦ VHDL Boilerplate Template</div>
+<div class="prob-body">
+<p>Copy this skeleton for EVERY VHDL problem, then fill in the blanks:</p>
+<pre><code><span class="kw">library</span> IEEE;
+<span class="kw">use</span> IEEE.STD_Logic_1164.all;
+<span class="cm">-- add next line ONLY if using unsigned/to_integer:</span>
+<span class="cm">-- use IEEE.NUMERIC_STD.ALL;</span>
+
+<span class="kw">entity</span> ______ <span class="kw">is</span>
+    <span class="kw">port</span>( ______ : <span class="kw">in</span>  STD_LOGIC;
+          ______ : <span class="kw">out</span> STD_LOGIC);
+<span class="kw">end</span>;
+
+<span class="kw">architecture</span> synth <span class="kw">of</span> ______ <span class="kw">is</span>
+    <span class="cm">-- signal declarations go here (if needed)</span>
+<span class="kw">begin</span>
+    <span class="cm">-- logic goes here</span>
+<span class="kw">end</span>;</code></pre>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑧ Boolean Equation → VHDL</div>
+<div class="prob-body">
+<div class="tw"><table>
+<tr><th>Boolean</th><th>VHDL</th><th>Example</th></tr>
+<tr><td>AND (·)</td><td><code>and</code></td><td><code>a and b</code></td></tr>
+<tr><td>OR (+)</td><td><code>or</code></td><td><code>a or b</code></td></tr>
+<tr><td>NOT (bar)</td><td><code>not</code></td><td><code>not a</code></td></tr>
+<tr><td>XOR (⊕)</td><td><code>xor</code></td><td><code>a xor b</code></td></tr>
+<tr><td>NAND</td><td><code>nand</code></td><td><code>a nand b</code></td></tr>
+<tr><td>NOR</td><td><code>nor</code></td><td><code>a nor b</code></td></tr>
+</table></div>
+<p><strong>Y = A̅B + BC̅</strong> becomes:</p>
+<pre><code>y &lt;= (<span class="kw">not</span> a <span class="kw">and</span> b) <span class="kw">or</span> (b <span class="kw">and not</span> c);</code></pre>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑨ MUX Patterns</div>
+<div class="prob-body">
+<pre><code><span class="cm">-- 2:1 MUX</span>
+y &lt;= d0 <span class="kw">when</span> s = <span class="st">'0'</span> <span class="kw">else</span> d1;
+
+<span class="cm">-- 4:1 MUX</span>
+y &lt;= d0 <span class="kw">when</span> s = <span class="st">"00"</span> <span class="kw">else</span>
+     d1 <span class="kw">when</span> s = <span class="st">"01"</span> <span class="kw">else</span>
+     d2 <span class="kw">when</span> s = <span class="st">"10"</span> <span class="kw">else</span> d3;</code></pre>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑩ Sequential Logic Patterns (Flip-Flops / Registers)</div>
+<div class="prob-body">
+<h4>D Flip-Flop (basic)</h4>
+<pre><code><span class="kw">process</span>(clk) <span class="kw">begin</span>
+    <span class="kw">if</span> clk'event <span class="kw">and</span> clk=<span class="st">'1'</span> <span class="kw">then</span>
+        q &lt;= d;
+    <span class="kw">end if</span>;
+<span class="kw">end process</span>;</code></pre>
+<h4>With Async Reset</h4>
+<pre><code><span class="kw">process</span>(clk, reset) <span class="kw">begin</span>
+    <span class="kw">if</span> reset = <span class="st">'1'</span> <span class="kw">then</span>
+        q &lt;= <span class="st">"0000"</span>;
+    <span class="kw">elsif</span> clk'event <span class="kw">and</span> clk=<span class="st">'1'</span> <span class="kw">then</span>
+        q &lt;= d;
+    <span class="kw">end if</span>;
+<span class="kw">end process</span>;</code></pre>
+<h4>With Enable</h4>
+<pre><code><span class="kw">process</span>(clk) <span class="kw">begin</span>
+    <span class="kw">if</span> rising_edge(clk) <span class="kw">then</span>
+        <span class="kw">if</span> enable = <span class="st">'1'</span> <span class="kw">then</span>
+            q &lt;= d;
+        <span class="kw">end if</span>;
+    <span class="kw">end if</span>;
+<span class="kw">end process</span>;</code></pre>
+<div class="tip"><b>Reset goes FIRST</b> (before elsif). Enable goes INSIDE the clock check. This order matters for synthesis.</div>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑪ Structural VHDL (Component + Port Map)</div>
+<div class="prob-body">
+<pre><code><span class="kw">architecture</span> struct <span class="kw">of</span> top <span class="kw">is</span>
+    <span class="cm">-- Step 1: declare the component</span>
+    <span class="kw">component</span> adder
+        <span class="kw">port</span>(a, b : <span class="kw">in</span>  std_logic_vector(3 <span class="kw">downto</span> 0);
+             s   : <span class="kw">out</span> std_logic_vector(3 <span class="kw">downto</span> 0));
+    <span class="kw">end component</span>;
+    <span class="cm">-- Step 2: declare internal wires</span>
+    <span class="kw">signal</span> w : std_logic_vector(3 <span class="kw">downto</span> 0);
+<span class="kw">begin</span>
+    <span class="cm">-- Step 3: instantiate</span>
+    u1: adder <span class="kw">port map</span>(x, y, w);  <span class="cm">-- x→a, y→b, w←s</span>
+    u2: adder <span class="kw">port map</span>(w, z, out1); <span class="cm">-- chain output</span>
+<span class="kw">end</span>;</code></pre>
+<div class="warn"><b>Port map</b> connects BY POSITION. First signal → first port, second → second, etc.</div>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑫ ROM in VHDL (for FSMD Controller)</div>
+<div class="prob-body">
+<pre><code><span class="kw">library</span> IEEE;
+<span class="kw">use</span> IEEE.STD_LOGIC_1164.ALL;
+<span class="kw">use</span> IEEE.NUMERIC_STD.ALL;
+
+<span class="kw">entity</span> GCDROM <span class="kw">is</span>
+    <span class="kw">port</span>( clk  : <span class="kw">in</span>  std_logic;
+          addr : <span class="kw">in</span>  std_logic_vector(6 <span class="kw">downto</span> 0);
+          data : <span class="kw">out</span> std_logic_vector(8 <span class="kw">downto</span> 0));
+<span class="kw">end</span>;
+
+<span class="kw">architecture</span> test <span class="kw">of</span> GCDROM <span class="kw">is</span>
+    <span class="kw">type</span> rom_t <span class="kw">is array</span>(0 <span class="kw">to</span> 127)
+        <span class="kw">of</span> std_logic_vector(8 <span class="kw">downto</span> 0);
+    <span class="kw">constant</span> ROM : rom_t := (
+        0 =&gt; <span class="st">"000000001"</span>,
+        1 =&gt; <span class="st">"000000010"</span>,
+        <span class="cm">-- ... fill from state table</span>
+        <span class="kw">others</span> =&gt; <span class="st">"000000000"</span>);
+<span class="kw">begin</span>
+    <span class="kw">process</span>(clk) <span class="kw">begin</span>
+        <span class="kw">if</span> rising_edge(clk) <span class="kw">then</span>
+            data &lt;= ROM(to_integer(unsigned(addr)));
+        <span class="kw">end if</span>;
+    <span class="kw">end process</span>;
+<span class="kw">end</span>;</code></pre>
+<p><strong>ROM address</strong> = state bits & input bits concatenated. <strong>ROM data</strong> = next state bits & control signals concatenated.</p>
+</div>
+</div>
+
+<div class="prob vh">
+<div class="prob-head">⑬ VHDL Syntax Quick Reference</div>
+<div class="prob-body">
+<div class="tw"><table>
+<tr><th>What</th><th>Syntax</th><th>Example</th></tr>
+<tr><td>1-bit type</td><td><code>STD_LOGIC</code></td><td><code>a : in STD_LOGIC</code></td></tr>
+<tr><td>N-bit type</td><td><code>STD_LOGIC_VECTOR(N-1 downto 0)</code></td><td><code>a : in STD_LOGIC_VECTOR(7 downto 0)</code></td></tr>
+<tr><td>1-bit literal</td><td>single quotes</td><td><code>'0'</code> or <code>'1'</code></td></tr>
+<tr><td>Multi-bit literal</td><td>double quotes</td><td><code>"0101"</code></td></tr>
+<tr><td>Hex literal</td><td><code>X"__"</code></td><td><code>X"AB"</code> = 10101011</td></tr>
+<tr><td>Assignment</td><td><code>&lt;=</code></td><td><code>y &lt;= a and b;</code></td></tr>
+<tr><td>Bit access</td><td><code>name(index)</code></td><td><code>a(7)</code></td></tr>
+<tr><td>Bit slice</td><td><code>name(hi downto lo)</code></td><td><code>a(7 downto 4)</code></td></tr>
+<tr><td>Internal wire</td><td><code>signal</code></td><td><code>signal w : STD_LOGIC;</code></td></tr>
+<tr><td>Rising edge (opt 1)</td><td><code>clk'event and clk='1'</code></td><td></td></tr>
+<tr><td>Rising edge (opt 2)</td><td><code>rising_edge(clk)</code></td><td></td></tr>
+</table></div>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+<hr>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 4: FSM                                                  ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-fs"></div>
+<div class="section-label">▌ 4 · FSM ▌</div>
+
+<div class="prob fs">
+<div class="prob-head">⑭ Design a Moore FSM (Complete Procedure)</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Identify inputs and outputs.</strong></li>
+<li><strong>Draw state transition diagram.</strong> Circles = states (outputs INSIDE). Arrows = transitions (labeled with input conditions). Self-loops where state stays same.</li>
+<li><strong>Write state transition table.</strong> Current State | Inputs → Next State.</li>
+<li><strong>Choose state encoding.</strong> N states → ⌈log₂N⌉ bits. (4 states → 2 bits, 5-8 states → 3 bits.)</li>
+<li><strong>Rewrite table with binary encodings.</strong></li>
+<li><strong>Write SEPARATE output table.</strong> Columns: state bits → output bits. (Moore: no inputs in output table.)</li>
+<li><strong>Derive Boolean equations</strong> for each S' bit and each output bit. (Use K-maps if 3+ variables.)</li>
+<li><strong>Draw schematic:</strong> Inputs → [Next State Logic] → [State Register + CLK + Reset] → [Output Logic] → Outputs. State bits feed back.</li>
+</ol>
+</div>
+</div>
+
+<div class="prob fs">
+<div class="prob-head">⑮ Design a Mealy FSM</div>
+<div class="prob-body">
+<p>Same 8 steps as Moore, with these differences:</p>
+<ul>
+<li>State diagram: outputs on <strong>arrows</strong> as <code>input/output</code>, NOT inside circles.</li>
+<li>Step 6: <strong>NO separate output table.</strong> Outputs are extra columns IN the transition table (they depend on state + input).</li>
+<li>Output logic receives state bits AND input bits.</li>
+</ul>
+<div class="tip"><b>Moore vs. Mealy on the exam:</b> If outputs labeled inside states → Moore. If on arrows → Mealy. Mealy can react faster (output changes mid-cycle) but is more complex.</div>
+</div>
+</div>
+
+<div class="prob fs">
+<div class="prob-head">⑯ Transition Table → Boolean Equation (How To)</div>
+<div class="prob-body">
+<p>For EACH output column (S'₁, S'₀, Lₐ₁, etc.):</p>
+<ol class="steps">
+<li>Find every row where that column = 1.</li>
+<li>Write a product term: include each variable (uncomplemented if 1, complemented if 0, skip if X).</li>
+<li>OR all product terms together.</li>
+<li>Simplify (K-map, Boolean algebra, or inspection).</li>
+</ol>
+<h4>Example from Traffic Light (S'₀ column)</h4>
+<p>S'₀ = 1 in rows: (S₁=0, S₀=0, Tₐ=0) and (S₁=1, S₀=0, T_B=0)</p>
+<p>→ S'₀ = S̅₁·S̅₀·T̅ₐ + S₁·S̅₀·T̅_B</p>
+</div>
+</div>
+
+<div class="prob fs">
+<div class="prob-head">⑰ State Encoding Reference</div>
+<div class="prob-body">
+<div class="tw"><table>
+<tr><th># States</th><th>Binary Bits</th><th>One-Hot Bits</th></tr>
+<tr><td>2</td><td>1</td><td>2</td></tr>
+<tr><td>3–4</td><td>2</td><td>3–4</td></tr>
+<tr><td>5–8</td><td>3</td><td>5–8</td></tr>
+<tr><td>9–16</td><td>4</td><td>9–16</td></tr>
+</table></div>
+<p><strong>Binary:</strong> default choice, fewer flip-flops. <strong>One-hot:</strong> one FF per state (0001, 0010, 0100, 1000); simpler logic, more FFs.</p>
+</div>
+</div>
+
+<div class="prob fs">
+<div class="prob-head">⑱ FSM Schematic Layout</div>
+<div class="prob-body">
+<div class="dia"><pre>Inputs─→ ┌───────────────┐    ┌────────────┐    ┌──────────────┐ ─→Outputs
+         │  Next State   │───→│   State    │───→│   Output     │
+   ┌────→│    Logic      │    │  Register  │    │    Logic     │
+   │     │  (AND/OR)     │    │ (flip-flops│    │  (AND/OR)    │
+   │     └───────────────┘    │  CLK, Rst) │    └──────────────┘
+   │                          └─────┬──────┘
+   │      S₁, S₀ (feedback)        │
+   └────────────────────────────────┘</pre></div>
+<p><strong>Moore:</strong> Output logic only gets state bits. <strong>Mealy:</strong> Output logic also gets input bits.</p>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+<hr>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 5: FSMD                                                 ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-fd"></div>
+<div class="section-label">▌ 5 · FSMD ▌</div>
+
+<div class="prob fd">
+<div class="prob-head">⑲ Algorithm → FSMD (The 3 Templates)</div>
+<div class="prob-body">
+<h4>Template A — Assignment: One state per line</h4>
+<pre><code>x = expr;  →  [ state N: x = expr ] → next state</code></pre>
+
+<h4>Template B — While Loop: Condition state + loop-back</h4>
+<div class="dia"><pre>while(cond) {   →  ┌→[C: cond?]── !cond ──→ done
+   body;           │      │ cond
+}                  │      ↓
+                   │  [body states]
+                   │      ↓
+                   └──[J: jump back to C]</pre></div>
+
+<h4>Template C — If/Else: Branch + join</h4>
+<div class="dia"><pre>if (c1) s1;     →  [C: check]
+else s2;              /     \
+                  c1 /       \ !c1
+                  [s1]      [s2]
+                     \       /
+                    [J: join] → next</pre></div>
+
+<div class="warn"><b>Rule:</b> Each assignment = its own state. Only combine during optimization (card ㉑).</div>
+</div>
+</div>
+
+<div class="prob fd">
+<div class="prob-head">⑳ Build the Datapath (4 Sub-Steps)</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Register</strong> for every declared variable → <code>int x, y, z</code> → registers x, y, z</li>
+<li><strong>Functional unit</strong> for every operation → <code>x-1</code> → subtractor, <code>z+y</code> → adder, <code>x!=0</code> → comparator</li>
+<li><strong>MUX</strong> where a register loads from multiple sources:
+  <br>— x loads from x_i (line 3) OR subtractor (line 6) → add 2:1 MUX before x
+  <br>— z loads from 0 (line 2) OR adder (line 7) → add 2:1 MUX before z
+  <br>— y only loads from y_i → no MUX needed</li>
+<li><strong>Name control signals:</strong>
+  <br>— <strong>Load enables</strong> (one per register): ldx, ldy, ldz, ldd_o
+  <br>— <strong>MUX selects</strong> (one per MUX): selx, selz
+  <br>— <strong>Status signals</strong> (comparator → controller): x_eq_0</li>
+</ol>
+</div>
+</div>
+
+<div class="prob fd">
+<div class="prob-head">㉑ Controller Signal Mapping</div>
+<div class="prob-body">
+<p>For each FSMD state, translate the action into control signals:</p>
+<div class="tw"><table>
+<tr><th>FSMD Says</th><th>Controller Sets</th><th>Why</th></tr>
+<tr><td>z = 0</td><td>selz=0, ldz=1</td><td>MUX picks the 0 input, z loads</td></tr>
+<tr><td>x = x_i</td><td>selx=0, ldx=1</td><td>MUX picks x_i, x loads</td></tr>
+<tr><td>y = y_i</td><td>ldy=1</td><td>y has no MUX, just load</td></tr>
+<tr><td>x = x − 1</td><td>selx=1, ldx=1</td><td>MUX picks subtractor output, x loads</td></tr>
+<tr><td>z = z + y</td><td>selz=1, ldz=1</td><td>MUX picks adder output, z loads</td></tr>
+<tr><td>d_o = z</td><td>ldd_o=1</td><td>Output register loads from z</td></tr>
+<tr><td>nothing / wait</td><td>all ld=0, sel=X</td><td>No register changes</td></tr>
+</table></div>
+<p>Then build the full state table: <strong>[current state + inputs] → [next state + all control signals]</strong></p>
+<div class="tip"><b>Don't care rule:</b> If a register isn't being loaded (ld=0), its select signal is X (don't care).</b></div>
+</div>
+</div>
+
+<div class="prob fd">
+<div class="prob-head">㉒ Optimize the FSMD (Reduce States)</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>Eliminate constant-transition states.</strong> <code>while(1)</code> always loops → remove it.</li>
+<li><strong>Merge state + jump state</strong> if nothing happens between them.</li>
+<li><strong>Merge independent assignments.</strong> Writing to DIFFERENT registers, no dependency → one state. (x=x_i and y=y_i → merge.)</li>
+<li><strong>Merge consecutive condition checks.</strong> If one leads directly to another.</li>
+<li><strong>Eliminate jump-only states.</strong> Redirect arrows from source states directly.</li>
+</ol>
+<div class="warn"><b>CANNOT merge:</b> Assignments that depend on each other (z=x+1 then w=z+2) or write to the SAME register.</div>
+<p><strong>GCD example:</strong> 13 states → 5 states after all optimizations.</p>
+</div>
+</div>
+
+<div class="prob fd">
+<div class="prob-head">㉓ ROM-Based Controller Implementation</div>
+<div class="prob-body">
+<ol class="steps">
+<li><strong>ROM address</strong> = [current state bits] concatenated with [input/status bits]</li>
+<li><strong>ROM data</strong> = [next state bits] concatenated with [control signal bits]</li>
+<li><strong>ROM size</strong> = 2^(address width) entries × (data width) bits</li>
+<li>Fill ROM from state table. For don't-care inputs, duplicate the row for both 0 and 1.</li>
+</ol>
+<h4>GCD Example Sizing</h4>
+<p>4 state bits + 3 inputs (go_i, x_neq_y, x_lt_y) = 7-bit address → 128 entries.<br>
+4 next-state bits + 5 control bits (x_sel, y_sel, x_ld, y_ld, d_ld) = 9-bit data.<br>
+ROM = <strong>128 × 9</strong>.</p>
+</div>
+</div>
+
+<div class="prob fd">
+<div class="prob-head">㉔ Controller + Datapath Architecture</div>
+<div class="prob-body">
+<div class="dia"><pre>              CONTROLLER                          DATAPATH
+    ┌──────────────────────────┐     ┌──────────────────────────────┐
+    │                          │     │                              │
+    │  ┌────────────────────┐  │     │   ┌─────┐  ┌─────┐         │
+    │  │   Next-State &     │  │     │   │  x  │  │  y  │  ...    │
+    │  │   Control Logic    │◄─╋─────╋───│ reg │  │ reg │         │
+    │  │  (gates or ROM)    │  │     │   └──┬──┘  └──┬──┘         │
+    │  └────────┬───────────┘  │     │      │        │             │
+    │           │              │     │   [subtractor] [adder]      │
+    │  ┌────────▼───────────┐  │     │   [comparators]             │
+    │  │   State Register   │  │     │      │                      │
+    │  │   (flip-flops)     │  │     │   status signals            │
+    │  └────────────────────┘  │     │      │                      │
+    │                          │     │      ▼                      │
+    └─── control signals ──────╋────→│   [muxes + load enables]    │
+                               │     │                              │
+    ◄─── status signals ──────╋─────│   x_neq_y, x_lt_y, etc.    │
+                               │     └──────────────────────────────┘
+                               │
+         go_i (external input)─┘</pre></div>
+<p><strong>Controller sends DOWN:</strong> x_sel, y_sel, x_ld, y_ld, d_ld (commands)<br>
+<strong>Datapath sends UP:</strong> x_neq_y, x_lt_y (status for decisions)</p>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+<hr>
+
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 6: PITFALLS                                             ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+<div class="section-anchor" id="sec-pitfalls"></div>
+<div class="section-label">▌ Common Pitfalls ▌</div>
+
+<div class="prob warn-card">
+<div class="prob-head">⚠ Floating-Point Mistakes</div>
+<div class="prob-body">
+<ul>
+<li>Bias is <strong>127</strong> (not 128). biased = actual + 127.</li>
+<li>Forgetting the <strong>implicit leading 1</strong> when converting hex → decimal.</li>
+<li>Shifting the WRONG mantissa during addition (shift the <strong>smaller exponent's</strong> mantissa).</li>
+<li>Forgetting to re-add 127 when reassembling after addition.</li>
+<li>Getting confused: after normalizing to 1.xxxxx × 2ⁿ, store ONLY the xxxxx part (NOT the leading 1).</li>
+</ul>
+</div>
+</div>
+
+<div class="prob warn-card">
+<div class="prob-head">⚠ K-Map Mistakes</div>
+<div class="prob-body">
+<ul>
+<li>Wrong row/column order. MUST be Gray code: <strong>00, 01, 11, 10</strong>.</li>
+<li>Making circles that aren't powers of 2 (no circles of 3, 5, 6, 7).</li>
+<li>Not making circles as large as possible.</li>
+<li>Circling don't cares unnecessarily (only circle X if it makes a group bigger).</li>
+<li>Forgetting that K-maps WRAP around edges (left↔right, top↔bottom).</li>
+</ul>
+</div>
+</div>
+
+<div class="prob warn-card">
+<div class="prob-head">⚠ VHDL Mistakes</div>
+<div class="prob-body">
+<ul>
+<li>Using <code>=</code> instead of <code>&lt;=</code>. Signal assignment is ALWAYS <code>&lt;=</code>.</li>
+<li>Forgetting <code>library IEEE; use IEEE.STD_Logic_1164.all;</code>.</li>
+<li>Single quotes for single bit: <code>'0'</code>. Double quotes for vectors: <code>"0101"</code>. Mixing them up.</li>
+<li>Declaring signals AFTER <code>begin</code> (they must go BEFORE <code>begin</code>).</li>
+<li>Sensitivity list wrong in process: for flip-flop use <code>(clk)</code> or <code>(clk, reset)</code>.</li>
+<li>Port map: signals matched BY POSITION. Wrong order = wrong connections.</li>
+</ul>
+</div>
+</div>
+
+<div class="prob warn-card">
+<div class="prob-head">⚠ FSM Mistakes</div>
+<div class="prob-body">
+<ul>
+<li>Mixing up Moore and Mealy. Moore: outputs INSIDE circles. Mealy: outputs ON arrows.</li>
+<li>For Moore, putting inputs in the output table (outputs depend ONLY on state).</li>
+<li>Forgetting to feed state register outputs BACK to next state logic.</li>
+<li>Forgetting the Reset arrow pointing to the initial state.</li>
+<li>Not accounting for every input combination in every state (incomplete table).</li>
+</ul>
+</div>
+</div>
+
+<div class="prob warn-card">
+<div class="prob-head">⚠ FSMD Mistakes</div>
+<div class="prob-body">
+<ul>
+<li>Merging assignments that <strong>depend on each other</strong> — they MUST be separate states.</li>
+<li>Forgetting that comparator outputs (status signals) go FROM datapath TO controller.</li>
+<li>Setting a load enable to 1 when the register should NOT update (all ld=0 in idle states).</li>
+<li>Forgetting MUX select is don't care (X) when the load enable is 0.</li>
+<li>ROM address: forgetting to include ALL input/status bits, not just state bits.</li>
+<li>ROM: not duplicating rows for don't care inputs (ROM needs an entry for every address).</li>
+</ul>
+</div>
+</div>
+
+<div class="back-top"><a href="#top">↑ Back to Navigation</a></div>
+
+</div>
+
+<script>
+// Show/hide floating back-to-top button
+const fab = document.getElementById('fab');
+window.addEventListener('scroll', () => {
+  fab.classList.toggle('show', window.scrollY > 400);
+});
+
+// Highlight active nav link based on scroll position
+const sections = document.querySelectorAll('.section-anchor');
+const navLinks = document.querySelectorAll('.topnav a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector(`.topnav a[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-70px 0px -70% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
