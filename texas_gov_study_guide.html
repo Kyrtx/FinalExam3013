@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texas Government — Final Exam Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F5;
+    --text: #2C2825;
+    --text-muted: #6B6560;
+    --sidebar-bg: #2C2825;
+    --sidebar-text: #D4CFC9;
+    --sidebar-active: #FAF8F5;
+    --card-bg: #FFFFFF;
+    --border: #E8E2DB;
+    --ch1: #B85C38;
+    --ch1-light: #FDF3EF;
+    --ch1-border: #E8B4A0;
+    --ch2: #3D6B8E;
+    --ch2-light: #EEF4F9;
+    --ch2-border: #A3C4DB;
+    --ch3: #5B7553;
+    --ch3-light: #F0F5EE;
+    --ch3-border: #AECCA5;
+    --ch4: #8B6BAE;
+    --ch4-light: #F4F0F8;
+    --ch4-border: #C5B3D9;
+    --ch5: #C27D3A;
+    --ch5-light: #FDF6EE;
+    --ch5-border: #E0BF96;
+    --ch6: #B54D6D;
+    --ch6-light: #FBF0F3;
+    --ch6-border: #DCA4B5;
+    --ch7: #4A7C7C;
+    --ch7-light: #EDF5F5;
+    --ch7-border: #9DC5C5;
+    --highlight: #FFF3CD;
+    --key-bg: #F5F0E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--sidebar-active);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .sidebar-header p {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .sidebar nav { padding: 16px 0; }
+
+  .nav-chapter {
+    display: block;
+    padding: 0;
+    margin-bottom: 2px;
+  }
+
+  .nav-chapter-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-chapter-title:hover {
+    color: var(--sidebar-active);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .nav-chapter-title.active {
+    color: var(--sidebar-active);
+    border-left-color: currentColor;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .nav-sub {
+    display: none;
+    padding: 0 24px 8px 45px;
+  }
+
+  .nav-sub.open { display: block; }
+
+  .nav-sub a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12.5px;
+    padding: 4px 0;
+    transition: color 0.2s;
+  }
+
+  .nav-sub a:hover { color: var(--sidebar-active); }
+
+  .nav-themes {
+    display: block;
+    padding: 12px 24px;
+    color: #E8C547;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 8px;
+    transition: all 0.2s;
+  }
+
+  .nav-themes:hover { background: rgba(255,255,255,0.04); }
+
+  /* MOBILE MENU */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 200;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-active);
+    border: none;
+    border-radius: 10px;
+    width: 44px; height: 44px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    margin-left: 280px;
+    padding: 48px 56px 80px;
+    max-width: 920px;
+  }
+
+  /* HERO */
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .hero h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .exam-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--highlight);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .exam-info span { font-size: 16px; }
+
+  .study-note {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--key-bg);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    border-left: 4px solid #C9A96E;
+  }
+
+  .study-note strong { color: var(--text); }
+
+  /* CHAPTER SECTIONS */
+  .chapter {
+    margin-bottom: 64px;
+    scroll-margin-top: 24px;
+  }
+
+  .chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .chapter-num {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .chapter-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  /* TOPIC CARDS */
+  .topic {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    transition: box-shadow 0.2s;
+  }
+
+  .topic:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+
+  .topic-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .topic-header:hover { filter: brightness(0.97); }
+
+  .topic-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .topic-header h3::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .chevron {
+    font-size: 18px;
+    transition: transform 0.25s ease;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .topic.open .chevron { transform: rotate(180deg); }
+
+  .topic-body {
+    display: none;
+    padding: 0 24px 24px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .topic.open .topic-body { display: block; }
+
+  .topic-body p { margin-bottom: 14px; }
+
+  .topic-body strong { color: var(--text); }
+
+  .topic-body ul, .topic-body ol {
+    margin: 10px 0 14px 20px;
+  }
+
+  .topic-body li { margin-bottom: 6px; }
+
+  .key-term {
+    display: inline;
+    background: var(--key-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .callout {
+    margin: 16px 0;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .callout-exam {
+    background: var(--highlight);
+    border-left: 4px solid #D4A72C;
+  }
+
+  .callout-remember {
+    background: #EEF4F9;
+    border-left: 4px solid var(--ch2);
+  }
+
+  .callout-compare {
+    background: #F0F5EE;
+    border-left: 4px solid var(--ch3);
+  }
+
+  .versus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .versus-box {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+  }
+
+  .versus-box h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* CHAPTER COLOR THEMES */
+  .ch1 .topic-header { background: var(--ch1-light); }
+  .ch1 .topic-header h3::before { background: var(--ch1); }
+  .ch1 .chapter-num { background: var(--ch1); }
+  .ch1 .topic { border-color: var(--ch1-border); }
+
+  .ch2 .topic-header { background: var(--ch2-light); }
+  .ch2 .topic-header h3::before { background: var(--ch2); }
+  .ch2 .chapter-num { background: var(--ch2); }
+  .ch2 .topic { border-color: var(--ch2-border); }
+
+  .ch3 .topic-header { background: var(--ch3-light); }
+  .ch3 .topic-header h3::before { background: var(--ch3); }
+  .ch3 .chapter-num { background: var(--ch3); }
+  .ch3 .topic { border-color: var(--ch3-border); }
+
+  .ch4 .topic-header { background: var(--ch4-light); }
+  .ch4 .topic-header h3::before { background: var(--ch4); }
+  .ch4 .chapter-num { background: var(--ch4); }
+  .ch4 .topic { border-color: var(--ch4-border); }
+
+  .ch5 .topic-header { background: var(--ch5-light); }
+  .ch5 .topic-header h3::before { background: var(--ch5); }
+  .ch5 .chapter-num { background: var(--ch5); }
+  .ch5 .topic { border-color: var(--ch5-border); }
+
+  .ch6 .topic-header { background: var(--ch6-light); }
+  .ch6 .topic-header h3::before { background: var(--ch6); }
+  .ch6 .chapter-num { background: var(--ch6); }
+  .ch6 .topic { border-color: var(--ch6-border); }
+
+  .ch7 .topic-header { background: var(--ch7-light); }
+  .ch7 .topic-header h3::before { background: var(--ch7); }
+  .ch7 .chapter-num { background: var(--ch7); }
+  .ch7 .topic { border-color: var(--ch7-border); }
+
+  /* KEY THEMES SECTION */
+  .themes-section {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 3px solid var(--border);
+    scroll-margin-top: 24px;
+  }
+
+  .themes-section h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .theme-card {
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    font-size: 15px;
+    line-height: 1.65;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .theme-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  /* EXPAND ALL */
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .controls button {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text-muted);
+  }
+
+  .controls button:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  /* SCROLLBAR */
+  .sidebar::-webkit-scrollbar { width: 5px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .menu-toggle { display: flex; align-items: center; justify-content: center; }
+    .main { margin-left: 0; padding: 80px 24px 60px; }
+    .hero h1 { font-size: 28px; }
+    .versus { grid-template-columns: 1fr; }
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 50; }
+    .overlay.active { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">☰</button>
+<div class="overlay" onclick="toggleSidebar()"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h2>Texas Government<br>Study Guide</h2>
+    <p>Final Exam — May 14, 2026</p>
+  </div>
+  <nav>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch1" onclick="navClick(this, 'ch1-subs')">
+        <span class="nav-dot" style="background:var(--ch1)"></span>The Legislature
+      </a>
+      <div class="nav-sub" id="ch1-subs">
+        <a href="#ch1-structure">Structure &amp; Sessions</a>
+        <a href="#ch1-redistricting">Redistricting</a>
+        <a href="#ch1-powers">Powers of the Legislature</a>
+        <a href="#ch1-bill">How a Bill Becomes Law</a>
+        <a href="#ch1-leadership">Leadership &amp; Power</a>
+        <a href="#ch1-partisan">Partisanship</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch2" onclick="navClick(this, 'ch2-subs')">
+        <span class="nav-dot" style="background:var(--ch2)"></span>The Executive Branch
+      </a>
+      <div class="nav-sub" id="ch2-subs">
+        <a href="#ch2-governor">The Governor</a>
+        <a href="#ch2-powers">Governor's Powers</a>
+        <a href="#ch2-plural">The Plural Executive</a>
+        <a href="#ch2-boards">Boards &amp; Commissions</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch3" onclick="navClick(this, 'ch3-subs')">
+        <span class="nav-dot" style="background:var(--ch3)"></span>The Judiciary
+      </a>
+      <div class="nav-sub" id="ch3-subs">
+        <a href="#ch3-legal">Civil vs. Criminal Law</a>
+        <a href="#ch3-courts">Court Structure</a>
+        <a href="#ch3-politics">Judicial Politics</a>
+        <a href="#ch3-issues">Key Issues</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch4" onclick="navClick(this, 'ch4-subs')">
+        <span class="nav-dot" style="background:var(--ch4)"></span>Interest Groups &amp; Lobbying
+      </a>
+      <div class="nav-sub" id="ch4-subs">
+        <a href="#ch4-what">What Are Interest Groups?</a>
+        <a href="#ch4-types">Types &amp; Strategies</a>
+        <a href="#ch4-lobbyists">Lobbyists &amp; Access</a>
+        <a href="#ch4-pacs">PACs &amp; Elections</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch5" onclick="navClick(this, 'ch5-subs')">
+        <span class="nav-dot" style="background:var(--ch5)"></span>Local Government
+      </a>
+      <div class="nav-sub" id="ch5-subs">
+        <a href="#ch5-county">County Government</a>
+        <a href="#ch5-city">City Government</a>
+        <a href="#ch5-special">Special Purpose Districts</a>
+        <a href="#ch5-finance">Financial Issues</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch6" onclick="navClick(this, 'ch6-subs')">
+        <span class="nav-dot" style="background:var(--ch6)"></span>Public Policy
+      </a>
+      <div class="nav-sub" id="ch6-subs">
+        <a href="#ch6-process">Policy-Making Process</a>
+        <a href="#ch6-education">Education Policy</a>
+        <a href="#ch6-welfare">Welfare Policy</a>
+        <a href="#ch6-health">Medicaid &amp; Health Care</a>
+      </div>
+    </div>
+    <div class="nav-chapter">
+      <a class="nav-chapter-title" href="#ch7" onclick="navClick(this, 'ch7-subs')">
+        <span class="nav-dot" style="background:var(--ch7)"></span>Public Finance
+      </a>
+      <div class="nav-sub" id="ch7-subs">
+        <a href="#ch7-budget">The Budget</a>
+        <a href="#ch7-revenue">Revenue &amp; Taxes</a>
+        <a href="#ch7-funds">State Funds</a>
+        <a href="#ch7-process">Budgetary Process</a>
+      </div>
+    </div>
+    <a class="nav-themes" href="#themes">⭐ Key Themes for the Exam</a>
+  </nav>
+</aside>
+
+<main class="main">
+  <section class="hero">
+    <h1>Texas Government<br>Final Exam Study Guide</h1>
+    <p class="subtitle">POLS 1433 — American &amp; Texas Government II</p>
+    <div class="exam-info">
+      <span>📅</span> Final Exam: Thursday, May 14 at 10:30 a.m. — In person, multiple choice on D2L
+    </div>
+    <div class="study-note">
+      <strong>How to study:</strong> Focus on political <em>trends</em> and <em>processes</em>, not on memorizing names, dates, or numbers. Understand <em>how</em> things work and <em>why</em> they work that way. Click any section below to expand it.
+    </div>
+  </section>
+
+  <div class="controls">
+    <button onclick="expandAll()">Expand All Sections</button>
+    <button onclick="collapseAll()">Collapse All Sections</button>
+  </div>
+
+  <!-- ==================== CHAPTER 1: LEGISLATURE ==================== -->
+  <section class="chapter ch1" id="ch1">
+    <div class="chapter-header">
+      <div class="chapter-num">1</div>
+      <h2>The Legislature in Texas</h2>
+    </div>
+
+    <div class="topic" id="ch1-structure">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Structure &amp; Sessions</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas has a <span class="key-term">bicameral</span> legislature — two chambers, modeled after Congress:</p>
+        <ul>
+          <li><strong>Texas House of Representatives</strong> — 150 members, 2-year terms</li>
+          <li><strong>Texas Senate</strong> — 31 members, 4-year terms</li>
+        </ul>
+        <p>Both chambers use <span class="key-term">single-member districts</span> (one representative per district). A Texas state senator represents more people than a U.S. House member because there are only 31 senators for the entire state.</p>
+        <p><strong>Why bicameralism matters:</strong> Before any law passes, both chambers must approve it. This forces compromise but can slow things down. If a bill can't be killed in one chamber, it can be killed or changed in the other.</p>
+        <p><strong>Sessions:</strong></p>
+        <ul>
+          <li><span class="key-term">Regular session</span> — 140 days every odd-numbered year (<span class="key-term">biennial</span>)</li>
+          <li><span class="key-term">Special sessions</span> — Called only by the governor, last up to 30 days, and only the governor sets the agenda</li>
+        </ul>
+        <p><strong>Compensation:</strong> Legislators are paid very little — essentially a part-time salary with a daily allowance (<span class="key-term">per diem</span>). Most have full-time jobs outside the legislature. This low pay tends to attract people from higher socioeconomic backgrounds.</p>
+        <p><strong>Who serves?</strong> The legislature is disproportionately White, male, and highly educated compared to the state population, but women and minorities have been increasing their representation, especially in the House.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch1-redistricting">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Redistricting</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Every 10 years after the census, district lines must be redrawn. This is called <span class="key-term">redistricting</span>.</p>
+        <ul>
+          <li><strong>One-person, one-vote principle:</strong> Districts must have roughly equal populations.</li>
+          <li>Redistricting is an intensely <strong>partisan</strong> activity — the party in power draws lines to benefit itself (<strong>gerrymandering</strong>).</li>
+          <li>Plans must comply with the <strong>Voting Rights Act</strong> so minority voters are not disadvantaged.</li>
+          <li>If the legislature fails to redistrict, the <span class="key-term">Legislative Redistricting Board (LRB)</span> takes over — made up of the lieutenant governor, Speaker, attorney general, land commissioner, and comptroller.</li>
+        </ul>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> Redistricting shapes who holds power for an entire decade. It's one of the most partisan things the legislature does.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch1-powers">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Powers of the Legislature</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>Legislative Powers:</strong> Passing <span class="key-term">bills</span> (proposed laws). Types include:</p>
+        <ul>
+          <li><strong>General bills</strong> — Apply statewide</li>
+          <li><strong>Local bills</strong> — Affect specific areas</li>
+          <li><strong>Special bills</strong> — Give exemptions</li>
+        </ul>
+        <p>The legislature also passes <span class="key-term">resolutions</span> (expressions of opinion):</p>
+        <ul>
+          <li><strong>Simple resolution</strong> — One chamber only</li>
+          <li><strong>Concurrent resolution</strong> — Both chambers, generally needs governor's signature</li>
+          <li><strong>Joint resolution</strong> — Proposed constitutional amendments; do NOT need the governor's signature but DO need voter approval</li>
+        </ul>
+        <p><strong>Nonlegislative Powers:</strong></p>
+        <ul>
+          <li><span class="key-term">Electoral power</span> — Counting returns for governor/lt. governor elections</li>
+          <li><span class="key-term">Investigative power</span> — Investigating problems in state government</li>
+          <li><span class="key-term">Directive and supervisory power</span> — Controlling agencies through the budget</li>
+          <li><span class="key-term">Judicial power</span> — The House can <span class="key-term">impeach</span> officials; the Senate holds the trial</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch1-bill">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>How a Bill Becomes Law</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Anyone can write a bill, but only legislators can introduce one. Revenue bills must start in the House. The process has six basic steps:</p>
+        <ol>
+          <li><strong>Introduction</strong> — The legislator files the bill. It's numbered, enrolled, and read for the first time.</li>
+          <li><strong>Referral</strong> — The <strong>Speaker</strong> (House) or <strong>lieutenant governor</strong> (Senate) assigns the bill to a <span class="key-term">standing committee</span>. Since committees have overlapping jurisdictions, leaders can send it to a friendly or unfriendly committee — a major source of power.</li>
+          <li><strong>Committee Action</strong> — Most bills die here. The chair can kill a bill by <span class="key-term">pigeonholing</span> (setting it aside forever). Surviving bills are usually amended. Public hearings may be held.</li>
+          <li><strong>Floor Action</strong> — In the House, the <strong>Calendars Committee</strong> schedules debate. In the Senate, debate is unlimited, allowing for <span class="key-term">filibusters</span> (talking for hours to block a bill). A related tactic is <strong>"chubbing"</strong> — debating at length to slow everything down near session's end.</li>
+          <li><strong>Conference Committee</strong> — If the House and Senate pass different versions, a <span class="key-term">conference committee</span> (5 from each chamber) works out a compromise. The report must be accepted or rejected as-is — no amendments allowed.</li>
+          <li><strong>Governor's Action</strong> — The governor can sign, veto, or let the bill become law without a signature.</li>
+        </ol>
+        <div class="callout callout-remember">
+          <strong>Key veto concepts:</strong><br>
+          • <strong>Regular veto</strong> — Can be overridden by ⅔ of both chambers (extremely rare — hasn't happened since 1979)<br>
+          • <strong>Post-adjournment veto</strong> — Vetoing after the legislature goes home; essentially absolute because there's no legislature to override it<br>
+          • <strong>Line-item veto</strong> — Striking specific spending items from the budget while signing the rest. The president does NOT have this power.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch1-leadership">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Leadership &amp; Power</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="versus">
+          <div class="versus-box" style="background:var(--ch1-light);border:1px solid var(--ch1-border)">
+            <h4>Speaker of the House</h4>
+            <p>Elected by House members (can involve bipartisan coalitions). Assigns bills to committees, appoints committee chairs/members, controls floor debate through <span class="key-term">recognition</span>, and appoints conference committee members.</p>
+          </div>
+          <div class="versus-box" style="background:var(--ch2-light);border:1px solid var(--ch2-border)">
+            <h4>Lieutenant Governor</h4>
+            <p>Elected statewide, separately from the governor. Presides over the Senate. Assigns bills to committees, appoints chairs/members, and has recognition power. Often called the most powerful official in Texas.</p>
+          </div>
+        </div>
+        <p><strong>Sources of centralized power:</strong> Committee assignments (reward allies, punish opponents), ability to speed up or block legislation, and appointment of conference committee members giving influence over final bill language.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch1-partisan">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Partisanship</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>The Texas legislature has become increasingly <strong>partisan</strong>, mirroring the U.S. Congress. Republicans control both chambers but have internal divisions between establishment/moderate and Tea Party-style conservatives. Democrats have gained ground in urban areas but Republicans remain firmly in control.</p>
+        <p>The elimination of the <strong>two-thirds rule</strong> in the Senate (which previously required bipartisan cooperation to bring bills to the floor) has accelerated partisanship. Now only a simple majority is needed to move legislation forward, meaning the minority party can be shut out entirely.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 2: EXECUTIVE ==================== -->
+  <section class="chapter ch2" id="ch2">
+    <div class="chapter-header">
+      <div class="chapter-num">2</div>
+      <h2>The Executive Branch in Texas</h2>
+    </div>
+
+    <div class="topic" id="ch2-governor">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>The Governor — A "Weak" Governor</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas intentionally created a <strong>weak governor</strong>. This stems from the 1876 Constitution, written after Reconstruction, when Texans deeply distrusted concentrated executive power. Texas's governor ranks among the weakest in the country in institutional power.</p>
+        <p><strong>Qualifications:</strong> At least 30 years old, U.S. citizen, lived in Texas for at least five years.</p>
+        <p><strong>Term:</strong> Four-year terms, no term limits. Elections in off-years (not presidential election years) to prevent the presidential race from influencing the governor's race.</p>
+        <p><strong>Removal:</strong> Through impeachment (House charges, Senate tries and can convict).</p>
+        <p><strong>Succession:</strong> If the governor can't serve, the lieutenant governor takes over. If the governor leaves the state, the lt. governor becomes acting governor.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch2-powers">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Governor's Powers</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>Executive Powers:</strong></p>
+        <ul>
+          <li><span class="key-term">Appointment power</span> — The governor's MOST significant power. Appoints members to 400+ boards/commissions that run state agencies. The Senate must confirm, and <span class="key-term">senatorial courtesy</span> (informal practice where the appointee's home senator must approve) effectively gives senators a veto.</li>
+          <li><span class="key-term">Budgetary power</span> — Submits an <span class="key-term">executive budget</span> suggesting priorities, but the <span class="key-term">legislative budget</span> (prepared by the LBB) is the one that actually matters.</li>
+          <li><strong>Military/police power</strong> — Can deploy the National Guard and Texas Rangers.</li>
+        </ul>
+        <p><strong>Legislative Powers:</strong></p>
+        <ul>
+          <li><strong>Message power</strong> — Propose legislation and highlight priorities</li>
+          <li><strong>Veto power</strong> — Regular veto, post-adjournment veto (absolute), and line-item veto on spending</li>
+          <li><strong>Special sessions</strong> — Only the governor calls them and sets the agenda; can last up to 30 days</li>
+        </ul>
+        <p><strong>Judicial Powers:</strong></p>
+        <ul>
+          <li>Can grant one 30-day reprieve from execution per condemned person. All other clemency must be recommended by the Board of Pardons and Paroles — the governor cannot act alone.</li>
+        </ul>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> The appointment power is the governor's most important tool. The line-item veto and special sessions are the governor's strongest legislative bargaining chips. But overall, the Texas governor is considered <em>weak</em> compared to governors in other states.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch2-plural">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>The Plural Executive</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Unlike the president (who appoints cabinet members), Texans <strong>elect</strong> most executive officials independently. This is the <span class="key-term">plural executive</span> — power is fragmented so no single person controls the branch.</p>
+        <ul>
+          <li><strong>Lieutenant Governor</strong> — Elected statewide, separately from the governor. Presides over the Senate. Often the most powerful official in Texas.</li>
+          <li><strong>Attorney General</strong> — The state's chief lawyer. Issues legal opinions that carry the weight of law unless overturned by a court.</li>
+          <li><strong>Comptroller of Public Accounts</strong> — Chief tax collector and financial officer. <em>Critically</em>, the comptroller <strong>certifies the budget</strong> — confirming projected revenue covers spending. No certification = legislature must adjust.</li>
+          <li><strong>Commissioner of the General Land Office</strong> — Manages publicly owned lands and mineral rights; awards oil/gas exploration rights.</li>
+          <li><strong>Agriculture Commissioner</strong> — Enforces agricultural laws.</li>
+          <li><strong>Secretary of State</strong> — The ONLY member <strong>appointed</strong> by the governor (confirmed by Senate). Administers elections.</li>
+        </ul>
+        <div class="callout callout-remember">
+          <strong>Why this matters:</strong> Because these officials are elected independently, they have their own power bases, don't answer to the governor, and may even be political rivals. This disperses power but can create fragmentation and lack of coordination.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch2-boards">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Boards, Commissions &amp; Regulatory Agencies</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Much of Texas government is run by boards and commissions whose members are appointed by the governor. These include multimember appointed boards, appointed single executives, and multimember elected boards (like the Railroad Commission and the State Board of Education).</p>
+        <p>The <span class="key-term">Sunset Advisory Commission (SAC)</span>, created in 1977, periodically reviews state agencies to determine if they're still needed. Agencies can be abolished if they're found to be ineffective. This is how the legislature holds agencies accountable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 3: JUDICIARY ==================== -->
+  <section class="chapter ch3" id="ch3">
+    <div class="chapter-header">
+      <div class="chapter-num">3</div>
+      <h2>The Judiciary in the US and Texas</h2>
+    </div>
+
+    <div class="topic" id="ch3-legal">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Civil Law vs. Criminal Law</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="versus">
+          <div class="versus-box" style="background:var(--ch3-light);border:1px solid var(--ch3-border)">
+            <h4>Civil Law</h4>
+            <p>Disputes between individuals or organizations (contracts, property, personal injury, family law). Remedy is usually money. Standard: "preponderance of the evidence" (more likely than not).</p>
+          </div>
+          <div class="versus-box" style="background:var(--ch1-light);border:1px solid var(--ch1-border)">
+            <h4>Criminal Law</h4>
+            <p>Offenses against society/state. <strong>Felonies</strong> = serious (prison). <strong>Misdemeanors</strong> = less serious (fine/jail). Standard: "beyond a reasonable doubt" (much higher).</p>
+          </div>
+        </div>
+        <p>Key criminal concepts:</p>
+        <ul>
+          <li><span class="key-term">Grand jury</span> — Decides if there's enough evidence to formally charge someone (issue an <strong>indictment</strong>). Does NOT decide guilt or innocence.</li>
+          <li><span class="key-term">Plea bargaining</span> — The vast majority of criminal cases are resolved through plea deals, not trials.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch3-courts">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Texas Court Structure</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas has a <strong>large, complex, and sometimes confusing</strong> court system with overlapping jurisdictions.</p>
+        <p><strong>Trial Courts (where cases start):</strong></p>
+        <ul>
+          <li><strong>Justice of the Peace Courts</strong> — Small claims, minor criminal, traffic. JPs are NOT required to be lawyers.</li>
+          <li><strong>Municipal Courts</strong> — City ordinance violations and minor criminal.</li>
+          <li><strong>Constitutional County Courts</strong> — Presided over by the county judge.</li>
+          <li><strong>Statutory County Courts</strong> — Created by the legislature to handle caseloads.</li>
+          <li><strong>District Courts</strong> — Main trial courts for felonies and major civil cases. The workhorses of the system.</li>
+        </ul>
+        <p><strong>Appellate Courts:</strong></p>
+        <ul>
+          <li><strong>Courts of Appeals</strong> — 14 intermediate appellate courts across the state.</li>
+          <li><strong>Texas Supreme Court</strong> — Highest court for <strong>civil cases only</strong>.</li>
+          <li><strong>Texas Court of Criminal Appeals</strong> — Highest court for <strong>criminal cases only</strong>.</li>
+        </ul>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> Texas is unusual in having <em>two</em> highest courts — one for civil and one for criminal. Most states have just one supreme court. The system has been criticized as a "patchwork" of overlapping jurisdictions.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch3-politics">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Judicial Politics — How Judges Are Selected</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="versus">
+          <div class="versus-box" style="background:var(--ch2-light);border:1px solid var(--ch2-border)">
+            <h4>Federal Judges</h4>
+            <p>Appointed by the president, confirmed by the Senate, serve for <strong>life</strong>. Insulated from political pressure.</p>
+          </div>
+          <div class="versus-box" style="background:var(--ch1-light);border:1px solid var(--ch1-border)">
+            <h4>Texas Judges</h4>
+            <p>Elected in <strong>partisan elections</strong> — they run as Democrats or Republicans. Must eventually face voters even if initially appointed.</p>
+          </div>
+        </div>
+        <p><strong>Problems with partisan judicial elections:</strong></p>
+        <ul>
+          <li>Voters usually know very little about judicial candidates and vote on <strong>party label</strong> or <strong>name recognition</strong> alone.</li>
+          <li>Urban counties can have dozens of judicial races on the ballot — impossible for voters to be informed on all of them.</li>
+          <li><strong>Straight-ticket voting</strong> historically swept judges in or out purely on party popularity (banned starting 2020).</li>
+          <li>Judicial campaigns are expensive; most money comes from <strong>lawyers and interest groups</strong> who appear before these judges — raising serious impartiality concerns.</li>
+        </ul>
+        <p><strong>Proposed reforms:</strong></p>
+        <ul>
+          <li><span class="key-term">Merit selection</span> — A commission screens candidates, the governor appoints, and after a period in office, the judge faces a <span class="key-term">retention election</span> (yes/no — no opponent). Proposed many times but never adopted.</li>
+          <li>The <span class="key-term">Judicial Campaign Fairness Act</span> places limits on campaign contributions to judicial candidates.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch3-issues">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Key Issues in the Court System</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <ul>
+          <li><strong>Tort reform</strong> — Texas has passed laws limiting damages in civil lawsuits, especially medical malpractice. A battleground between business interests and plaintiffs' lawyers.</li>
+          <li><strong>Diversity</strong> — Judges have been disproportionately White and male. Urban elections in 2018 and 2020 brought more minority judges, especially in Harris County.</li>
+          <li><strong>Judicial conduct</strong> — The State Commission on Judicial Conduct investigates complaints and issues sanctions.</li>
+          <li><strong>Structural inefficiency</strong> — Overlapping jurisdictions, courts with the same name having different responsibilities, and no comprehensive reform despite decades of proposals.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 4: INTEREST GROUPS ==================== -->
+  <section class="chapter ch4" id="ch4">
+    <div class="chapter-header">
+      <div class="chapter-num">4</div>
+      <h2>Interest Groups &amp; Lobbying</h2>
+    </div>
+
+    <div class="topic" id="ch4-what">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>What Are Interest Groups?</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>An <span class="key-term">interest group</span> is an organization of people who share a common interest and band together to influence public policy. They are NOT political parties — they don't run candidates. Instead, they try to influence the people who ARE in government.</p>
+        <p><strong>Key resources:</strong></p>
+        <ul>
+          <li><strong>Members</strong> — More people (and more influential people) = more clout.</li>
+          <li><strong>Money</strong> — Ability to raise and spend money on campaigns and lobbying.</li>
+          <li><strong>Information/Expertise</strong> — Interest groups often provide research and data to legislators. First drafts of many bills actually come from interest groups.</li>
+        </ul>
+        <p><strong>Four main strategies:</strong></p>
+        <ol>
+          <li><strong>Political</strong> — Grassroots organizing, get-out-the-vote, campaign financing</li>
+          <li><strong>Legislative</strong> — Lobbying legislators, testifying before committees</li>
+          <li><strong>Public awareness</strong> — Ads, reports, press conferences</li>
+          <li><strong>Judicial</strong> — Filing or supporting lawsuits</li>
+        </ol>
+        <p><span class="key-term">Pluralism</span> is the idea that many competing groups can check and balance each other. But the <span class="key-term">free rider problem</span> makes organizing harder — people benefit from a group's work without joining or contributing.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch4-types">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Types of Interest Groups</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <ul>
+          <li><strong>Business groups</strong> — Most powerful in Texas (e.g., Texas Association of Business, oil/gas industry)</li>
+          <li><strong>Professional groups</strong> — Represent specific professions (Texas Medical Association, Texas Bar Association)</li>
+          <li><strong>Public employee groups</strong> — Teachers, firefighters, police officers</li>
+          <li><strong>Single-issue groups</strong> — Focused on one topic (abortion, environment, guns)</li>
+          <li><strong>Civil rights groups</strong> — NAACP, LULAC, MALDEF</li>
+          <li><strong>Public interest groups</strong> — Broader causes like consumer protection (Sierra Club, Public Citizen, Common Cause). Usually less money but can mobilize members.</li>
+          <li><strong>Ideological groups</strong> — Like ALEC, a conservative group that drafts model legislation for states nationwide</li>
+        </ul>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> Business interests dominate Texas lobbying. A persistent criticism is that there is virtually no counterbalancing lobby for ordinary consumers, the environment, or social services.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch4-lobbyists">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Lobbyists &amp; Access</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>A <span class="key-term">lobbyist</span> is a person hired by an interest group to influence government decisions. They gain access through entertainment (dinners, events), personal relationships, providing information, and mobilizing constituents.</p>
+        <p>The <strong>Texas Ethics Commission</strong> registers lobbyists and tracks spending. Despite regulations, Texas's lobbying laws are considered relatively loose.</p>
+        <p><strong>The Revolving Door:</strong> Former legislators increasingly become lobbyists after leaving office, using their relationships and insider knowledge. Proposals for "cooling off" periods have repeatedly failed.</p>
+        <p><strong>Corruption concerns:</strong> Lobbying scandals have led to reforms (the Ethics Commission was created after scandals), but entertainment of legislators and use of campaign contributions for personal expenses remain controversial.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch4-pacs">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>PACs &amp; Elections</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><span class="key-term">Political Action Committees (PACs)</span> are created by interest groups to collect and distribute campaign contributions. <span class="key-term">Bundling</span> combines many small contributions into larger, more impactful donations.</p>
+        <p>Interest groups also engage in getting out the vote for favored candidates and working to defeat opponents through negative advertising or supporting challengers. Business interests dominate PAC contributions in Texas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 5: LOCAL GOVERNMENT ==================== -->
+  <section class="chapter ch5" id="ch5">
+    <div class="chapter-header">
+      <div class="chapter-num">5</div>
+      <h2>Local Government</h2>
+    </div>
+
+    <div class="topic" id="ch5-county">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>County Government</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas has <strong>254 counties</strong> — more than any other state. Counties primarily govern rural areas and function largely as administrative arms of the state. Unlike cities, they have very limited self-government powers and cannot adopt home-rule charters.</p>
+        <p><strong>Functions:</strong> Roads/bridges, law enforcement, dispute resolution, record-keeping, and social services.</p>
+        <p><strong>Key officials:</strong></p>
+        <ul>
+          <li><strong>County Judge</strong> — Presides over both the commissioners' court (governing body) AND the constitutional county court. This is both an executive/legislative and judicial role.</li>
+          <li><strong>Commissioners' Court</strong> — County judge + 4 commissioners (elected from precincts). Sets budget, tax rate, and oversees operations.</li>
+          <li><strong>Sheriff</strong> — Chief law enforcement officer.</li>
+          <li><strong>County/District Attorney</strong> — Prosecutes criminal cases.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch5-city">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>City Government</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="versus">
+          <div class="versus-box" style="background:var(--ch5-light);border:1px solid var(--ch5-border)">
+            <h4>General-Law Cities</h4>
+            <p>Smaller cities that can only do what the state legislature specifically allows.</p>
+          </div>
+          <div class="versus-box" style="background:var(--ch3-light);border:1px solid var(--ch3-border)">
+            <h4>Home-Rule Cities</h4>
+            <p>Population over 5,000, adopt their own charter, broad self-governing authority. But the state can <strong>preempt</strong> (overrule) local ordinances.</p>
+          </div>
+        </div>
+        <p><span class="key-term">Preemption</span> has become a major issue — the state legislature increasingly blocks cities from passing their own regulations on things like fracking, plastic bags, etc.</p>
+        <p><strong>Three forms of city government:</strong></p>
+        <ol>
+          <li><strong>Mayor-Council</strong> — Mayor as chief executive, council as legislature. <em>Strong mayor</em> = lots of power (appointments, veto, agenda). <em>Weak mayor</em> = power more diffused.</li>
+          <li><strong>Commissioner</strong> — Small elected commission runs the city. Rare today.</li>
+          <li><strong>Council-Manager</strong> — Most common in Texas home-rule cities. Council sets policy, a professional <strong>city manager</strong> handles day-to-day administration. Mayor has limited power.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="topic" id="ch5-special">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Special Purpose Districts</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>A <span class="key-term">special purpose district</span> performs <strong>one specific function</strong> in a limited geographic area. Texas has thousands.</p>
+        <p><strong>Two types:</strong></p>
+        <ul>
+          <li><strong>School districts</strong> — Every piece of land is in one. Governed by elected boards of trustees who hire a superintendent, set the budget, and set tax rates.</li>
+          <li><strong>Nonschool special districts</strong> — Hospital districts, water districts, fire protection, etc. Most notable: <span class="key-term">Municipal Utility Districts (MUDs)</span> providing water/sewer/utilities outside city limits, especially around Houston.</li>
+        </ul>
+        <p><strong>Funded by:</strong> <span class="key-term">Property taxes</span> and <span class="key-term">user fees</span>.</p>
+        <p><strong>Problems:</strong></p>
+        <ul>
+          <li><span class="key-term">Hidden governments</span> — Most people don't know they exist or vote in their elections (under 10% turnout).</li>
+          <li><strong>Developer abuses</strong> — Developers create districts, have a tiny number of "residents" approve millions in bonds, then leave future homeowners to pay.</li>
+          <li><strong>Lack of coordination</strong> — Thousands of overlapping districts make coherent statewide policy nearly impossible.</li>
+        </ul>
+        <p><span class="key-term">Councils of Government (COGs)</span> — 24 regional planning bodies that coordinate across local government boundaries for major projects. They don't tax — they plan and coordinate.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch5-finance">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Financial Issues Facing Local Government</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <ul>
+          <li><span class="key-term">Capital Appreciation Bonds (CABs)</span> — Local governments (usually school districts) borrow money now but pay nothing until the bond matures far in the future. Total payback can be enormously more than what was borrowed. Used to get around borrowing limits.</li>
+          <li><span class="key-term">Deferred Retirement Option Plans (DROPs)</span> — Generous local government pensions that create significant long-term financial obligations straining local budgets.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 6: PUBLIC POLICY ==================== -->
+  <section class="chapter ch6" id="ch6">
+    <div class="chapter-header">
+      <div class="chapter-num">6</div>
+      <h2>Public Policy in Texas</h2>
+    </div>
+
+    <div class="topic" id="ch6-process">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>The Policy-Making Process</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Public policy = the outputs of government (laws, regulations, spending). The process has stages:</p>
+        <ol>
+          <li><strong>Problem identification / agenda setting</strong> — An issue is recognized as needing government action</li>
+          <li><strong>Policy formulation</strong> — Possible solutions are developed</li>
+          <li><strong>Policy adoption</strong> — A solution is enacted into law</li>
+          <li><strong>Policy implementation</strong> — Carried out by agencies</li>
+          <li><strong>Policy evaluation</strong> — Effectiveness is assessed, leading to changes</li>
+        </ol>
+        <p><span class="key-term">Rationality</span> in policy making is the ideal — clearly identifying goals and finding the most efficient solution. In reality, policy making is messy, political, and influenced by competing interests, limited information, and short-term thinking.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch6-education">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Education Policy</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Education is one of the biggest budget items. Key themes:</p>
+        <ul>
+          <li><strong>Equity in Funding</strong> — Funded through state money + local property taxes + federal funds. Wealthier districts raise more property tax revenue, creating significant inequality. Multiple lawsuits have challenged this, arguing it violates the Texas Constitution's requirement for an "efficient" system.</li>
+          <li><strong>Accountability &amp; Testing</strong> — Texas has been a leader in standardized testing to hold schools accountable.</li>
+          <li><strong>Charter Schools</strong> — Receive public funding but operate independently. Controversial: supporters say choice and innovation, critics say they drain resources from traditional schools.</li>
+          <li><strong>School Finance Reform</strong> — An ongoing battle between adequate funding, property tax relief, and equity between districts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch6-welfare">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Welfare Policy</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Poverty rates in Texas are <strong>above the national average</strong>, especially among children and the elderly. Texas's individualistic culture tends to view poverty as an individual problem.</p>
+        <p><strong>Key policy evolution:</strong></p>
+        <ul>
+          <li>The <strong>Social Security Act of 1935</strong> (New Deal) created the modern welfare system with shared state-federal responsibility.</li>
+          <li><strong>Great Society</strong> programs in the 1960s expanded anti-poverty programs.</li>
+          <li><strong>1990s welfare reform</strong> reflected a belief that earlier programs created "dependency." Replaced the old program (AFDC) with <span class="key-term">Temporary Assistance for Needy Families (TANF)</span>, imposing time limits, work requirements, and more state flexibility.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch6-health">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Medicaid &amp; Health Care</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas has the <strong>highest rate of uninsured people</strong> of any state — far above the national average.</p>
+        <p><span class="key-term">Medicaid</span> is a joint state-federal program providing health care for the poor, especially children. It's one of the most expensive budget items. Federal money comes with strings — Texas must meet standards to receive funding.</p>
+        <p>The <strong>Affordable Care Act (ACA)</strong> expanded Medicaid eligibility and created insurance marketplaces. However, Texas <strong>refused to expand Medicaid</strong>, leaving many poor Texans without coverage. Texas also didn't create its own marketplace.</p>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> Texas's refusal to expand Medicaid is one of the most consequential policy decisions discussed in this chapter. It leaves the state with the highest uninsured rate in the nation and is a defining example of Texas's "low service" philosophy.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHAPTER 7: PUBLIC FINANCE ==================== -->
+  <section class="chapter ch7" id="ch7">
+    <div class="chapter-header">
+      <div class="chapter-num">7</div>
+      <h2>Public Finance in Texas</h2>
+    </div>
+
+    <div class="topic" id="ch7-budget">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>The Budget</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>The Texas Constitution requires a <strong>balanced budget</strong> — projected revenue must equal or exceed projected spending.</p>
+        <p>Five revenue streams:</p>
+        <ol>
+          <li><span class="key-term">General Revenue Funds</span> — Main operating fund, most taxes/fees flow here. Legislators have the most control over this.</li>
+          <li><span class="key-term">General Revenue–Dedicated Funds</span> — Money targeted for specific purposes.</li>
+          <li><span class="key-term">Federal Funds</span> — Over a third of all state revenue. Comes with strings attached.</li>
+          <li><span class="key-term">Other Funds</span> — Highway Fund, trust funds, higher education accounts.</li>
+          <li><span class="key-term">All Funds</span> — The total of everything above.</li>
+        </ol>
+        <p><strong>Key points:</strong> Much money is outside legislators' direct control. Education and health/human services are the two biggest spending categories. Federal dollars play a huge and growing role.</p>
+      </div>
+    </div>
+
+    <div class="topic" id="ch7-revenue">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Revenue &amp; Taxes</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>Texas is a <strong>"low service, low tax"</strong> state and does <strong>NOT</strong> have a personal income tax. A constitutional amendment requires voter approval for any income tax, with revenue going to public education.</p>
+        <p><strong>Major revenue sources:</strong></p>
+        <ul>
+          <li><strong>Sales tax</strong> — Largest source. State rate: 6.25%; local additions up to 2% more (max 8.25%).</li>
+          <li><strong>Property taxes</strong> — Among the highest in the nation. Levied by local governments, not the state.</li>
+          <li><strong>Oil/gas severance taxes</strong> — Still important but less dominant than historically.</li>
+          <li><strong>Other</strong> — Motor fuels tax, franchise tax (on businesses), cigarette/alcohol/hotel taxes, motor vehicle sales taxes.</li>
+          <li><strong>Federal money</strong> — The single largest revenue source overall, primarily for Medicaid and education.</li>
+        </ul>
+        <div class="versus">
+          <div class="versus-box" style="background:var(--ch3-light);border:1px solid var(--ch3-border)">
+            <h4>Progressive Tax</h4>
+            <p>Takes a <em>larger</em> percentage from higher-income people (like an income tax).</p>
+          </div>
+          <div class="versus-box" style="background:var(--ch6-light);border:1px solid var(--ch6-border)">
+            <h4>Regressive Tax</h4>
+            <p>Takes a <em>larger</em> percentage from lower-income people (like a sales tax — same rate, bigger burden on those with less).</p>
+          </div>
+        </div>
+        <div class="callout callout-exam">
+          <strong>Exam tip:</strong> Texas's tax system is considered <strong>regressive</strong> because it relies on sales and property taxes instead of income taxes. Lower-income Texans pay a higher share of their income in taxes.
+        </div>
+      </div>
+    </div>
+
+    <div class="topic" id="ch7-funds">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>Important State Funds</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <ul>
+          <li><strong>Permanent School Fund (PSF)</strong> — One of the largest educational endowments in the country. Funds public schools from land and mineral rights revenue.</li>
+          <li><strong>Permanent University Fund (PUF)</strong> — Supports UT and Texas A&M systems through oil/gas revenue from public lands.</li>
+          <li><strong>State Highway Fund</strong> — Motor fuels taxes + additional sales tax revenue (constitutional amendment approved by voters).</li>
+          <li><strong>Economic Stabilization Fund ("Rainy Day Fund")</strong> — Funded by oil/gas severance taxes. Cushions the budget during downturns. Requires a supermajority vote to tap.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topic" id="ch7-process">
+      <div class="topic-header" onclick="toggleTopic(this)">
+        <h3>The Budgetary Process</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>Key players:</strong></p>
+        <ul>
+          <li><span class="key-term">Legislative Budget Board (LBB)</span> — The most important budget body. 10 members, chaired by the lt. governor, Speaker as vice chair. Prepares the budget the legislature actually uses (the governor's budget is largely symbolic).</li>
+          <li><strong>Governor's Office of Budget, Planning, and Policy (GOBPP)</strong> — Develops the executive budget and exercises the line-item veto after passage.</li>
+          <li><strong>Comptroller of Public Accounts</strong> — Issues revenue estimates and <strong>certifies</strong> the final budget (confirms it's balanced). If the comptroller won't certify, the legislature must adjust.</li>
+        </ul>
+        <p><strong>The process:</strong></p>
+        <ol>
+          <li><strong>Estimation/Planning</strong> — LBB gathers requests from agencies, develops draft budget.</li>
+          <li><strong>Legislative Process</strong> — Budget moves through House Appropriations and Senate Finance committees separately. Conference committee reconciles differences.</li>
+          <li><strong>Certification</strong> — Comptroller certifies balance.</li>
+          <li><strong>Governor's Action</strong> — Sign, veto, or line-item veto.</li>
+          <li><strong>Implementation</strong> — Takes effect September 1 of odd-numbered years. LBB and state auditor monitor compliance.</li>
+        </ol>
+        <div class="callout callout-remember">
+          <strong>Remember:</strong> Passing the budget is the most important thing the legislature does. As long as conservative Republicans control Texas, cutting taxes stays high on the agenda while expanding social programs does not. Texas's economy (especially oil prices) creates dramatic revenue swings that make budgeting especially challenging.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KEY THEMES ==================== -->
+  <section class="themes-section" id="themes">
+    <h2>⭐ Key Themes for the Exam</h2>
+    <p style="margin-bottom:20px;color:var(--text-muted);font-size:15px;">These overarching ideas connect all the chapters. Great for last-minute review.</p>
+
+    <div class="theme-card">
+      <span class="theme-num">01</span>
+      <div><strong>Fragmented power is deliberate.</strong> The weak governor, plural executive, bicameral legislature, and elected judges all reflect distrust of concentrated power dating to the 1876 Constitution.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">02</span>
+      <div><strong>The Speaker and Lt. Governor are enormously powerful</strong> — arguably more than the governor — because they control the legislative process through committee assignments, recognition, and conference committee appointments.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">03</span>
+      <div><strong>Texas is a "low tax, low service" state.</strong> No income tax, heavy reliance on regressive sales and property taxes, and below-average spending on education and social services.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">04</span>
+      <div><strong>Partisan elections for judges create unique problems.</strong> Low voter knowledge, money from lawyers/interest groups, and party sweeps can remove experienced judges based purely on party label.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">05</span>
+      <div><strong>Business interests dominate Texas politics.</strong> There is little counterbalancing lobby for consumers, the environment, or the poor. The revolving door reinforces this dynamic.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">06</span>
+      <div><strong>Local government is complex and fragmented.</strong> Thousands of special purpose districts operate as "hidden governments" with minimal voter participation. Cities face increasing state preemption.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">07</span>
+      <div><strong>The budget is the most important legislative task.</strong> Understanding who controls it (LBB, comptroller, governor's line-item veto) is essential to understanding Texas politics.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">08</span>
+      <div><strong>Texas's refusal to expand Medicaid</strong> leaves it with the highest uninsured rate in the nation — a defining policy choice that reflects the state's conservative philosophy.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">09</span>
+      <div><strong>Redistricting is intensely partisan</strong> and shapes who holds power for a decade. The party controlling the legislature draws lines to benefit itself.</div>
+    </div>
+    <div class="theme-card">
+      <span class="theme-num">10</span>
+      <div><strong>Texas is changing demographically</strong> — more diverse, more urban, more politically competitive — creating tensions within and between parties and putting pressure on longstanding institutions.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  function toggleTopic(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.topic').forEach(t => t.classList.add('open'));
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.topic').forEach(t => t.classList.remove('open'));
+  }
+
+  function navClick(el, subId) {
+    // Toggle sub-navigation
+    const sub = document.getElementById(subId);
+    const wasOpen = sub.classList.contains('open');
+    document.querySelectorAll('.nav-sub').forEach(s => s.classList.remove('open'));
+    document.querySelectorAll('.nav-chapter-title').forEach(a => a.classList.remove('active'));
+    if (!wasOpen) {
+      sub.classList.add('open');
+      el.classList.add('active');
+    }
+    // Close mobile sidebar
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+      document.querySelector('.overlay').classList.remove('active');
+    }
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.querySelector('.overlay').classList.toggle('active');
+  }
+
+  // Highlight active chapter on scroll
+  const chapters = document.querySelectorAll('.chapter, .themes-section');
+  const navLinks = document.querySelectorAll('.nav-chapter-title, .nav-themes');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    chapters.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (scrollY >= top) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+        // Open corresponding sub-nav
+        const subId = link.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+        if (subId) {
+          document.querySelectorAll('.nav-sub').forEach(s => s.classList.remove('open'));
+          const sub = document.getElementById(subId);
+          if (sub) sub.classList.add('open');
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
